@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Exam.belongsTo(models.course);
+      models.course.hasMany(Exam);
     }
   }
   Exam.init({
