@@ -56,9 +56,9 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      StudentId: "4",
+      StudentId: "1",
       grade: "2",
-      ExamId: "10",
+      ExamId: "3",
       createdAt: new Date(),
       updatedAt: new Date()
     }

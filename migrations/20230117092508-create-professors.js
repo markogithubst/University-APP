@@ -30,6 +30,14 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+    await queryInterface.addConstraint('Professors', {
+      fields: ['DepartmentId'],
+      type: 'foreign key',
+      references: {
+        table: 'Departments',
+        field: 'id',
+      }
+    });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Professors');
