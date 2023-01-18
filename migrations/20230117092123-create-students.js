@@ -21,7 +21,7 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING
       },
-      majorId: {
+      MajorId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

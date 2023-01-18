@@ -15,7 +15,7 @@ module.exports = {
       dateAndTime: {
         type: Sequelize.DATE
       },
-      courseId: {
+      CourseId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

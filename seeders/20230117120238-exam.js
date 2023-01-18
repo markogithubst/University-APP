@@ -16,42 +16,42 @@ module.exports = {
       {
         name: "Physics exam",
         dateAndTime: new Date(),
-        courseId: "1",
+        CourseId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Mathematics exam",
         dateAndTime: new Date(),
-        courseId: "2",
+        CourseId: "2",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Cryptography exam",
         dateAndTime: new Date(),
-        courseId: "6",
+        CourseId: "6",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Relational Databases exam",
         dateAndTime: new Date(),
-        courseId: "3",
+        CourseId: "3",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Relational Databases another exam",
         dateAndTime: new Date(),
-        courseId: "3",
+        CourseId: "3",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Physics another exam",
         dateAndTime: new Date(),
-        courseId: "1",
+        CourseId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       }

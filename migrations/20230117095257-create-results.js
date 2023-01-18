@@ -3,14 +3,14 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Results', {
-      studentId: {
+      StudentId: {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       grade: {
         type: Sequelize.INTEGER
       },
-      examId: {
+      ExamId: {
         primaryKey: true,
         type: Sequelize.INTEGER
       },

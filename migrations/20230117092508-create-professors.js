@@ -18,7 +18,7 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING
       },
-      departmentId: {
+      DepartmentId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

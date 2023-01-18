@@ -14,51 +14,51 @@ module.exports = {
     */
    return await queryInterface.bulkInsert('Results', [
     {
-      studentId: "1",
+      StudentId: "1",
       grade: "5",
-      examId: "6",
+      ExamId: "6",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      studentId: "2",
+      StudentId: "2",
       grade: "2",
-      examId: "5",
+      ExamId: "5",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      studentId: "3",
+      StudentId: "3",
       grade: "2",
-      examId: "4",
+      ExamId: "4",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      studentId: "4",
+      StudentId: "4",
       grade: "1",
-      examId: "3",
+      ExamId: "3",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      studentId: "5",
+      StudentId: "5",
       grade: "3",
-      examId: "2",
+      ExamId: "2",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      studentId: "6",
+      StudentId: "6",
       grade: "2",
-      examId: "1",
+      ExamId: "1",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      studentId: "4",
+      StudentId: "4",
       grade: "2",
-      examId: "10",
+      ExamId: "10",
       createdAt: new Date(),
       updatedAt: new Date()
     }

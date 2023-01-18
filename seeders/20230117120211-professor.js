@@ -17,7 +17,7 @@ module.exports = {
         name: "Bilbo Baggins",
         address: "Abbey Street 121, Dublin",
         phoneNumber: "234567",
-        departmentId: "1",
+        DepartmentId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -25,7 +25,7 @@ module.exports = {
         name: "Frodo Baggins",
         address: "Capel Street 45, Dublin",
         phoneNumber: "765987",
-        departmentId: "1",
+        DepartmentId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -33,7 +33,7 @@ module.exports = {
         name: "Mirabelle Tucker",
         address: "Clyde Road 3, Dublin",
         phoneNumber: "666111",
-        departmentId: "3",
+        DepartmentId: "3",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -41,7 +41,7 @@ module.exports = {
         name: "Alban Malone",
         address: "East Wall Road 34, Dublin",
         phoneNumber: "644332",
-        departmentId: "3",
+        DepartmentId: "3",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -49,7 +49,7 @@ module.exports = {
         name: "Timothea Ball",
         address: "East Wall Road 56, Dublin",
         phoneNumber: "644332",
-        departmentId: "2",
+        DepartmentId: "2",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -57,7 +57,7 @@ module.exports = {
         name: "Lark Robson",
         address: "Gardiner Street 5, Dublin",
         phoneNumber: "758888",
-        departmentId: "5",
+        DepartmentId: "5",
         createdAt: new Date(),
         updatedAt: new Date()
       }

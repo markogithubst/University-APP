@@ -18,7 +18,7 @@ module.exports = {
       email: "johndoe@fesb.com",
       address: "181 Mercer Street, New York",
       phoneNumber: "111222",
-      majorId: "1",
+      MajorId: "1",
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -27,7 +27,7 @@ module.exports = {
       email: "janedoe@fesb.com",
       address: "13 Washington Square S, New York",
       phoneNumber: "111333",
-      majorId: "2",
+      MajorId: "2",
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -36,7 +36,7 @@ module.exports = {
       email: "gregoryhouse@fesb.com",
       address: "715 Broadway, New York",
       phoneNumber: "444555",
-      majorId: "3",
+      MajorId: "3",
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -45,7 +45,7 @@ module.exports = {
       email: "thomasshelby@fesb.com",
       address: "11 Queen St, London",
       phoneNumber: "222666",
-      majorId: "4",
+      MajorId: "4",
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -54,7 +54,7 @@ module.exports = {
       email: "arthurshelby@fesb.com",
       address: "9218 Manchester Road, London",
       phoneNumber: "777888",
-      majorId: "5",
+      MajorId: "5",
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -63,7 +63,7 @@ module.exports = {
       email: "pollyshelby@fesb.com",
       address: "366 The Grove, London",
       phoneNumber: "333555",
-      majorId: "2",
+      MajorId: "2",
       createdAt: new Date(),
       updatedAt: new Date()
     }

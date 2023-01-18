@@ -15,7 +15,7 @@ module.exports = {
       creditHours: {
         type: Sequelize.INTEGER
       },
-      professorId: {
+      ProfessorId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

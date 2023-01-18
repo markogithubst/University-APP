@@ -16,42 +16,42 @@ module.exports = {
       {
         name: "Physics",
         creditHours: "54",
-        professorId: "1",
+        ProfessorId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Discrete Mathematics",
         creditHours: "122",
-        professorId: "4",
+        ProfessorId: "4",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Relational Databases",
         creditHours: "70",
-        professorId: "2",
+        ProfessorId: "2",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Methods and algorithms of machine learning",
         creditHours: "80",
-        professorId: "1",
+        ProfessorId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Mobile communications",
         creditHours: "88",
-        professorId: "3",
+        ProfessorId: "3",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Cryptography",
         creditHours: "66",
-        professorId: "5",
+        ProfessorId: "5",
         createdAt: new Date(),
         updatedAt: new Date()
       }

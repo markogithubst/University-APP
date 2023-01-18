@@ -14,61 +14,61 @@ module.exports = {
     */
     return await queryInterface.bulkInsert('Enrollments', [
       {
-        courseId: "1",
-        studentId: "1",
+        CourseId: "1",
+        StudentId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "1",
-        studentId: "2",
+        CourseId: "1",
+        StudentId: "2",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "1",
-        studentId: "3",
+        CourseId: "1",
+        StudentId: "3",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "2",
-        studentId: "4",
+        CourseId: "2",
+        StudentId: "4",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "2",
-        studentId: "5",
+        CourseId: "2",
+        StudentId: "5",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "3",
-        studentId: "4",
+        CourseId: "3",
+        StudentId: "4",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "3",
-        studentId: "7",
+        CourseId: "3",
+        StudentId: "7",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "4",
-        studentId: "9",
+        CourseId: "4",
+        StudentId: "9",
         createdAt: new Date(),
         updatedAt: new Date()
       },{
-        courseId: "5",
-        studentId: "11",
+        CourseId: "5",
+        StudentId: "11",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        courseId: "6",
-        studentId: "12",
+        CourseId: "6",
+        StudentId: "12",
         createdAt: new Date(),
         updatedAt: new Date()
       }
