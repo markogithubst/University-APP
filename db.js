@@ -1,8 +1,10 @@
 let express = require('express');
 const app = express();
 const { Sequelize } = require('sequelize');
+const router = require("./routes/index")
 
 app.use(express.json());
+app.use(router);
 
 const PORT = 3000;
 const sequelize = new Sequelize('postgresql://postgres:postgres@localhost/postgres');

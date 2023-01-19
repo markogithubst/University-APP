@@ -11,20 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Result.belongsTo(models.student);
-      models.student.hasMany(Result);
+      Result.belongsTo(models.Student);
+      models.Student.hasMany(Result);
 
-      Result.belongsTo(models.exam);
-      models.exam.hasMany(Result);
+      Result.belongsTo(models.Exam);
+      models.Exam.hasMany(Result);
     }
   }
   Result.init({
-    studentId: DataTypes.INTEGER,
+    StudentId: DataTypes.INTEGER,
     grade: DataTypes.INTEGER,
-    examId: DataTypes.INTEGER
+    ExamId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Result',
   });
+  Result.removeAttribute('id');
   return Result;
 };

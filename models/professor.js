@@ -11,15 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Professor.belongsTo(models.department);
-      models.department.hasMany(Professor);
+      Professor.belongsTo(models.Department);
+      models.Department.hasMany(Professor);
     }
   }
   Professor.init({
     name: DataTypes.STRING,
     address: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
-    departmentId: DataTypes.INTEGER
+    DepartmentId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Professor',

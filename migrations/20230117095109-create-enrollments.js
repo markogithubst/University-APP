@@ -4,7 +4,6 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Enrollments', {
       CourseId: {
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
