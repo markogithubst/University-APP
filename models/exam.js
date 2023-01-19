@@ -11,12 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Exam.belongsTo(models.Course);
+      models.Course.hasMany(Exam);
     }
   }
   Exam.init({
     name: DataTypes.STRING,
     dateAndTime: DataTypes.DATE,
-    courseId: DataTypes.INTEGER
+    CourseId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Exam',

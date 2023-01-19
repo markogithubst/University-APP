@@ -51,24 +51,24 @@ module.exports = {
       },
       {
         CourseId: "3",
-        StudentId: "7",
+        StudentId: "5",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         CourseId: "4",
-        StudentId: "9",
+        StudentId: "2",
         createdAt: new Date(),
         updatedAt: new Date()
       },{
         CourseId: "5",
-        StudentId: "11",
+        StudentId: "1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         CourseId: "6",
-        StudentId: "12",
+        StudentId: "3",
         createdAt: new Date(),
         updatedAt: new Date()
       }

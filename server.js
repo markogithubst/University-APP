@@ -1,24 +1,9 @@
-let express = require('express');
-const app = express();
-const { Sequelize } = require('sequelize');
+const express = require('express');
+const routes = require('./routes/index');
 
-app.use(express.json());
+const server = express();
+server.use(express.json());
 
-const PORT = 3000;
-const sequelize = new Sequelize('postgresql://postgres:postgres@localhost/postgres');
+server.use('/', routes);
 
-const startApp = async function(){
-    try {
-        await sequelize.authenticate();
-        console.log('Connection to database has been established successfully.');
-        app.listen(PORT)
-        console.log(`Application started, listening on port ${PORT}...`);
-      } catch (error) {
-        console.error(error.message);
-      }
-}
-startApp()
-
-app.get('/', (req, res)=> {
-    res.send("<h1>Test konekcije</h1>")
-})
+module.exports = server;

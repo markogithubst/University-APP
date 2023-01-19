@@ -4,7 +4,6 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Enrollments', {
       CourseId: {
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
@@ -19,6 +18,22 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      }
+    });
+    await queryInterface.addConstraint('Enrollments', {
+      fields: ['StudentId'],
+      type: 'foreign key',
+      references: {
+        table: 'Students',
+        field: 'id',
+      }
+    });
+    await queryInterface.addConstraint('Enrollments', {
+      fields: ['CourseId'],
+      type: 'foreign key',
+      references: {
+        table: 'Courses',
+        field: 'id',
       }
     });
   },
