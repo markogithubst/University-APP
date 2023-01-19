@@ -20,5 +20,5 @@ const startApp = async function(){
 startApp()
 
 app.get('/', (req, res)=> {
-    res.send("<h1>Test konekcije</h1>")
+    res.send("<h1>Connection test</h1>")
 })
