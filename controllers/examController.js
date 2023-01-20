@@ -27,8 +27,22 @@ const getOneExam = async (req, res) => {
     }
   };
 
+
+const createExam = async (req, res) => {
+  try {
+    if (!req.body.name || !req.body.dateAndTime || !req.body.CourseId) {
+        return res.status(400).send({ message: "Fields Exam name, date/time, and Course ID are required" });
+    }
+    const newExam = await models.Exam.create(req.body);
+    return res.status(201).json(newExam);
+    
+} catch (error) {
+    return res.status(500).send({ message: "An error occurred while creating the exam: " + error.message });
+}
+};
+
 module.exports = {
-    // createExam,
+    createExam,
     getAllExams,
     getOneExam,
     // updateExam,

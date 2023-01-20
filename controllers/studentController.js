@@ -26,8 +26,26 @@ const getAllStudents = async (req, res) => {
     }
   };
 
+const createStudent = async (req, res) => {
+  try {
+    const studentName = req.body.name
+    const studentAddress = req.body.address
+    const studentExists = await models.Student.findOne( {where: { name: studentName}} );
+    const addressExists = await models.Student.findOne( {where: { address: studentAddress}} );
+    if (studentExists && addressExists) {
+        return res.status(400).send({ message: "A student with that name and address already exists" });
+    }
+    const newStudent = await models.Student.create(req.body);
+    return res.status(201).json(newStudent);
+    
+} catch (error) {
+    return res.status(500).send({ message: "An error occurred while creating the student: " + error.message });
+}
+};
+
+
 module.exports = {
-    // createStudent,
+    createStudent,
     getAllStudents,
     getOneStudent,
     // updateStudent,

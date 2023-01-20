@@ -41,8 +41,22 @@ const getAllResults = async (req, res) => {
   };
 
 
+
+const createResult = async (req, res) => {
+  try {
+    if (!req.body.StudentId || !req.body.grade || !req.body.ExamId) {
+        return res.status(400).send({ message: "StudentId, grade and ExamId fields are required" });
+    }
+    const newResult = await models.Result.create(req.body);
+    return res.status(201).json(newResult);
+    
+} catch (error) {
+    return res.status(500).send({ message: "An error occurred while creating the enrollment: " + error.message });
+}
+};
+
 module.exports = {
-    // createResult,
+    createResult,
     getAllResults,
     getResultsByStudent,
     getResultsByExam,
