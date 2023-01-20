@@ -3,6 +3,7 @@ const router = express.Router();
 
 const EnrollmentController = require('../controllers/enrollmentController')
 
+
 router.get('/student/:id', EnrollmentController.getEnrollmentsByStudent);
 router.get('/course/:id', EnrollmentController.getEnrollmentsByCourse);
 router.get('/', EnrollmentController.getAllEnrollments);

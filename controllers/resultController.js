@@ -12,6 +12,7 @@ const getAllResults = async (req, res) => {
     }
   };
 
+  
 
   const getResultsByStudent = async (req, res) => {
     try {

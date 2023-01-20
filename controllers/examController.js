@@ -12,6 +12,8 @@ const getAllExams = async (req, res) => {
     }
   };
 
+
+
 const getOneExam = async (req, res) => {
     try {
         const examId  = req.params.id

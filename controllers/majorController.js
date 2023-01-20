@@ -12,6 +12,7 @@ const getAllMajors = async (req, res) => {
     }
   };
 
+  
   const getOneMajor = async (req, res) => {
     try {
         const majorId  = req.params.id

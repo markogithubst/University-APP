@@ -12,6 +12,7 @@ const getAllCourses = async (req, res) => {
     }
   };
 
+
 const getOneCourse = async (req, res) => {
     try {
         const courseId  = req.params.id

@@ -12,6 +12,7 @@ const getAllDepartments = async (req, res) => {
     }
   };
 
+  
   const getOneDepartment = async (req, res) => {
     try {
         const departmentId  = req.params.id

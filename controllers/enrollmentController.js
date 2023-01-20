@@ -12,6 +12,7 @@ const getAllEnrollments = async (req, res) => {
     }
   };
 
+
 const getEnrollmentsByStudent = async (req, res) => {
     try {
         const enrollmentByStudentId = req.params.id

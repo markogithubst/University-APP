@@ -3,6 +3,7 @@ const router = express.Router();
 
 const ExamController = require('../controllers/examController')
 
+
 router.get('/:id', ExamController.getOneExam);
 router.get('/', ExamController.getAllExams);
 // router.post('/', ExamController.createExam);

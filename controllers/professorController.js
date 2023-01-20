@@ -12,6 +12,7 @@ const getAllProfessors = async (req, res) => {
     }
   };
 
+  
   const getOneProfessor = async (req, res) => {
     try {
         const professorId  = req.params.id
