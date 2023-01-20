@@ -3,6 +3,7 @@ const app = express();
 const { Sequelize } = require('sequelize');
 const router = require("./routes/index")
 
+app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(router);
 
