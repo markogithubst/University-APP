@@ -9,6 +9,7 @@ const majorRouter = require('./majorRouter');
 const departmentRouter = require('./departmentRouter');
 const resultRouter = require('./resultRouter');
 
+
 router.use('/courses', courseRouter);
 router.use('/enrollments', enrollmentRouter);
 router.use('/exams', examRouter);
