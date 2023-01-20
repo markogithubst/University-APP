@@ -3,7 +3,7 @@ const models = require("../models");
 const getAllStudents = async (req, res) => {
     try {
       const students = await models.Student.findAll();
-      if (!students || students.length == 0) {
+      if (!students || students.length === 0) {
         return res.status(404).send({ message: "There are no Students in the database" });
       }
       return res.status(200).json( students );

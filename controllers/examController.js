@@ -3,7 +3,7 @@ const models = require("../models");
 const getAllExams = async (req, res) => {
     try {
       const exams = await models.Exam.findAll();
-      if (!exams || exams.length == 0) {
+      if (!exams || exams.length === 0) {
         return res.status(404).send({ message: "There are no Exams in the database" });
       }
       return res.status(200).json( exams );

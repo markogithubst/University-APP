@@ -3,7 +3,7 @@ const models = require("../models");
 const getAllEnrollments = async (req, res) => {
     try {
       const enrollments = await models.Enrollment.findAll();
-      if (!enrollments || enrollments.length == 0) {
+      if (!enrollments || enrollments.length === 0) {
         return res.status(404).send({ message: "There are no Enrollments in the database" });
       }
       return res.status(200).json( enrollments );
@@ -38,9 +38,27 @@ const getEnrollmentsByStudent = async (req, res) => {
       return res.status(500).send(error.message);
     }
   };
-  
+
+const createEnrollment = async (req, res) => {
+  try {
+    if (!req.body.name) {
+        return res.status(400).send({ message: "Course name is required" });
+    }
+    const courseName = req.body.name
+    const alreadyExists = await models.Course.findOne( {where: { name: courseName}} );
+    if(!alreadyExists || alreadyExists.length === 0){
+      const newCourse = await models.Course.create(req.body);
+      return res.status(201).json(newCourse);
+    }
+    return res.status(404).send({ message: "There is already a Course with this name in the database" }); 
+    
+} catch (error) {
+    return res.status(500).send({ message: "An error occurred while creating the course: " + error.message });
+}
+};
+
 module.exports = {
-    // createEnrollment,
+    createEnrollment,
     getEnrollmentsByCourse,
     getAllEnrollments,
     getEnrollmentsByStudent,

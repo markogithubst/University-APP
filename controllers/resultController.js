@@ -3,7 +3,7 @@ const models = require("../models");
 const getAllResults = async (req, res) => {
     try {
       const results = await models.Result.findAll();
-      if (!results || results.length == 0) {
+      if (!results || results.length === 0) {
         return res.status(404).send({ message: "There are no Results in the database" });
       }
       return res.status(200).json( results );
