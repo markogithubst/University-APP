@@ -43,11 +43,25 @@ const createStudent = async (req, res) => {
 }
 };
 
+const deleteStudent = async (req, res) => {
+  try {
+    const studentId  = req.params.id
+    const deletedStudent = await models.Student.findOne( {where: { id: studentId}} );
+    if(!deletedStudent || deletedStudent.length === 0){
+      return res.status(400).send({ message: "There is no student with this ID in the database"})
+    }
+    await deletedStudent.destroy()
+    return res.status(400).send({message: "Student succesfully deleted"});
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the student: " + error.message })
+  }
+};
+
 
 module.exports = {
     createStudent,
     getAllStudents,
     getOneStudent,
     // updateStudent,
-    // deleteStudent
+    deleteStudent
 }

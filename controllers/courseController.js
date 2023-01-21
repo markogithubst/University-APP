@@ -44,10 +44,25 @@ const createCourse = async (req, res) => {
 }
 };
 
+
+const deleteCourse = async (req, res) => {
+  try {
+    const courseId  = req.params.id
+    const deletedCourse = await models.Course.findOne( {where: { id: courseId}} );
+    if(!deletedCourse || deletedCourse.length === 0){
+      return res.status(400).send({ message: "There is no course with this ID in the database"})
+    }
+    await deletedCourse.destroy()
+    return res.status(400).send({message: "Course succesfully deleted"});
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the course: " + error.message })
+  }
+};
+
 module.exports = {
     createCourse,
     getAllCourses,
     getOneCourse,
     // updateCourse,
-    // deleteCourse
+    deleteCourse
 }

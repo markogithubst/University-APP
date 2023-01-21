@@ -44,10 +44,25 @@ const createProfessor = async (req, res) => {
 }
 };
 
+
+const deleteProfessor = async (req, res) => {
+  try {
+    const professorId  = req.params.id
+    const deletedProfessor = await models.Professor.findOne( {where: { id: professorId}} );
+    if(!deletedProfessor || deletedProfessor.length === 0){
+      return res.status(400).send({ message: "There is no professor with this ID in the database"})
+    }
+    await deletedProfessor.destroy()
+    return res.status(400).send({message: "Professor succesfully deleted"});
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the professor: " + error.message })
+  }
+};
+
 module.exports = {
     createProfessor,
     getAllProfessors,
     getOneProfessor,
     // updateProfessor,
-    // deleteProfessor
+    deleteProfessor
 }

@@ -52,11 +52,27 @@ const createEnrollment = async (req, res) => {
 }
 };
 
+
+const deleteEnrollment = async (req, res) => {
+  try {
+    const insertedCourseId = req.body.CourseId
+    const insertedStudentId = req.body.StudentId
+    if(!insertedStudentId || !insertedCourseId){
+      return res.status(400).send({ message: "StudentId and CourseId fields are required" });
+    }
+    await models.Enrollment.destroy({ where: { StudentId: insertedStudentId, CourseId: insertedCourseId}});
+    return res.status(400).send({ message: "Enrollment with the inserted StudenId and CourseId succesfully deleted" });
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the enrollment: " + error.message })
+  }
+};
+
+
 module.exports = {
     createEnrollment,
     getEnrollmentsByCourse,
     getAllEnrollments,
     getEnrollmentsByStudent,
     // updateEnrollment,
-    // deleteEnrollment
+    deleteEnrollment
 }

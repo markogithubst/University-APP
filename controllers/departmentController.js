@@ -46,10 +46,24 @@ const createDepartment = async (req, res) => {
 }
 };
 
+const deleteDepartment = async (req, res) => {
+  try {
+    const departmentId  = req.params.id
+    const deletedDepartment = await models.Department.findOne( {where: { id: departmentId}} );
+    if(!deletedDepartment || deletedDepartment.length === 0){
+      return res.status(400).send({ message: "There is no department with this ID in the database"})
+    }
+    await deletedDepartment.destroy()
+    return res.status(400).send({message: "Department succesfully deleted"});
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the department: " + error.message })
+  }
+};
+
 module.exports = {
     createDepartment,
     getAllDepartments,
     getOneDepartment,
     // updateDepartment,
-    // deleteDepartment
+    deleteDepartment
 }

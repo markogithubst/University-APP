@@ -45,10 +45,24 @@ const createMajor = async (req, res) => {
 }
 };
 
+const deleteMajor = async (req, res) => {
+  try {
+    const majorId  = req.params.id
+    const deletedMajor = await models.Major.findOne( {where: { id: majorId}} );
+    if(!deletedMajor || deletedMajor.length === 0){
+      return res.status(400).send({ message: "There is no major with this ID in the database"})
+    }
+    await deletedMajor.destroy()
+    return res.status(400).send({message: "Major succesfully deleted"});
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the major: " + error.message })
+  }
+};
+
 module.exports = {
     createMajor,
     getAllMajors,
     getOneMajor,
     // updateMajor,
-    // deleteMajor
+    deleteMajor
 }

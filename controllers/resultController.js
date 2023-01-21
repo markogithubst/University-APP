@@ -55,11 +55,26 @@ const createResult = async (req, res) => {
 }
 };
 
+
+const deleteResult = async (req, res) => {
+  try {
+    const insertedStudentId = req.body.StudentId
+    const insertedExamId = req.body.ExamId
+    if(!insertedStudentId || !insertedExamId){
+      return res.status(400).send({ message: "StudentId and ExamId fields are required" });
+    }
+    await models.Result.destroy({ where: { StudentId: insertedStudentId, ExamId: insertedExamId}});
+    return res.status(400).send({ message: "Result with the inserted StudenId and ExamId succesfully deleted" });
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the result: " + error.message })
+  }
+};
+
 module.exports = {
     createResult,
     getAllResults,
     getResultsByStudent,
     getResultsByExam,
     // updateResult,
-    // deleteResult
+    deleteResult
 }

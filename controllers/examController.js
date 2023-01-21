@@ -19,7 +19,7 @@ const getOneExam = async (req, res) => {
         const examId  = req.params.id
         const exam = await models.Exam.findOne( {where: { id: examId}} );
         if (!exam || exam.length == 0) {
-          return res.status(404).send({ message: "There is no Exam with this Id in the database" });
+          return res.status(404).send({ message: "There is no Exam with this ID in the database" });
         }
         return res.status(200).json( exam );
     } catch (error) {
@@ -41,10 +41,25 @@ const createExam = async (req, res) => {
 }
 };
 
+
+const deleteExam = async (req, res) => {
+  try {
+    const examId  = req.params.id
+    const exam = await models.Exam.findOne( {where: { id: examId}} );
+    if(!exam || exam.length === 0){
+      return res.status(400).send({ message: "There is no exam with this ID in the database"})
+    }
+    await exam.destroy()
+    return res.status(400).send({message: "Exam succesfully deleted"});
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the exam: " + error.message })
+  }
+};
+
 module.exports = {
     createExam,
     getAllExams,
     getOneExam,
     // updateExam,
-    // deleteExam
+    deleteExam
 }
