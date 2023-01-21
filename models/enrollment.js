@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Enrollment.belongsTo(models.Student);
+      Enrollment.belongsTo(models.Student, { onDelete: 'cascade', onUpdate: 'cascade' });
       models.Student.hasMany(Enrollment);
 
-      Enrollment.belongsTo(models.Course);
+      Enrollment.belongsTo(models.Course, { onDelete: 'cascade', onUpdate: 'cascade' });
       models.Course.hasMany(Enrollment);
     }
   }

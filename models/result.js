@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Result.belongsTo(models.Student);
       models.Student.hasMany(Result);
 
-      Result.belongsTo(models.Exam);
+      Result.belongsTo(models.Exam, { onDelete: 'cascade', onUpdate: 'cascade' });
       models.Exam.hasMany(Result);
     }
   }

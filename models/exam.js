@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Exam.belongsTo(models.Course);
+      Exam.belongsTo(models.Course, { onDelete: 'cascade', onUpdate: 'cascade' });
       models.Course.hasMany(Exam);
     }
   }

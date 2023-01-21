@@ -33,7 +33,9 @@ module.exports = {
       references: {
         table: 'Courses',
         field: 'id',
-      }
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
     });
   },
   async down(queryInterface, Sequelize) {

@@ -16,49 +16,49 @@ module.exports = {
     {
       StudentId: "1",
       grade: "5",
-      ExamId: "6",
+      ExamId: "7",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       StudentId: "2",
       grade: "2",
-      ExamId: "5",
+      ExamId: "7",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       StudentId: "3",
       grade: "2",
-      ExamId: "4",
+      ExamId: "8",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       StudentId: "4",
       grade: "1",
-      ExamId: "3",
+      ExamId: "9",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       StudentId: "5",
       grade: "3",
-      ExamId: "2",
+      ExamId: "10",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       StudentId: "6",
       grade: "2",
-      ExamId: "1",
+      ExamId: "11",
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       StudentId: "1",
       grade: "2",
-      ExamId: "3",
+      ExamId: "12",
       createdAt: new Date(),
       updatedAt: new Date()
     }

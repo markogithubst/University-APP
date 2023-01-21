@@ -29,7 +29,9 @@ module.exports = {
       references: {
         table: 'Students',
         field: 'id',
-      }
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('Results', {
       fields: ['ExamId'],
@@ -37,7 +39,9 @@ module.exports = {
       references: {
         table: 'Exams',
         field: 'id',
-      }
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
     });
   },
   async down(queryInterface, Sequelize) {
