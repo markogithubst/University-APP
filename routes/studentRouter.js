@@ -10,4 +10,6 @@ router.post('/', StudentController.createStudent);
 router.put('/:id', StudentController.updateStudent);
 router.delete('/:id', StudentController.deleteStudent);
 
+router.get('/own-results/:id', StudentController.getOwnResults);
+
 module.exports = router;

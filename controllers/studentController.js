@@ -73,10 +73,27 @@ const updateStudent = async (req, res) => {
   }
 };
 
+const getOwnResults = async (req, res) => {
+  try {
+      const studentId = req.params.id
+      console.log(studentId)
+      const studentResultExists = await models.Result.findOne( {where: { StudentId: studentId}} );
+      if (!studentResultExists || studentResultExists.length == 0) {
+        return res.status(404).send({ message: "Results By entered Student Id not found" });
+      }
+      const allResultsByStudentId = await models.Result.findAll( {where: { StudentId: studentId}} );
+      return res.status(200).json( allResultsByStudentId );
+  } catch (error) {
+    return res.status(500).send({message: "An error occured while getting the results: " + error.message});
+  }
+};
+
+
 module.exports = {
     createStudent,
     getAllStudents,
     getOneStudent,
     updateStudent,
-    deleteStudent
+    deleteStudent,
+    getOwnResults
 }
