@@ -74,11 +74,25 @@ const updateProfessor = async (req, res) => {
   }
 };
 
+const addExamResults = async (req,res) => {
+  try{
+    const professorId = req.params.id;
+    const professorExists = await models.Professor.findOne( {where: { id: professorId}} );
+    if(!professorExists || professorExists.length === 0){
+      return res.status(403).json({ message: 'Forbidden, you can not create exam results' });
+    }
+    await models.Result.create(req.body);
+    return res.status(200).json({ message: 'Exam result successfully added' });
+  } catch (error){
+    return res.status(500).json({ message: "An error occured while adding the exam result: " + error.message });
+  }
+};
 
 module.exports = {
     createProfessor,
     getAllProfessors,
     getOneProfessor,
     updateProfessor,
-    deleteProfessor
+    deleteProfessor,
+    addExamResults
 }

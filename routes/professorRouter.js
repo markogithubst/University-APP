@@ -10,4 +10,6 @@ router.post('/', ProfessorController.createProfessor);
 router.put('/:id', ProfessorController.updateProfessor);
 router.delete('/:id', ProfessorController.deleteProfessor);
 
+router.post('/add-exam-results/:id', ProfessorController.addExamResults);
+
 module.exports = router;
