@@ -17,7 +17,7 @@ const getAllProfessors = async (req, res) => {
     try {
         const professorId  = req.params.id
         const professor = await models.Professor.findOne( {where: { id: professorId}} );
-        if (!professor || professor.length == 0) {
+        if (!professor) {
           return res.status(404).send({ message: "There is no Professor with this Id in the database" });
         }
         return res.status(200).json( professor );
@@ -49,11 +49,11 @@ const deleteProfessor = async (req, res) => {
   try {
     const professorId  = req.params.id
     const deletedProfessor = await models.Professor.findOne( {where: { id: professorId}} );
-    if(!deletedProfessor || deletedProfessor.length === 0){
+    if(!deletedProfessor){
       return res.status(400).send({ message: "There is no professor with this ID in the database"})
     }
     await deletedProfessor.destroy()
-    return res.status(204).send({message: "Professor succesfully deleted"});
+    return res.status(200).send({message: "Professor succesfully deleted"});
   } catch (error) {
     return res.status(500).send({ message: "An error occured while deleting the professor: " + error.message })
   }
@@ -78,7 +78,7 @@ const addExamResults = async (req,res) => {
   try{
     const professorId = req.params.id;
     const professorExists = await models.Professor.findOne( {where: { id: professorId}} );
-    if(!professorExists || professorExists.length === 0){
+    if(!professorExists){
       return res.status(403).json({ message: 'Forbidden, you can not create exam results' });
     }
     await models.Result.create(req.body);

@@ -17,7 +17,7 @@ const getAllStudents = async (req, res) => {
     try {
         const studentId  = req.params.id
         const student = await models.Student.findOne( {where: { id: studentId}} );
-        if (!student || student.length == 0) {
+        if (!student) {
           return res.status(404).send({ message: "There is no Student with this Id in the database" });
         }
         return res.status(200).json( student );
@@ -47,11 +47,11 @@ const deleteStudent = async (req, res) => {
   try {
     const studentId  = req.params.id
     const deletedStudent = await models.Student.findOne( {where: { id: studentId}} );
-    if(!deletedStudent || deletedStudent.length === 0){
+    if(!deletedStudent){
       return res.status(400).send({ message: "There is no student with this ID in the database"})
     }
     await deletedStudent.destroy()
-    return res.status(204).send({message: "Student succesfully deleted"});
+    return res.status(200).send({message: "Student succesfully deleted"});
   } catch (error) {
     return res.status(500).send({ message: "An error occured while deleting the student: " + error.message })
   }
@@ -63,7 +63,7 @@ const updateStudent = async (req, res) => {
     const studentId = req.params.id;
     const { name, email, address, phoneNumber, MajorId } = req.body;
     const studentExists = await models.Student.findOne( {where: { id: studentId}} );
-    if (!studentExists || studentExists.length === 0) {
+    if (!studentExists) {
       return res.status(404).json({ message: 'Student not found' });
     }
     await models.Student.update({ name, email, address, phoneNumber, MajorId }, { where: { id: studentId } });
@@ -78,7 +78,7 @@ const getOwnResults = async (req, res) => {
       const studentId = req.params.id
       console.log(studentId)
       const studentResultExists = await models.Result.findOne( {where: { StudentId: studentId}} );
-      if (!studentResultExists || studentResultExists.length == 0) {
+      if (!studentResultExists) {
         return res.status(404).send({ message: "Results By entered Student Id not found" });
       }
       const allResultsByStudentId = await models.Result.findAll( {where: { StudentId: studentId}} );
