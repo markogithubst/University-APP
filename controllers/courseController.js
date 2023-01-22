@@ -50,12 +50,27 @@ const deleteCourse = async (req, res) => {
     const courseId  = req.params.id
     const deletedCourse = await models.Course.findOne( {where: { id: courseId}} );
     if(!deletedCourse || deletedCourse.length === 0){
-      return res.status(400).send({ message: "There is no course with this ID in the database"})
+      return res.status(404).send({ message: "There is no course with this ID in the database"})
     }
     await deletedCourse.destroy()
-    return res.status(400).send({message: "Course succesfully deleted"});
+    return res.status(204).send({message: "Course succesfully deleted"});
   } catch (error) {
     return res.status(500).send({ message: "An error occured while deleting the course: " + error.message })
+  }
+};
+
+const updateCourse = async (req, res) => {
+  try {
+    const courseId = req.params.id;
+    const { name, creditHours, ProfessorId } = req.body;
+    const courseExists = await models.Course.findOne( {where: { id: courseId}} );
+    if (!courseExists || courseExists.length === 0) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    await models.Course.update({ name, creditHours, ProfessorId }, { where: { id: courseId } });
+    return res.status(200).json({ message: 'Course updated successfully' });
+  } catch (error) {
+    return res.status(500).json({ message: "An error occured while updating the course: " + error.message });
   }
 };
 
@@ -63,6 +78,6 @@ module.exports = {
     createCourse,
     getAllCourses,
     getOneCourse,
-    // updateCourse,
+    updateCourse,
     deleteCourse
 }

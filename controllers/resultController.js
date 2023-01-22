@@ -64,9 +64,28 @@ const deleteResult = async (req, res) => {
       return res.status(400).send({ message: "StudentId and ExamId fields are required" });
     }
     await models.Result.destroy({ where: { StudentId: insertedStudentId, ExamId: insertedExamId}});
-    return res.status(400).send({ message: "Result with the inserted StudenId and ExamId succesfully deleted" });
+    return res.status(204).send({ message: "Result with the inserted StudenId and ExamId succesfully deleted" });
   } catch (error) {
     return res.status(500).send({ message: "An error occured while deleting the result: " + error.message })
+  }
+};
+
+const updateResult = async (req, res) => {
+  try {
+    const studentIdToUpdate = req.params.StudentId;
+    const examIdToUpdate = req.params.ExamId;
+    const updatedStudentId = req.body.StudentId;
+    const updatedGrade = req.body.grade;
+    const updatedExamId = req.body.ExamId;
+    const resultExists = await models.Result.findOne( {where: [{ ExamId: examIdToUpdate}, {StudentId: studentIdToUpdate}]} );
+    if (!resultExists || resultExists.length === 0) {
+      return res.status(404).json({ message: 'Result with inserted StudentID and ExamId not found' });
+    }
+    await models.Result.update({StudentId: updatedStudentId, grade: updatedGrade, ExamId: updatedExamId }, {where: {StudentId: studentIdToUpdate, ExamId: examIdToUpdate}});
+    return res.status(200).json({ message: 'Result updated successfully'  });
+    
+  } catch (error) {
+    return res.status(500).json({ message: "An error occured while updating the result: " + error.message });
   }
 };
 
@@ -75,6 +94,6 @@ module.exports = {
     getAllResults,
     getResultsByStudent,
     getResultsByExam,
-    // updateResult,
+    updateResult,
     deleteResult
 }

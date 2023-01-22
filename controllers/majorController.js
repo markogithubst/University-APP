@@ -53,9 +53,25 @@ const deleteMajor = async (req, res) => {
       return res.status(400).send({ message: "There is no major with this ID in the database"})
     }
     await deletedMajor.destroy()
-    return res.status(400).send({message: "Major succesfully deleted"});
+    return res.status(204).send({message: "Major succesfully deleted"});
   } catch (error) {
     return res.status(500).send({ message: "An error occured while deleting the major: " + error.message })
+  }
+};
+
+
+const updateMajor = async (req, res) => {
+  try {
+    const majorId = req.params.id;
+    const { name } = req.body;
+    const majorExists = await models.Major.findOne( {where: { id: majorId}} );
+    if (!majorExists || majorExists.length === 0) {
+      return res.status(404).json({ message: 'Major not found' });
+    }
+    await models.Major.update({ name }, { where: { id: majorId } });
+    return res.status(200).json({ message: 'Major updated successfully' });
+  } catch (error) {
+    return res.status(500).json({ message: "An error occured while updating the major: " + error.message });
   }
 };
 
@@ -63,6 +79,6 @@ module.exports = {
     createMajor,
     getAllMajors,
     getOneMajor,
-    // updateMajor,
+    updateMajor,
     deleteMajor
 }

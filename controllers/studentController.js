@@ -51,17 +51,32 @@ const deleteStudent = async (req, res) => {
       return res.status(400).send({ message: "There is no student with this ID in the database"})
     }
     await deletedStudent.destroy()
-    return res.status(400).send({message: "Student succesfully deleted"});
+    return res.status(204).send({message: "Student succesfully deleted"});
   } catch (error) {
     return res.status(500).send({ message: "An error occured while deleting the student: " + error.message })
   }
 };
 
 
+const updateStudent = async (req, res) => {
+  try {
+    const studentId = req.params.id;
+    const { name, email, address, phoneNumber, MajorId } = req.body;
+    const studentExists = await models.Student.findOne( {where: { id: studentId}} );
+    if (!studentExists || studentExists.length === 0) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+    await models.Student.update({ name, email, address, phoneNumber, MajorId }, { where: { id: studentId } });
+    return res.status(200).json({ message: 'Student updated successfully' });
+  } catch (error) {
+    return res.status(500).json({ message: "An error occured while updating the student: " + error.message });
+  }
+};
+
 module.exports = {
     createStudent,
     getAllStudents,
     getOneStudent,
-    // updateStudent,
+    updateStudent,
     deleteStudent
 }
