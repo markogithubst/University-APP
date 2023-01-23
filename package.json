@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon app.js",
+    "migration": "npx sequelize-cli db:migrate",
+    "undo all migration": "npx sequelize-cli db:migrate:undo:all",
+    "seed": "npx sequelize-cli db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
