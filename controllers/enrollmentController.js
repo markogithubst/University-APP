@@ -41,20 +41,48 @@ const getEnrollmentsByStudent = async (req, res) => {
 
 const createEnrollment = async (req, res) => {
   try {
-    if (!req.body.name) {
-        return res.status(400).send({ message: "Course name is required" });
+    if (!req.body.CourseId || !req.body.StudentId) {
+        return res.status(400).send({ message: "CourseId and StudentId are both required" });
     }
-    const courseName = req.body.name
-    const alreadyExists = await models.Course.findOne( {where: { name: courseName}} );
-    if(!alreadyExists || alreadyExists.length === 0){
-      const newCourse = await models.Course.create(req.body);
-      return res.status(201).json(newCourse);
-    }
-    return res.status(404).send({ message: "There is already a Course with this name in the database" }); 
+    const newEnrollment = await models.Enrollment.create(req.body);
+    return res.status(201).json(newEnrollment);
     
 } catch (error) {
-    return res.status(500).send({ message: "An error occurred while creating the course: " + error.message });
+    return res.status(500).send({ message: "An error occurred while creating the enrollment: " + error.message });
 }
+};
+
+
+const deleteEnrollment = async (req, res) => {
+  try {
+    const insertedCourseId = req.body.CourseId
+    const insertedStudentId = req.body.StudentId
+    if(!insertedStudentId || !insertedCourseId){
+      return res.status(400).send({ message: "StudentId and CourseId fields are required" });
+    }
+    await models.Enrollment.destroy({ where: { StudentId: insertedStudentId, CourseId: insertedCourseId}});
+    return res.status(200).send({ message: "Enrollment with the inserted StudenId and CourseId succesfully deleted" });
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the enrollment: " + error.message })
+  }
+};
+
+const updateEnrollment = async (req, res) => {
+  try {
+    const studentIdToUpdate = req.params.StudentId;
+    const courseIdToUpdate = req.params.CourseId;
+    const updatedStudentId = req.body.StudentId;
+    const updatedCourse = req.body.CourseId;
+    const enrollmentExists = await models.Enrollment.findOne( {where: [{ CourseId: courseIdToUpdate}, {StudentId: studentIdToUpdate}]} );
+    if (!enrollmentExists) {
+      return res.status(404).json({ message: 'Enrollment with inserted StudentID and CourseId not found' });
+    }
+    await models.Enrollment.update({StudentId: updatedStudentId, CourseId: updatedCourse}, {where: {StudentId: studentIdToUpdate, CourseId: courseIdToUpdate}});
+    return res.status(200).json({ message: 'Enrollment updated successfully'  });
+    
+  } catch (error) {
+    return res.status(500).json({ message: "An error occured while updating the enrollment: " + error.message });
+  }
 };
 
 module.exports = {
@@ -62,6 +90,6 @@ module.exports = {
     getEnrollmentsByCourse,
     getAllEnrollments,
     getEnrollmentsByStudent,
-    // updateEnrollment,
-    // deleteEnrollment
+    updateEnrollment,
+    deleteEnrollment
 }

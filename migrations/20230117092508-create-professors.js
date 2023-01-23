@@ -36,7 +36,9 @@ module.exports = {
       references: {
         table: 'Departments',
         field: 'id',
-      }
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
     });
   },
   async down(queryInterface, Sequelize) {

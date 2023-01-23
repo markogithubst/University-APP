@@ -35,7 +35,7 @@ const createDepartment = async (req, res) => {
     }
     const departmentName = req.body.name
     const alreadyExists = await models.Department.findOne( {where: { name: departmentName}} );
-    if(!alreadyExists || alreadyExists.length === 0){
+    if(!alreadyExists){
       const newDepartment = await models.Department.create(req.body);
       return res.status(201).json(newDepartment);
     }
@@ -46,10 +46,39 @@ const createDepartment = async (req, res) => {
 }
 };
 
+const deleteDepartment = async (req, res) => {
+  try {
+    const departmentId  = req.params.id
+    const deletedDepartment = await models.Department.findOne( {where: { id: departmentId}} );
+    if(!deletedDepartment){
+      return res.status(400).send({ message: "There is no department with this ID in the database"})
+    }
+    await deletedDepartment.destroy()
+    return res.status(200).send({message: "Department succesfully deleted"});
+  } catch (error) {
+    return res.status(500).send({ message: "An error occured while deleting the department: " + error.message })
+  }
+};
+
+const updateDepartment = async (req, res) => {
+  try {
+    const departmentId = req.params.id;
+    const { name } = req.body;
+    const departmentExists = await models.Department.findOne( {where: { id: departmentId}} );
+    if (!departmentExists) {
+      return res.status(404).json({ message: 'Department not found' });
+    }
+    await models.Department.update({ name }, { where: { id: departmentId } });
+    return res.status(200).json({ message: 'Department updated successfully' });
+  } catch (error) {
+    return res.status(500).json({ message: "An error occured while updating the department: " + error.message });
+  }
+};
+
 module.exports = {
     createDepartment,
     getAllDepartments,
     getOneDepartment,
-    // updateDepartment,
-    // deleteDepartment
+    updateDepartment,
+    deleteDepartment
 }

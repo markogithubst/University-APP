@@ -39,7 +39,9 @@ module.exports = {
       references: {
         table: 'Majors',
         field: 'id',
-      }
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
     });
   },
   async down(queryInterface, Sequelize) {
