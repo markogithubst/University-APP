@@ -4,11 +4,11 @@ const getAllEnrollments = async (req, res) => {
     try {
       const enrollments = await models.Enrollment.findAll();
       if (!enrollments || enrollments.length === 0) {
-        return res.status(404).send({ message: "There are no Enrollments in the database" });
+        return res.status(404).json({ message: "There are no Enrollments in the database" });
       }
       return res.status(200).json( enrollments );
     } catch (error) {
-      return res.status(500).send({ message: "An error occurred while fetching all enrollments: " + error.message });
+      return res.status(500).json({ message: "An error occurred while fetching all enrollments: " + error.message });
     }
   };
 
@@ -18,11 +18,11 @@ const getEnrollmentsByStudent = async (req, res) => {
         const enrollmentByStudentId = req.params.id
         const allEnrollmentByStudentId = await models.Enrollment.findAll( {where: { StudentId: enrollmentByStudentId}} );
         if (!allEnrollmentByStudentId || allEnrollmentByStudentId.length == 0) {
-          return res.status(404).send({ message: "Enrollment By entered Student Id not found" });
+          return res.status(404).json({ message: "Enrollment By entered Student Id not found" });
         }
         return res.status(200).json( allEnrollmentByStudentId );
     } catch (error) {
-      return res.status(500).send(error.message);
+      return res.status(500).json(error.message);
     }
   };
 
@@ -31,24 +31,24 @@ const getEnrollmentsByStudent = async (req, res) => {
         const enrollmentByCourseId  = req.params.id
         const allEnrollmentByCourseId = await models.Enrollment.findAll( {where: { CourseId: enrollmentByCourseId}} );
         if (!allEnrollmentByCourseId || allEnrollmentByCourseId.length == 0) {
-          return res.status(404).send({ message: "Enrollment By entered Course Id not found" });
+          return res.status(404).json({ message: "Enrollment By entered Course Id not found" });
         }
         return res.status(200).json( allEnrollmentByCourseId );
     } catch (error) {
-      return res.status(500).send(error.message);
+      return res.status(500).json(error.message);
     }
   };
 
 const createEnrollment = async (req, res) => {
   try {
     if (!req.body.CourseId || !req.body.StudentId) {
-        return res.status(400).send({ message: "CourseId and StudentId are both required" });
+        return res.status(400).json({ message: "CourseId and StudentId are both required" });
     }
     const newEnrollment = await models.Enrollment.create(req.body);
     return res.status(201).json(newEnrollment);
     
 } catch (error) {
-    return res.status(500).send({ message: "An error occurred while creating the enrollment: " + error.message });
+    return res.status(500).json({ message: "An error occurred while creating the enrollment: " + error.message });
 }
 };
 
@@ -58,12 +58,12 @@ const deleteEnrollment = async (req, res) => {
     const insertedCourseId = req.body.CourseId
     const insertedStudentId = req.body.StudentId
     if(!insertedStudentId || !insertedCourseId){
-      return res.status(400).send({ message: "StudentId and CourseId fields are required" });
+      return res.status(400).json({ message: "StudentId and CourseId fields are required" });
     }
     await models.Enrollment.destroy({ where: { StudentId: insertedStudentId, CourseId: insertedCourseId}});
-    return res.status(200).send({ message: "Enrollment with the inserted StudenId and CourseId succesfully deleted" });
+    return res.status(200).json({ message: "Enrollment with the inserted StudenId and CourseId succesfully deleted" });
   } catch (error) {
-    return res.status(500).send({ message: "An error occured while deleting the enrollment: " + error.message })
+    return res.status(500).json({ message: "An error occured while deleting the enrollment: " + error.message })
   }
 };
 
