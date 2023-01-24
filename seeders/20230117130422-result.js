@@ -14,53 +14,53 @@ module.exports = {
     */
    return await queryInterface.bulkInsert('result', [
     {
-      StudentId: "1",
+      student_id: "1",
       grade: "5",
-      ExamId: "1",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      exam_id: "1",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
-      StudentId: "2",
+      student_id: "2",
       grade: "2",
-      ExamId: "2",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      exam_id: "2",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
-      StudentId: "3",
+      student_id: "3",
       grade: "2",
-      ExamId: "3",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      exam_id: "3",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
-      StudentId: "4",
+      student_id: "4",
       grade: "1",
-      ExamId: "4",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      exam_id: "4",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
-      StudentId: "5",
+      student_id: "5",
       grade: "3",
-      ExamId: "5",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      exam_id: "5",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
-      StudentId: "6",
+      student_id: "6",
       grade: "2",
-      ExamId: "6",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      exam_id: "6",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
-      StudentId: "1",
+      student_id: "1",
       grade: "2",
-      ExamId: "3",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      exam_id: "3",
+      created_at: new Date(),
+      updated_at: new Date()
     }
    ], {})
   },

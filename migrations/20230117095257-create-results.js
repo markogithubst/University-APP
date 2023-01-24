@@ -3,28 +3,28 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('result', {
-      StudentId: {
+      student_id: {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       grade: {
         type: Sequelize.INTEGER
       },
-      ExamId: {
+      exam_id: {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
     await queryInterface.addConstraint('result', {
-      fields: ['StudentId'],
+      fields: ['student_id'],
       type: 'foreign key',
       references: {
         table: 'student',
@@ -34,7 +34,7 @@ module.exports = {
       onUpdate: 'cascade'
     });
     await queryInterface.addConstraint('result', {
-      fields: ['ExamId'],
+      fields: ['exam_id'],
       type: 'foreign key',
       references: {
         table: 'exam',

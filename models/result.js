@@ -11,21 +11,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Result.belongsTo(models.Student);
-      models.Student.hasMany(Result);
+      Result.belongsTo(models.Student, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'student_id' });
+      models.Student.hasMany(Result, {foreignKey: 'student_id'});
 
-      Result.belongsTo(models.Exam, { onDelete: 'cascade', onUpdate: 'cascade' });
-      models.Exam.hasMany(Result);
+      Result.belongsTo(models.Exam, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'exam_id' });
+      models.Exam.hasMany(Result, {foreignKey: 'exam_id'});
     }
   }
   Result.init({
-    StudentId: DataTypes.INTEGER,
+    student_id: DataTypes.INTEGER,
     grade: DataTypes.INTEGER,
-    ExamId: DataTypes.INTEGER
+    exam_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Result',
-    tableName: 'result'
+    tableName: 'result',
+    freezeTableName: true,
+    underscored: true,
+    updatedAt: 'updated_at',
+    createdAt: 'created_at'
   });
   Result.removeAttribute('id');
   return Result;
