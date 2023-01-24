@@ -14,63 +14,63 @@ module.exports = {
     */
     return await queryInterface.bulkInsert('enrollment', [
       {
-        CourseId: "1",
-        StudentId: "1",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "1",
+        student_id: "1",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "1",
-        StudentId: "2",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "1",
+        student_id: "2",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "1",
-        StudentId: "3",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "1",
+        student_id: "3",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "2",
-        StudentId: "4",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "2",
+        student_id: "4",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "2",
-        StudentId: "5",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "2",
+        student_id: "5",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "3",
-        StudentId: "4",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "3",
+        student_id: "4",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "3",
-        StudentId: "5",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "3",
+        student_id: "5",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "4",
-        StudentId: "2",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "4",
+        student_id: "2",
+        created_at: new Date(),
+        updated_at: new Date()
       },{
-        CourseId: "5",
-        StudentId: "1",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "5",
+        student_id: "1",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
-        CourseId: "6",
-        StudentId: "3",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        course_id: "6",
+        student_id: "3",
+        created_at: new Date(),
+        updated_at: new Date()
       }
      ], {})
   },
