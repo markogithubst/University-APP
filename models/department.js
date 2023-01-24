@@ -18,7 +18,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Department',
-    tableName: 'department'
+    tableName: 'department',
+    freezeTableName: true,
+    underscored: true,
+    updatedAt: 'updated_at',
+    createdAt: 'created_at'
   });
   return Department;
 };

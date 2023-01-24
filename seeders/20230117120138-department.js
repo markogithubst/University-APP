@@ -15,28 +15,28 @@ module.exports = {
     return await queryInterface.bulkInsert('department', [
       {
         name: "Department of Power Engineering",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Department of Electronics",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Department of Mathematics and Physics",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Department of Mechanical Engineering and Naval Architecture",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Department of Mechanical Engineering Technology",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        created_at: new Date(),
+        updated_at: new Date()
       }], {})
   },
 
