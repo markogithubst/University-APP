@@ -15,45 +15,45 @@ module.exports = {
     return await queryInterface.bulkInsert('exam', [
       {
         name: "Physics exam",
-        dateAndTime: new Date(),
-        CourseId: "1",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        date_and_time: new Date(),
+        course_id: "1",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Mathematics exam",
-        dateAndTime: new Date(),
-        CourseId: "2",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        date_and_time: new Date(),
+        course_id: "2",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Cryptography exam",
-        dateAndTime: new Date(),
-        CourseId: "6",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        date_and_time: new Date(),
+        course_id: "6",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Relational Databases exam",
-        dateAndTime: new Date(),
-        CourseId: "3",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        date_and_time: new Date(),
+        course_id: "3",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Relational Databases another exam",
-        dateAndTime: new Date(),
-        CourseId: "3",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        date_and_time: new Date(),
+        course_id: "3",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Physics another exam",
-        dateAndTime: new Date(),
-        CourseId: "1",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        date_and_time: new Date(),
+        course_id: "1",
+        created_at: new Date(),
+        updated_at: new Date()
       }
      ], {})
   },

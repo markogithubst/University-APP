@@ -30,7 +30,7 @@ const getOneExam = async (req, res) => {
 
 const createExam = async (req, res) => {
   try {
-    if (!req.body.name || !req.body.dateAndTime || !req.body.CourseId) {
+    if (!req.body.name || !req.body.date_and_time || !req.body.course_id) {
         return res.status(400).json({ message: "Fields Exam name, date/time, and Course ID are required" });
     }
     const newExam = await models.Exam.create(req.body);
@@ -59,12 +59,12 @@ const deleteExam = async (req, res) => {
 const updateExam = async (req, res) => {
   try {
     const examId = req.params.id;
-    const { name, dateAndTime, CourseId } = req.body;
+    const { name, date_and_time, course_id } = req.body;
     const examExists = await models.Exam.findOne( {where: { id: examId}} );
     if (!examExists) {
       return res.status(404).json({ message: 'Exam not found' });
     }
-    await models.Exam.update({ name, dateAndTime, CourseId }, { where: { id: examId } });
+    await models.Exam.update({ name, date_and_time, course_id }, { where: { id: examId } });
     return res.status(200).json({ message: 'Exam updated successfully' });
   } catch (error) {
     return res.status(500).json({ message: "An error occured while updating the exam: " + error.message });

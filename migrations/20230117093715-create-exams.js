@@ -12,23 +12,23 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      dateAndTime: {
+      date_and_time: {
         type: Sequelize.DATE
       },
-      CourseId: {
+      course_id: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
     await queryInterface.addConstraint('exam', {
-      fields: ['CourseId'],
+      fields: ['course_id'],
       type: 'foreign key',
       references: {
         table: 'course',
