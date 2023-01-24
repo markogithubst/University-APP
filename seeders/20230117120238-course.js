@@ -15,45 +15,45 @@ module.exports = {
     return await queryInterface.bulkInsert('course', [
       {
         name: "Physics",
-        creditHours: "54",
-        ProfessorId: "1",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        credit_hours: "54",
+        professor_id: "1",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Discrete Mathematics",
-        creditHours: "122",
-        ProfessorId: "4",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        credit_hours: "122",
+        professor_id: "4",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Relational Databases",
-        creditHours: "70",
-        ProfessorId: "2",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        credit_hours: "70",
+        professor_id: "2",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Methods and algorithms of machine learning",
-        creditHours: "80",
-        ProfessorId: "1",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        credit_hours: "80",
+        professor_id: "1",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Mobile communications",
-        creditHours: "88",
-        ProfessorId: "3",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        credit_hours: "88",
+        professor_id: "3",
+        created_at: new Date(),
+        updated_at: new Date()
       },
       {
         name: "Cryptography",
-        creditHours: "66",
-        ProfessorId: "5",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        credit_hours: "66",
+        professor_id: "5",
+        created_at: new Date(),
+        updated_at: new Date()
       }
      ], {})
   },

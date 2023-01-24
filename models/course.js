@@ -11,18 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Course.belongsTo(models.Professor, { onDelete: 'cascade', onUpdate: 'cascade' });
-      models.Professor.hasMany(Course);
+      Course.belongsTo(models.Professor, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'professor_id' });
+      models.Professor.hasMany(Course, {foreignKey: 'professor_id'});
     }
   }
   Course.init({
     name: DataTypes.STRING,
-    creditHours: DataTypes.INTEGER,
-    ProfessorId: DataTypes.INTEGER
+    credit_hours: DataTypes.INTEGER,
+    professor_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Course',
-    tableName: 'course'
+    tableName: 'course',
+    freezeTableName: true,
+    underscored: true,
+    updatedAt: 'updated_at',
+    createdAt: 'created_at'
   });
   return Course;
 };
