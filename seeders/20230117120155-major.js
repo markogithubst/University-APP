@@ -2,8 +2,9 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
+	// eslint-disable-next-line no-unused-vars
+	async up (queryInterface, Sequelize) {
+		/**
      * Add seed commands here.
      *
      * Example:
@@ -12,41 +13,42 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert('major', [
-      {
-        name: "Electrical Engineering and Information Technology",
-        created_at: new Date(),
-        updated_at: new Date()
-      },
-      {
-        name: "Computing",
-        created_at: new Date(),
-        updated_at: new Date()
-      },
-      {
-        name: "Mechanical Engineering",
-        created_at: new Date(),
-        updated_at: new Date()
-      },
-      {
-        name: "Naval Architecture",
-        created_at: new Date(),
-        updated_at: new Date()
-      },
-      {
-        name: "Industrial Engineering",
-        created_at: new Date(),
-        updated_at: new Date()
-      }], {})
-  },
+		return await queryInterface.bulkInsert('major', [
+			{
+				name: 'Electrical Engineering and Information Technology',
+				created_at: new Date(),
+				updated_at: new Date()
+			},
+			{
+				name: 'Computing',
+				created_at: new Date(),
+				updated_at: new Date()
+			},
+			{
+				name: 'Mechanical Engineering',
+				created_at: new Date(),
+				updated_at: new Date()
+			},
+			{
+				name: 'Naval Architecture',
+				created_at: new Date(),
+				updated_at: new Date()
+			},
+			{
+				name: 'Industrial Engineering',
+				created_at: new Date(),
+				updated_at: new Date()
+			}], {});
+	},
 
-  async down (queryInterface, Sequelize) {
-    /**
+	// eslint-disable-next-line no-unused-vars
+	async down (queryInterface, Sequelize) {
+		/**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('major', null, {});
-  }
+		return await queryInterface.bulkDelete('major', null, {});
+	}
 };

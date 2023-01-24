@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const ExamController = require('../controllers/examController')
+const ExamController = require('../controllers/examController');
 
 
 router.get('/:id', ExamController.getOneExam);

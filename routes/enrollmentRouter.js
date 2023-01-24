@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const EnrollmentController = require('../controllers/enrollmentController')
+const EnrollmentController = require('../controllers/enrollmentController');
 
 
 router.get('/student/:id', EnrollmentController.getEnrollmentsByStudent);
