@@ -17,55 +17,55 @@ module.exports = {
       name: "John Doe",
       email: "johndoe@fesb.com",
       address: "181 Mercer Street, New York",
-      phoneNumber: "111222",
-      MajorId: "1",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      phone_number: "111222",
+      major_id: "1",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
       name: "Jane Doe",
       email: "janedoe@fesb.com",
       address: "13 Washington Square S, New York",
-      phoneNumber: "111333",
-      MajorId: "2",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      phone_number: "111333",
+      major_id: "2",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
       name: "Gregory House",
       email: "gregoryhouse@fesb.com",
       address: "715 Broadway, New York",
-      phoneNumber: "444555",
-      MajorId: "3",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      phone_number: "444555",
+      major_id: "3",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
       name: "Thomas Shelby",
       email: "thomasshelby@fesb.com",
       address: "11 Queen St, London",
-      phoneNumber: "222666",
-      MajorId: "4",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      phone_number: "222666",
+      major_id: "4",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
       name: "Arthur Shelby",
       email: "arthurshelby@fesb.com",
       address: "9218 Manchester Road, London",
-      phoneNumber: "777888",
-      MajorId: "5",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      phone_number: "777888",
+      major_id: "5",
+      created_at: new Date(),
+      updated_at: new Date()
     },
     {
       name: "Polly Shelby",
       email: "pollyshelby@fesb.com",
       address: "366 The Grove, London",
-      phoneNumber: "333555",
-      MajorId: "2",
-      createdAt: new Date(),
-      updatedAt: new Date()
+      phone_number: "333555",
+      major_id: "2",
+      created_at: new Date(),
+      updated_at: new Date()
     }
    ], {})
   },

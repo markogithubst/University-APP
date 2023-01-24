@@ -18,23 +18,23 @@ module.exports = {
       address: {
         type: Sequelize.STRING
       },
-      phoneNumber: {
+      phone_number: {
         type: Sequelize.STRING
       },
-      MajorId: {
+      major_id: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
     await queryInterface.addConstraint('student', {
-      fields: ['MajorId'],
+      fields: ['major_id'],
       type: 'foreign key',
       references: {
         table: 'major',

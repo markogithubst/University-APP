@@ -76,12 +76,11 @@ const updateStudent = async (req, res) => {
 const getOwnResults = async (req, res) => {
   try {
       const studentId = req.params.id
-      console.log(studentId)
-      const studentResultExists = await models.Result.findOne( {where: { StudentId: studentId}} );
+      const studentResultExists = await models.Result.findOne( {where: { student_id: studentId}} );
       if (!studentResultExists) {
         return res.status(404).json({ message: "Results By entered Student Id not found" });
       }
-      const allResultsByStudentId = await models.Result.findAll( {where: { StudentId: studentId}} );
+      const allResultsByStudentId = await models.Result.findAll( {where: { student_id: studentId}} );
       return res.status(200).json( allResultsByStudentId );
   } catch (error) {
     return res.status(500).json({message: "An error occured while getting the results: " + error.message});
