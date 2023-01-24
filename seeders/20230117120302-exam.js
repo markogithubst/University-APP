@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert('Exams', [
+    return await queryInterface.bulkInsert('exam', [
       {
         name: "Physics exam",
         dateAndTime: new Date(),
@@ -65,6 +65,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('Exams', null, {});
+    return await queryInterface.bulkDelete('exam', null, {});
   }
 };

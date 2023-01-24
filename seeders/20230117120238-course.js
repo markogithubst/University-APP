@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert('Courses', [
+    return await queryInterface.bulkInsert('course', [
       {
         name: "Physics",
         creditHours: "54",
@@ -65,6 +65,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('Courses', null, {});
+    return await queryInterface.bulkDelete('course', null, {});
   }
 };

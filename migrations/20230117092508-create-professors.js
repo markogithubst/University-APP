@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Professors', {
+    await queryInterface.createTable('professor', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -30,11 +30,11 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-    await queryInterface.addConstraint('Professors', {
+    await queryInterface.addConstraint('professor', {
       fields: ['DepartmentId'],
       type: 'foreign key',
       references: {
-        table: 'Departments',
+        table: 'department',
         field: 'id',
       },
       onDelete: 'cascade',
@@ -42,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Professors');
+    await queryInterface.dropTable('professor');
   }
 };

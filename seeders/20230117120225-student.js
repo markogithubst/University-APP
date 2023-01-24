@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   return await queryInterface.bulkInsert('Students', [
+   return await queryInterface.bulkInsert('student', [
     {
       name: "John Doe",
       email: "johndoe@fesb.com",
@@ -77,6 +77,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('Students', null, {});
+    return await queryInterface.bulkDelete('student', null, {});
   }
 };

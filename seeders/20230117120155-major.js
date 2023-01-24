@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert('Majors', [
+    return await queryInterface.bulkInsert('major', [
       {
         name: "Electrical Engineering and Information Technology",
         createdAt: new Date(),
@@ -47,6 +47,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('Majors', null, {});
+    return await queryInterface.bulkDelete('major', null, {});
   }
 };

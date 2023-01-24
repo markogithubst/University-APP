@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Enrollments', {
+    await queryInterface.createTable('enrollment', {
       CourseId: {
         primaryKey: true,
         type: Sequelize.INTEGER
@@ -20,21 +20,21 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-    await queryInterface.addConstraint('Enrollments', {
+    await queryInterface.addConstraint('enrollment', {
       fields: ['StudentId'],
       type: 'foreign key',
       references: {
-        table: 'Students',
+        table: 'student',
         field: 'id',
       },
       onDelete: 'cascade',
       onUpdate: 'cascade'
     });
-    await queryInterface.addConstraint('Enrollments', {
+    await queryInterface.addConstraint('enrollment', {
       fields: ['CourseId'],
       type: 'foreign key',
       references: {
-        table: 'Courses',
+        table: 'course',
         field: 'id',
       },
       onDelete: 'cascade',
@@ -42,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Enrollments');
+    await queryInterface.dropTable('enrollment');
   }
 };

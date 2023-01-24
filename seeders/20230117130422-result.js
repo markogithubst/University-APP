@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   return await queryInterface.bulkInsert('Results', [
+   return await queryInterface.bulkInsert('result', [
     {
       StudentId: "1",
       grade: "5",
@@ -72,6 +72,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('Results', null, {})
+    return await queryInterface.bulkDelete('result', null, {})
   }
 };

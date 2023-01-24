@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert('Professors', [
+    return await queryInterface.bulkInsert('professor', [
       {
         name: "Bilbo Baggins",
         address: "Abbey Street 121, Dublin",
@@ -71,6 +71,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('Professors', null, {});
+    return await queryInterface.bulkDelete('professor', null, {});
   }
 };

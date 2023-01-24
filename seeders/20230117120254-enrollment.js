@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert('Enrollments', [
+    return await queryInterface.bulkInsert('enrollment', [
       {
         CourseId: "1",
         StudentId: "1",
@@ -82,6 +82,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('Enrollments', null, {});
+    return await queryInterface.bulkDelete('enrollment', null, {});
   }
 };
