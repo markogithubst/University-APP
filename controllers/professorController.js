@@ -62,12 +62,12 @@ const deleteProfessor = async (req, res) => {
 const updateProfessor = async (req, res) => {
   try {
     const professorId = req.params.id;
-    const { name, address, phoneNumber, DepartmentId } = req.body;
+    const { name, address, phone_number, department_id } = req.body;
     const professorExists = await models.Professor.findOne( {where: { id: professorId}} );
     if (!professorExists || professorExists.length === 0) {
       return res.status(404).json({ message: 'Professor not found' });
     }
-    await models.Professor.update({ name, address, phoneNumber, DepartmentId }, { where: { id: professorId } });
+    await models.Professor.update({ name, address, phone_number, department_id }, { where: { id: professorId } });
     return res.status(200).json({ message: 'Professor updated successfully' });
   } catch (error) {
     return res.status(500).json({ message: "An error occured while updating the professor: " + error.message });

@@ -11,19 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Professor.belongsTo(models.Department, { onDelete: 'cascade', onUpdate: 'cascade' });
-      models.Department.hasMany(Professor);
+      Professor.belongsTo(models.Department, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'department_id' });
+      models.Department.hasMany(Professor, {foreignKey: 'department_id'});
     }
   }
   Professor.init({
     name: DataTypes.STRING,
     address: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
-    DepartmentId: DataTypes.INTEGER
+    phone_number: DataTypes.STRING,
+    department_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Professor',
-    tableName: 'professor'
+    tableName: 'professor',
+    freezeTableName: true,
+    underscored: true,
+    updatedAt: 'updated_at',
+    createdAt: 'created_at',
   });
   return Professor;
 };
