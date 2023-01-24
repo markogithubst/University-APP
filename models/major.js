@@ -18,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Major',
-    tableName: 'major'
+    tableName: 'major',
+    freezeTableName: true,
+    underscored: true,
+    updatedAt: 'updated_at',
+    createdAt: 'created_at'
+
   });
   return Major;
 };
