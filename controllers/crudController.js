@@ -6,7 +6,7 @@ const getOne = async (req, res, model) => {
 			attributes: { exclude: ['id', 'created_at', 'updated_at'] } 
 		});
 		if (!data) {
-			return res.status(404).json({ message: `${model.name} not found` });
+			return res.status(404).json({ message: 'Item not found' });
 		}
 		return res.status(200).json( data );
 	} catch (error) {
