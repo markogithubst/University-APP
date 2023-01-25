@@ -1,4 +1,5 @@
 const models = require('../models');
+const { getOne } = require('./crudController');
 
 const getAllDepartments = async (req, res) => {
 	try {
@@ -14,16 +15,7 @@ const getAllDepartments = async (req, res) => {
 
   
 const getOneDepartment = async (req, res) => {
-	try {
-		const departmentId  = req.params.id;
-		const department = await models.Department.findOne( {where: { id: departmentId}} );
-		if (!department) {
-			return res.status(404).json({ message: 'Department not found' });
-		}
-		return res.status(200).json( department );
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while fetching the department: ' + error.message });
-	}
+	await getOne(req, res, models.Department, 'Department');
 };
 
 

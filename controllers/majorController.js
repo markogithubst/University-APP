@@ -1,4 +1,5 @@
 const models = require('../models');
+const { getOne } = require('./crudController');
 
 const getAllMajors = async (req, res) => {
 	try {
@@ -14,16 +15,7 @@ const getAllMajors = async (req, res) => {
 
   
 const getOneMajor = async (req, res) => {
-	try {
-		const majorId  = req.params.id;
-		const major = await models.Major.findOne( {where: { id: majorId}} );
-		if (!major) {
-			return res.status(404).json({ message: 'There is no Major with this Id in the database' });
-		}
-		return res.status(200).json( major );
-	} catch (error) {
-		return res.status(500).json(error.message);
-	}
+	await getOne(req, res, models.Major, 'Major');
 };
 
 const createMajor = async (req, res) => {

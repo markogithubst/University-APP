@@ -1,4 +1,5 @@
 const models = require('../models');
+const { getOne } = require('./crudController');
 
 const getAllExams = async (req, res) => {
 	try {
@@ -15,16 +16,7 @@ const getAllExams = async (req, res) => {
 
 
 const getOneExam = async (req, res) => {
-	try {
-		const examId  = req.params.id;
-		const exam = await models.Exam.findOne( {where: { id: examId}} );
-		if (!exam) {
-			return res.status(404).json({ message: 'There is no Exam with this ID in the database' });
-		}
-		return res.status(200).json( exam );
-	} catch (error) {
-		return res.status(500).json(error.message);
-	}
+	await getOne(req, res, models.Exam, 'Exam');
 };
 
 

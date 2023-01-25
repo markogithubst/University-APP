@@ -1,4 +1,5 @@
 const models = require('../models');
+const { getOne } = require('./crudController');
 
 const getAllStudents = async (req, res) => {
 	try {
@@ -14,17 +15,9 @@ const getAllStudents = async (req, res) => {
 
   
 const getOneStudent = async (req, res) => {
-	try {
-		const studentId  = req.params.id;
-		const student = await models.Student.findOne( {where: { id: studentId}} );
-		if (!student) {
-			return res.status(404).json({ message: 'There is no Student with this Id in the database' });
-		}
-		return res.status(200).json( student );
-	} catch (error) {
-		return res.status(500).json(error.message);
-	}
+	await getOne(req, res, models.Student, 'Student');
 };
+
 
 const createStudent = async (req, res) => {
 	try {
