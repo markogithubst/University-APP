@@ -10,12 +10,15 @@ module.exports = {
 				type: Sequelize.INTEGER
 			},
 			name: {
-				type: Sequelize.STRING
+				allowNull: false,
+				type: Sequelize.STRING,
+				unique: true
 			},
 			credit_hours: {
 				type: Sequelize.INTEGER
 			},
 			professor_id: {
+				allowNull: false,
 				type: Sequelize.INTEGER
 			},
 			created_at: {

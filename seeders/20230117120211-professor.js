@@ -41,7 +41,7 @@ module.exports = {
 			{
 				name: 'Alban Malone',
 				address: 'East Wall Road 34, Dublin',
-				phone_number: '644332',
+				phone_number: '644222332',
 				department_id: '3',
 				created_at: new Date(),
 				updated_at: new Date()
