@@ -1,14 +1,15 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
 const { getAll } = require('./crudController');
+const { deleteOne } = require('./crudController');
 
 const getAllCourses = async (req, res) => {
-	await getAll(req, res, models.Course, 'Course');
+	await getAll(req, res, models.Course);
 };
 
 
 const getOneCourse = async (req, res) => {
-	await getOne(req, res, models.Course, 'Course');
+	await getOne(req, res, models.Course);
 };
 
 const createCourse = async (req, res) => {
@@ -31,17 +32,7 @@ const createCourse = async (req, res) => {
 
 
 const deleteCourse = async (req, res) => {
-	try {
-		const courseId  = req.params.id;
-		const deletedCourse = await models.Course.findOne( {where: { id: courseId}} );
-		if(!deletedCourse){
-			return res.status(404).json({ message: 'There is no course with this ID in the database'});
-		}
-		await deletedCourse.destroy();
-		return res.status(200).json({message: 'Course succesfully deleted'});
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occured while deleting the course: ' + error.message });
-	}
+	await deleteOne(req, res, models.Course);
 };
 
 const updateCourse = async (req, res) => {

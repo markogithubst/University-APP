@@ -29,7 +29,21 @@ const getAll = async (req, res, model) => {
 	}
 };
 
+const deleteOne = async (req, res, model) => {
+	try {
+		const id  = req.params.id;
+		const data = await model.destroy({ where: { id: id } });
+		if (!data) {
+			return res.status(404).json({ message: 'Item not found' });
+		}
+		return res.status(200).json( { message: 'Item successfully deleted' } );
+	} catch (error) {
+		return res.status(500).json(error.message);
+	}
+};
+
 module.exports = {
 	getOne,
-	getAll
+	getAll,
+	deleteOne
 };

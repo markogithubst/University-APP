@@ -2,7 +2,7 @@ const models = require('../models');
 const { getAll } = require('./crudController');
 
 const getAllEnrollments = async (req, res) => {
-	await getAll(req, res, models.Enrollment, 'Enrollment');
+	await getAll(req, res, models.Enrollment);
 };
 
 

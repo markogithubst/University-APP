@@ -1,6 +1,7 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
 const { getAll } = require('./crudController');
+const { deleteOne } = require('./crudController');
 
 const getAllProfessors = async (req, res) => {
 	await getAll(req, res, models.Professor, 'Professor');
@@ -11,6 +12,9 @@ const getOneProfessor = async (req, res) => {
 	await getOne(req, res, models.Professor, 'Professor');
 };
 
+const deleteProfessor = async (req, res) => {
+	await deleteOne(req, res, models.Professor);
+};
 
 const createProfessor = async (req, res) => {
 	try {
@@ -29,20 +33,6 @@ const createProfessor = async (req, res) => {
 	}
 };
 
-
-const deleteProfessor = async (req, res) => {
-	try {
-		const professorId  = req.params.id;
-		const deletedProfessor = await models.Professor.findOne( {where: { id: professorId}} );
-		if(!deletedProfessor){
-			return res.status(400).json({ message: 'There is no professor with this ID in the database'});
-		}
-		await deletedProfessor.destroy();
-		return res.status(200).send({message: 'Professor succesfully deleted'});
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occured while deleting the professor: ' + error.message });
-	}
-};
 
 const updateProfessor = async (req, res) => {
 	try {

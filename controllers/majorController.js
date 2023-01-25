@@ -1,14 +1,18 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
 const { getAll } = require('./crudController');
+const { deleteOne } = require('./crudController');
 
 const getAllMajors = async (req, res) => {
-	await getAll(req, res, models.Major, 'Major');
+	await getAll(req, res, models.Major);
 };
 
-  
 const getOneMajor = async (req, res) => {
-	await getOne(req, res, models.Major, 'Major');
+	await getOne(req, res, models.Major);
+};
+
+const deleteMajor = async (req, res) => {
+	await deleteOne(req, res, models.Major);
 };
 
 const createMajor = async (req, res) => {
@@ -27,20 +31,6 @@ const createMajor = async (req, res) => {
     
 	} catch (error) {
 		return res.status(500).json({ message: 'An error occurred while creating the major: ' + error.message });
-	}
-};
-
-const deleteMajor = async (req, res) => {
-	try {
-		const majorId  = req.params.id;
-		const deletedMajor = await models.Major.findOne( {where: { id: majorId}} );
-		if(!deletedMajor){
-			return res.status(400).json({ message: 'There is no major with this ID in the database'});
-		}
-		await deletedMajor.destroy();
-		return res.status(200).json({message: 'Major succesfully deleted'});
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occured while deleting the major: ' + error.message });
 	}
 };
 

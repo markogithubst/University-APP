@@ -1,13 +1,18 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
 const { getAll } = require('./crudController');
+const { deleteOne } = require('./crudController');
 
 const getAllStudents = async (req, res) => {
-	await getAll(req, res, models.Student, 'Student');
+	await getAll(req, res, models.Student);
 };
   
 const getOneStudent = async (req, res) => {
-	await getOne(req, res, models.Student, 'Student');
+	await getOne(req, res, models.Student);
+};
+
+const deleteStudent = async (req, res) => {
+	await deleteOne(req, res, models.Student);
 };
 
 
@@ -27,21 +32,6 @@ const createStudent = async (req, res) => {
 		return res.status(500).json({ message: 'An error occurred while creating the student: ' + error.message });
 	}
 };
-
-const deleteStudent = async (req, res) => {
-	try {
-		const studentId  = req.params.id;
-		const deletedStudent = await models.Student.findOne( {where: { id: studentId}} );
-		if(!deletedStudent){
-			return res.status(400).json({ message: 'There is no student with this ID in the database'});
-		}
-		await deletedStudent.destroy();
-		return res.status(200).json({message: 'Student succesfully deleted'});
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occured while deleting the student: ' + error.message });
-	}
-};
-
 
 const updateStudent = async (req, res) => {
 	try {

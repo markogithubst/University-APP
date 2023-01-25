@@ -1,17 +1,21 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
 const { getAll } = require('./crudController');
+const { deleteOne } = require('./crudController');
 
 
 const getAllDepartments = async (req, res) => {
-	await getAll(req, res, models.Department, 'Department');
+	await getAll(req, res, models.Department);
 };
 
   
 const getOneDepartment = async (req, res) => {
-	await getOne(req, res, models.Department, 'Department');
+	await getOne(req, res, models.Department);
 };
 
+const deleteDepartment = async (req, res) => {
+	await deleteOne(req, res, models.Department);
+};
 
 const createDepartment = async (req, res) => {
 	try {
@@ -29,20 +33,6 @@ const createDepartment = async (req, res) => {
     
 	} catch (error) {
 		return res.status(500).json({ message: 'An error occurred while creating the department: ' + error.message });
-	}
-};
-
-const deleteDepartment = async (req, res) => {
-	try {
-		const departmentId  = req.params.id;
-		const deletedDepartment = await models.Department.findOne( {where: { id: departmentId}} );
-		if(!deletedDepartment){
-			return res.status(400).json({ message: 'There is no department with this ID in the database'});
-		}
-		await deletedDepartment.destroy();
-		return res.status(200).json({message: 'Department succesfully deleted'});
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occured while deleting the department: ' + error.message });
 	}
 };
 
