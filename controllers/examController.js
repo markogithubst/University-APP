@@ -1,5 +1,5 @@
 const models = require('../models');
-const { getOne, getAll, deleteOne, createOne } = require('./crudController');
+const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudController');
 
 const getAllExams = async (req, res) => {
 	await getAll(req, res, models.Exam);
@@ -20,19 +20,9 @@ const createExam = async (req, res) => {
 
 
 const updateExam = async (req, res) => {
-	try {
-		const examId = req.params.id;
-		const { name, date_and_time, course_id } = req.body;
-		const examExists = await models.Exam.findOne( {where: { id: examId}} );
-		if (!examExists) {
-			return res.status(404).json({ message: 'Exam not found' });
-		}
-		await models.Exam.update({ name, date_and_time, course_id }, { where: { id: examId } });
-		return res.status(200).json({ message: 'Exam updated successfully' });
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occured while updating the exam: ' + error.message });
-	}
+	await updateOne(req, res, models.Exam);
 };
+
 
 module.exports = {
 	createExam,

@@ -1,5 +1,5 @@
 const models = require('../models');
-const { getOne, getAll, deleteOne, createOne } = require('./crudController');
+const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudController');
 
 const getAllMajors = async (req, res) => {
 	await getAll(req, res, models.Major);
@@ -19,18 +19,7 @@ const createMajor = async (req, res) => {
 
 
 const updateMajor = async (req, res) => {
-	try {
-		const majorId = req.params.id;
-		const { name } = req.body;
-		const majorExists = await models.Major.findOne( {where: { id: majorId}} );
-		if (!majorExists) {
-			return res.status(404).json({ message: 'Major not found' });
-		}
-		await models.Major.update({ name }, { where: { id: majorId } });
-		return res.status(200).json({ message: 'Major updated successfully' });
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occured while updating the major: ' + error.message });
-	}
+	await updateOne(req, res, models.Major);
 };
 
 module.exports = {
