@@ -1,16 +1,9 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
+const { getAll } = require('./crudController');
 
 const getAllMajors = async (req, res) => {
-	try {
-		const majors = await models.Major.findAll();
-		if (!majors || majors.length === 0) {
-			return res.status(404).json({ message: 'There are no Majors in the database' });
-		}
-		return res.status(200).json( majors );
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while fetching all majors: ' + error.message });
-	}
+	await getAll(req, res, models.Major, 'Major');
 };
 
   

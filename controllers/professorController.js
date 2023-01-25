@@ -1,16 +1,9 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
+const { getAll } = require('./crudController');
 
 const getAllProfessors = async (req, res) => {
-	try {
-		const professors = await models.Professor.findAll();
-		if (!professors || professors.length === 0) {
-			return res.status(404).json({ message: 'There are no Professors in the database' });
-		}
-		return res.status(200).json( professors );
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while fetching all professors: ' + error.message });
-	}
+	await getAll(req, res, models.Professor, 'Professor');
 };
 
   

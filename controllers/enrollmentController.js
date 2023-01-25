@@ -1,15 +1,8 @@
 const models = require('../models');
+const { getAll } = require('./crudController');
 
 const getAllEnrollments = async (req, res) => {
-	try {
-		const enrollments = await models.Enrollment.findAll();
-		if (!enrollments || enrollments.length === 0) {
-			return res.status(404).json({ message: 'There are no Enrollments in the database' });
-		}
-		return res.status(200).json( enrollments );
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while fetching all enrollments: ' + error.message });
-	}
+	await getAll(req, res, models.Enrollment, 'Enrollment');
 };
 
 

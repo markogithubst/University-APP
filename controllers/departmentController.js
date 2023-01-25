@@ -1,16 +1,10 @@
 const models = require('../models');
 const { getOne } = require('./crudController');
+const { getAll } = require('./crudController');
+
 
 const getAllDepartments = async (req, res) => {
-	try {
-		const departments = await models.Department.findAll();
-		if (!departments || departments.length === 0) {
-			return res.status(404).json({ message: 'There are no Departments in the database' });
-		}
-		return res.status(200).json( departments );
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while fetching all departments: ' + error.message });
-	}
+	await getAll(req, res, models.Department, 'Department');
 };
 
   

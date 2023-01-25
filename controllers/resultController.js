@@ -1,15 +1,8 @@
 const models = require('../models');
+const { getAll } = require('./crudController');
 
 const getAllResults = async (req, res) => {
-	try {
-		const results = await models.Result.findAll();
-		if (!results || results.length === 0) {
-			return res.status(404).json({ message: 'There are no Results in the database' });
-		}
-		return res.status(200).json( results );
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while fetching all results: ' + error.message });
-	}
+	await getAll(req, res, models.Result, 'Result');
 };
 
   
