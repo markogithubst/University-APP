@@ -12,7 +12,12 @@ const createEnrollment = async (req, res) => {
 const getEnrollmentsByStudent = async (req, res) => {
 	try {
 		const enrollmentByStudentId = req.params.id;
-		const allEnrollmentByStudentId = await models.Enrollment.findAll( {where: { student_id: enrollmentByStudentId}} );
+		const allEnrollmentByStudentId = await models.Enrollment.findAll( {
+			where: { student_id: enrollmentByStudentId},
+			attributes: {
+				exclude: ['id', 'created_at', 'updated_at']
+			}
+		} );
 		if (!allEnrollmentByStudentId || allEnrollmentByStudentId.length == 0) {
 			return res.status(404).json({ message: 'Enrollment By entered Student Id not found' });
 		}
@@ -25,7 +30,12 @@ const getEnrollmentsByStudent = async (req, res) => {
 const getEnrollmentsByCourse = async (req, res) => {
 	try {
 		const enrollmentByCourseId  = req.params.id;
-		const allEnrollmentByCourseId = await models.Enrollment.findAll( {where: { course_id: enrollmentByCourseId}} );
+		const allEnrollmentByCourseId = await models.Enrollment.findAll( {
+			where: { course_id: enrollmentByCourseId},
+			attributes: {
+				exclude: ['id', 'created_at', 'updated_at']
+			}
+		} );
 		if (!allEnrollmentByCourseId || allEnrollmentByCourseId.length == 0) {
 			return res.status(404).json({ message: 'Enrollment By entered Course Id not found' });
 		}
