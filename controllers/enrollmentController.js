@@ -1,10 +1,13 @@
 const models = require('../models');
-const { getAll } = require('./crudController');
+const { getAll, createOne } = require('./crudController');
 
 const getAllEnrollments = async (req, res) => {
 	await getAll(req, res, models.Enrollment);
 };
 
+const createEnrollment = async (req, res) => {
+	await createOne(req, res, models.Enrollment);
+};
 
 const getEnrollmentsByStudent = async (req, res) => {
 	try {
@@ -32,29 +35,14 @@ const getEnrollmentsByCourse = async (req, res) => {
 	}
 };
 
-const createEnrollment = async (req, res) => {
-	try {
-		if (!req.body.course_id || !req.body.student_id) {
-			return res.status(400).json({ message: 'CourseId and StudentId are both required' });
-		}
-		const newEnrollment = await models.Enrollment.create(req.body);
-		return res.status(201).json(newEnrollment);
-    
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while creating the enrollment: ' + error.message });
-	}
-};
-
-
 const deleteEnrollment = async (req, res) => {
 	try {
-		const insertedCourseId = req.body.course_id;
-		const insertedStudentId = req.body.student_id;
-		if(!insertedStudentId || !insertedCourseId){
-			return res.status(400).json({ message: 'StudentId and CourseId fields are required' });
+		const { course_id, student_id } = req.body;
+		const deleted = await models.Enrollment.destroy({ where: { student_id: student_id, course_id: course_id}});
+		if(!deleted){
+			return res.status(404).json({ message: 'Enrollment with the inserted StudentId and CourseId not found' });
 		}
-		await models.Enrollment.destroy({ where: { student_id: insertedStudentId, course_id: insertedCourseId}});
-		return res.status(200).json({ message: 'Enrollment with the inserted StudenId and CourseId succesfully deleted' });
+		return res.status(200).json({ message: 'Enrollment with the inserted StudentId and CourseId succesfully deleted' });
 	} catch (error) {
 		return res.status(500).json({ message: 'An error occured while deleting the enrollment: ' + error.message });
 	}

@@ -1,7 +1,5 @@
 const models = require('../models');
-const { getOne } = require('./crudController');
-const { getAll } = require('./crudController');
-const { deleteOne } = require('./crudController');
+const { getOne, getAll, deleteOne, createOne } = require('./crudController');
 
 const getAllCourses = async (req, res) => {
 	await getAll(req, res, models.Course);
@@ -13,21 +11,7 @@ const getOneCourse = async (req, res) => {
 };
 
 const createCourse = async (req, res) => {
-	try {
-		if (!req.body.name) {
-			return res.status(400).json({ message: 'Course name is required' });
-		}
-		const courseName = req.body.name;
-		const alreadyExists = await models.Course.findOne( {where: { name: courseName}} );
-		if(!alreadyExists){
-			const newCourse = await models.Course.create(req.body);
-			return res.status(201).json(newCourse);
-		}
-		return res.status(404).json({ message: 'There is already a Course with this name in the database' }); 
-    
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while creating the course: ' + error.message });
-	}
+	await createOne(req, res, models.Course);
 };
 
 

@@ -1,7 +1,5 @@
 const models = require('../models');
-const { getOne } = require('./crudController');
-const { getAll } = require('./crudController');
-const { deleteOne } = require('./crudController');
+const { getOne, getAll, deleteOne, createOne } = require('./crudController');
 
 const getAllMajors = async (req, res) => {
 	await getAll(req, res, models.Major);
@@ -16,22 +14,7 @@ const deleteMajor = async (req, res) => {
 };
 
 const createMajor = async (req, res) => {
-	try {
-		// Validate the data
-		if (!req.body.name) {
-			return res.status(400).json({ message: 'Major name is required' });
-		}
-		const majorName = req.body.name;
-		const alreadyExists = await models.Major.findOne( {where: { name: majorName}} );
-		if(!alreadyExists){
-			const newMajor = await models.Major.create(req.body);
-			return res.status(201).json(newMajor);
-		}
-		return res.status(404).json({ message: 'There is already a Major with this name in the database' }); 
-    
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while creating the major: ' + error.message });
-	}
+	await createOne(req, res, models.Major);
 };
 
 

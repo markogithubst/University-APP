@@ -1,7 +1,5 @@
 const models = require('../models');
-const { getOne } = require('./crudController');
-const { getAll } = require('./crudController');
-const { deleteOne } = require('./crudController');
+const { getOne, getAll, deleteOne, createOne } = require('./crudController');
 
 const getAllStudents = async (req, res) => {
 	await getAll(req, res, models.Student);
@@ -17,21 +15,9 @@ const deleteStudent = async (req, res) => {
 
 
 const createStudent = async (req, res) => {
-	try {
-		const studentName = req.body.name;
-		const studentAddress = req.body.address;
-		const studentExists = await models.Student.findOne( {where: { name: studentName}} );
-		const addressExists = await models.Student.findOne( {where: { address: studentAddress}} );
-		if (studentExists && addressExists) {
-			return res.status(400).json({ message: 'A student with that name and address already exists' });
-		}
-		const newStudent = await models.Student.create(req.body);
-		return res.status(201).json(newStudent);
-    
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while creating the student: ' + error.message });
-	}
+	await createOne(req, res, models.Student);
 };
+
 
 const updateStudent = async (req, res) => {
 	try {

@@ -1,7 +1,5 @@
 const models = require('../models');
-const { getOne } = require('./crudController');
-const { getAll } = require('./crudController');
-const { deleteOne } = require('./crudController');
+const { getOne, getAll, deleteOne, createOne } = require('./crudController');
 
 
 const getAllDepartments = async (req, res) => {
@@ -18,22 +16,7 @@ const deleteDepartment = async (req, res) => {
 };
 
 const createDepartment = async (req, res) => {
-	try {
-		// Validate the data
-		if (!req.body.name) {
-			return res.status(400).json({ message: 'Department name is required' });
-		}
-		const departmentName = req.body.name;
-		const alreadyExists = await models.Department.findOne( {where: { name: departmentName}} );
-		if(!alreadyExists){
-			const newDepartment = await models.Department.create(req.body);
-			return res.status(201).json(newDepartment);
-		}
-		return res.status(404).json({ message: 'There is already a Department with this name in the database' }); 
-    
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while creating the department: ' + error.message });
-	}
+	await createOne(req, res, models.Department);
 };
 
 const updateDepartment = async (req, res) => {

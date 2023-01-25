@@ -1,7 +1,5 @@
 const models = require('../models');
-const { getOne } = require('./crudController');
-const { getAll } = require('./crudController');
-const { deleteOne } = require('./crudController');
+const { getOne, getAll, deleteOne, createOne } = require('./crudController');
 
 const getAllExams = async (req, res) => {
 	await getAll(req, res, models.Exam);
@@ -17,16 +15,7 @@ const deleteExam = async (req, res) => {
 
 
 const createExam = async (req, res) => {
-	try {
-		if (!req.body.name || !req.body.date_and_time || !req.body.course_id) {
-			return res.status(400).json({ message: 'Fields Exam name, date/time, and Course ID are required' });
-		}
-		const newExam = await models.Exam.create(req.body);
-		return res.status(201).json(newExam);
-    
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while creating the exam: ' + error.message });
-	}
+	await createOne(req, res, models.Exam);
 };
 
 

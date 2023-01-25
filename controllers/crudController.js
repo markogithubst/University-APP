@@ -42,8 +42,21 @@ const deleteOne = async (req, res, model) => {
 	}
 };
 
+const createOne = async (req, res, model) => {
+	try {
+		const data = await model.create(req.body);
+		if (!data) {
+			return res.status(404).json({ message: 'Item not created' });
+		}
+		return res.status(200).json( data );
+	} catch (error) {
+		return res.status(500).json(error.message);
+	}
+};
+
 module.exports = {
 	getOne,
 	getAll,
-	deleteOne
+	deleteOne,
+	createOne
 };

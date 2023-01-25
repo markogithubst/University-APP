@@ -1,11 +1,14 @@
 const models = require('../models');
-const { getAll } = require('./crudController');
+const { getAll, createOne } = require('./crudController');
 
 const getAllResults = async (req, res) => {
 	await getAll(req, res, models.Result);
 };
 
-  
+const createResult = async (req, res) => {
+	await createOne(req, res, models.Result);
+};
+
 
 const getResultsByStudent = async (req, res) => {
 	try {
@@ -34,30 +37,14 @@ const getResultsByExam = async (req, res) => {
 };
 
 
-
-const createResult = async (req, res) => {
-	try {
-		if (!req.body.student_id || !req.body.grade || !req.body.exam_id) {
-			return res.status(400).json({ message: 'StudentId, grade and ExamId fields are required' });
-		}
-		const newResult = await models.Result.create(req.body);
-		return res.status(201).json(newResult);
-    
-	} catch (error) {
-		return res.status(500).json({ message: 'An error occurred while creating the enrollment: ' + error.message });
-	}
-};
-
-
 const deleteResult = async (req, res) => {
 	try {
-		const insertedStudentId = req.body.student_id;
-		const insertedExamId = req.body.exam_id;
-		if(!insertedStudentId || !insertedExamId){
-			return res.status(400).json({ message: 'StudentId and ExamId fields are required' });
+		const { exam_id, student_id } = req.body;
+		const deleted = await models.Result.destroy({ where: { student_id: student_id, exam_id: exam_id}});
+		if(!deleted){
+			return res.status(404).json({ message: 'Result with the inserted StudentId and ExamId not found' });
 		}
-		await models.Result.destroy({ where: { student_id: insertedStudentId, exam_id: insertedExamId}});
-		return res.status(200).json({ message: 'Result with the inserted StudenId and ExamId succesfully deleted' });
+		return res.status(200).json({ message: 'Result with the inserted StudentId and ExamId succesfully deleted' });
 	} catch (error) {
 		return res.status(500).json({ message: 'An error occured while deleting the result: ' + error.message });
 	}
