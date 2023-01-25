@@ -1,4 +1,3 @@
-
 const getOne = async (req, res, model) => {
 	try {
 		const id  = req.params.id;
@@ -66,21 +65,6 @@ const updateOne = async (req, res, model) => {
 		return res.status(500).json(error.message);
 	}
 };
-
-// const updateCourse = async (req, res) => {
-// 	try {
-// 		const courseId = req.params.id;
-// 		const { name, credit_hours, professor_id } = req.body;
-// 		const courseExists = await models.Course.findOne( {where: { id: courseId}} );
-// 		if (!courseExists) {
-// 			return res.status(404).json({ message: 'Course not found' });
-// 		}
-// 		await models.Course.update({ name, credit_hours, professor_id }, { where: { id: courseId } });
-// 		return res.status(200).json({ message: 'Course updated successfully' });
-// 	} catch (error) {
-// 		return res.status(500).json({ message: 'An error occured while updating the course: ' + error.message });
-// 	}
-// };
 
 module.exports = {
 	getOne,
