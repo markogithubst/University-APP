@@ -52,9 +52,8 @@ const deleteResult = async (req, res) => {
 
 const updateResult = async (req, res) => {
   try {
-    const studentIdToUpdate = req.params.firstId;
-    const examIdToUpdate = req.params.secondId;
-    const resultUpdated = await models.Result.update(req.body, { where: { student_id: studentIdToUpdate, exam_id: examIdToUpdate } });
+    const { firstId, secondId } = req.params;
+    const resultUpdated = await models.Result.update(req.body, { where: { student_id: firstId, exam_id: secondId } });
     if (resultUpdated[0] === 0) {
       return res.status(404).json({ message: 'Result not updated' });
     }

@@ -17,6 +17,7 @@
         "promise"
     ],
     "rules": {
+        "max-len": ["error", { "code": 120, "comments": 250 }],
         "import/no-unresolved": "error",
         "n/no-unsupported-features/es-builtins": "error",
         "n/no-unsupported-features/es-syntax": "error",
