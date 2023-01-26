@@ -16,6 +16,7 @@ module.exports = {
         return await queryInterface.bulkInsert('professor', [
             {
                 name: 'Bilbo Baggins',
+                email: 'bilbobaggins@fesb.com',
                 address: 'Abbey Street 121, Dublin',
                 phone_number: '234567',
                 department_id: '1',
@@ -24,6 +25,7 @@ module.exports = {
             },
             {
                 name: 'Frodo Baggins',
+                email: 'frodobaggins@fesb.com',
                 address: 'Capel Street 45, Dublin',
                 phone_number: '765987',
                 department_id: '1',
@@ -32,6 +34,7 @@ module.exports = {
             },
             {
                 name: 'Mirabelle Tucker',
+                email: 'mirabelletucker@fesb.com',
                 address: 'Clyde Road 3, Dublin',
                 phone_number: '666111',
                 department_id: '3',
@@ -40,6 +43,7 @@ module.exports = {
             },
             {
                 name: 'Alban Malone',
+                email: 'albanmalone@fesb.com',
                 address: 'East Wall Road 34, Dublin',
                 phone_number: '644222332',
                 department_id: '3',
@@ -48,6 +52,7 @@ module.exports = {
             },
             {
                 name: 'Timothea Ball',
+                email: 'timotheaball@fesb.com',
                 address: 'East Wall Road 56, Dublin',
                 phone_number: '644332',
                 department_id: '2',
@@ -56,6 +61,7 @@ module.exports = {
             },
             {
                 name: 'Lark Robson',
+                email: 'larkrobson@fesb.com',
                 address: 'Gardiner Street 5, Dublin',
                 phone_number: '758888',
                 department_id: '5',
