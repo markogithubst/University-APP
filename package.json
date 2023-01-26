@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon app.js",
+    "dev": "nodemon app.js",
     "migration": "npx sequelize-cli db:migrate",
     "undo:all:migration": "npx sequelize-cli db:migrate:undo:all",
     "undo:one:migration": "npx sequelize-cli db:migrate:undo",
