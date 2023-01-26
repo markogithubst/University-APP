@@ -52,16 +52,12 @@ const deleteResult = async (req, res) => {
 
 const updateResult = async (req, res) => {
   try {
-    const studentIdToUpdate = req.params.StudentId;
-    const examIdToUpdate = req.params.ExamId;
-    const updatedStudentId = req.body.student_id;
-    const updatedGrade = req.body.grade;
-    const updatedExamId = req.body.exam_id;
-    const resultExists = await models.Result.findOne( {where: [{ exam_id: examIdToUpdate}, {student_id: studentIdToUpdate}]} );
-    if (!resultExists) {
-      return res.status(404).json({ message: 'Result with inserted StudentID and ExamId not found' });
+    const studentIdToUpdate = req.params.firstId;
+    const examIdToUpdate = req.params.secondId;
+    const resultUpdated = await models.Result.update(req.body, {where: {student_id: studentIdToUpdate, exam_id: examIdToUpdate}});
+    if (resultUpdated[0] === 0) {
+      return res.status(404).json({ message: 'Result not updated' });
     }
-    await models.Result.update({student_id: updatedStudentId, grade: updatedGrade, exam_id: updatedExamId }, {where: {student_id: studentIdToUpdate, exam_id: examIdToUpdate}});
     return res.status(200).json({ message: 'Result updated successfully'  });
     
   } catch (error) {

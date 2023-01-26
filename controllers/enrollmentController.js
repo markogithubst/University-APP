@@ -62,10 +62,8 @@ const updateEnrollment = async (req, res) => {
   try {
     const studentIdToUpdate = req.params.secondId;
     const courseIdToUpdate = req.params.firstId;
-    const updatedStudentId = req.body.student_id;
-    const updatedCourse = req.body.course_id;
-    const enrollmentExists = await models.Enrollment.update({student_id: updatedStudentId, course_id: updatedCourse}, {where: {student_id: studentIdToUpdate, course_id: courseIdToUpdate}});
-    if (enrollmentExists[0] === 0) {
+    const enrollmentUpdated = await models.Enrollment.update(req.body, {where: {student_id: studentIdToUpdate, course_id: courseIdToUpdate}});
+    if (enrollmentUpdated[0] === 0) {
       return res.status(404).json({ message: 'Enrollment not updated' });
     }
     return res.status(200).json({ message: 'Enrollment updated successfully'  });
