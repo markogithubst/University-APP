@@ -12,7 +12,7 @@ app.listen(PORT);
 
 
 app.get('/', (req, res)=> {
-	res.send('<h1>Connection test</h1>');
+    res.send('<h1>Connection test</h1>');
 });
 
 module.exports = app;

@@ -2,9 +2,9 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-	// eslint-disable-next-line no-unused-vars
-	async up (queryInterface, Sequelize) {
-		/**
+    // eslint-disable-next-line no-unused-vars
+    async up (queryInterface, Sequelize) {
+        /**
      * Add seed commands here.
      *
      * Example:
@@ -13,67 +13,67 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-		return await queryInterface.bulkInsert('result', [
-			{
-				student_id: '1',
-				grade: '5',
-				exam_id: '1',
-				created_at: new Date(),
-				updated_at: new Date()
-			},
-			{
-				student_id: '2',
-				grade: '2',
-				exam_id: '2',
-				created_at: new Date(),
-				updated_at: new Date()
-			},
-			{
-				student_id: '3',
-				grade: '2',
-				exam_id: '3',
-				created_at: new Date(),
-				updated_at: new Date()
-			},
-			{
-				student_id: '4',
-				grade: '1',
-				exam_id: '4',
-				created_at: new Date(),
-				updated_at: new Date()
-			},
-			{
-				student_id: '5',
-				grade: '3',
-				exam_id: '5',
-				created_at: new Date(),
-				updated_at: new Date()
-			},
-			{
-				student_id: '6',
-				grade: '2',
-				exam_id: '6',
-				created_at: new Date(),
-				updated_at: new Date()
-			},
-			{
-				student_id: '1',
-				grade: '2',
-				exam_id: '3',
-				created_at: new Date(),
-				updated_at: new Date()
-			}
-		], {});
-	},
+        return await queryInterface.bulkInsert('result', [
+            {
+                student_id: '1',
+                grade: '5',
+                exam_id: '1',
+                created_at: new Date(),
+                updated_at: new Date()
+            },
+            {
+                student_id: '2',
+                grade: '2',
+                exam_id: '2',
+                created_at: new Date(),
+                updated_at: new Date()
+            },
+            {
+                student_id: '3',
+                grade: '2',
+                exam_id: '3',
+                created_at: new Date(),
+                updated_at: new Date()
+            },
+            {
+                student_id: '4',
+                grade: '1',
+                exam_id: '4',
+                created_at: new Date(),
+                updated_at: new Date()
+            },
+            {
+                student_id: '5',
+                grade: '3',
+                exam_id: '5',
+                created_at: new Date(),
+                updated_at: new Date()
+            },
+            {
+                student_id: '6',
+                grade: '2',
+                exam_id: '6',
+                created_at: new Date(),
+                updated_at: new Date()
+            },
+            {
+                student_id: '1',
+                grade: '2',
+                exam_id: '3',
+                created_at: new Date(),
+                updated_at: new Date()
+            }
+        ], {});
+    },
 
-	// eslint-disable-next-line no-unused-vars
-	async down (queryInterface, Sequelize) {
-		/**
+    // eslint-disable-next-line no-unused-vars
+    async down (queryInterface, Sequelize) {
+        /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-		return await queryInterface.bulkDelete('result', null, {});
-	}
+        return await queryInterface.bulkDelete('result', null, {});
+    }
 };
