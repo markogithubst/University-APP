@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const models = require('../models');
 const { getAll, createOne } = require('./crudController');
 
@@ -12,16 +13,16 @@ const createEnrollment = async (req, res) => {
 const getEnrollmentsByStudent = async (req, res) => {
   try {
     const enrollmentByStudentId = req.params.id;
-    const allEnrollmentByStudentId = await models.Enrollment.findAll( {
-      where: { student_id: enrollmentByStudentId},
+    const allEnrollmentByStudentId = await models.Enrollment.findAll({
+      where: { student_id: enrollmentByStudentId },
       attributes: {
         exclude: ['id', 'created_at', 'updated_at']
       }
-    } );
-    if (!allEnrollmentByStudentId || allEnrollmentByStudentId.length == 0) {
+    });
+    if (!allEnrollmentByStudentId || allEnrollmentByStudentId.length === 0) {
       return res.status(404).json({ message: 'Enrollment By entered Student Id not found' });
     }
-    return res.status(200).json( allEnrollmentByStudentId );
+    return res.status(200).json(allEnrollmentByStudentId);
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -29,17 +30,17 @@ const getEnrollmentsByStudent = async (req, res) => {
 
 const getEnrollmentsByCourse = async (req, res) => {
   try {
-    const enrollmentByCourseId  = req.params.id;
-    const allEnrollmentByCourseId = await models.Enrollment.findAll( {
-      where: { course_id: enrollmentByCourseId},
+    const enrollmentByCourseId = req.params.id;
+    const allEnrollmentByCourseId = await models.Enrollment.findAll({
+      where: { course_id: enrollmentByCourseId },
       attributes: {
         exclude: ['id', 'created_at', 'updated_at']
       }
-    } );
-    if (!allEnrollmentByCourseId || allEnrollmentByCourseId.length == 0) {
+    });
+    if (!allEnrollmentByCourseId || allEnrollmentByCourseId.length === 0) {
       return res.status(404).json({ message: 'Enrollment By entered Course Id not found' });
     }
-    return res.status(200).json( allEnrollmentByCourseId );
+    return res.status(200).json(allEnrollmentByCourseId);
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -48,8 +49,8 @@ const getEnrollmentsByCourse = async (req, res) => {
 const deleteEnrollment = async (req, res) => {
   try {
     const { course_id, student_id } = req.body;
-    const deleted = await models.Enrollment.destroy({ where: { student_id: student_id, course_id: course_id}});
-    if(!deleted){
+    const deleted = await models.Enrollment.destroy({ where: { student_id, course_id } });
+    if (!deleted) {
       return res.status(404).json({ message: 'Enrollment with the inserted StudentId and CourseId not found' });
     }
     return res.status(200).json({ message: 'Enrollment with the inserted StudentId and CourseId succesfully deleted' });
@@ -62,11 +63,11 @@ const updateEnrollment = async (req, res) => {
   try {
     const studentIdToUpdate = req.params.secondId;
     const courseIdToUpdate = req.params.firstId;
-    const enrollmentUpdated = await models.Enrollment.update(req.body, {where: {student_id: studentIdToUpdate, course_id: courseIdToUpdate}});
+    const enrollmentUpdated = await models.Enrollment.update(req.body, { where: { student_id: studentIdToUpdate, course_id: courseIdToUpdate } });
     if (enrollmentUpdated[0] === 0) {
       return res.status(404).json({ message: 'Enrollment not updated' });
     }
-    return res.status(200).json({ message: 'Enrollment updated successfully'  });
+    return res.status(200).json({ message: 'Enrollment updated successfully' });
   } catch (error) {
     return res.status(500).json({ message: 'An error occured while updating the enrollment: ' + error.message });
   }

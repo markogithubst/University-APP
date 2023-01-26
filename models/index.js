@@ -1,3 +1,5 @@
+/* eslint-disable n/no-unsupported-features/es-syntax */
+/* eslint-disable n/no-path-concat */
 /* eslint-disable no-undef */
 'use strict';
 

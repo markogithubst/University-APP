@@ -61,7 +61,7 @@ module.exports = {
         student_id: '2',
         created_at: new Date(),
         updated_at: new Date()
-      },{
+      }, {
         course_id: '5',
         student_id: '1',
         created_at: new Date(),

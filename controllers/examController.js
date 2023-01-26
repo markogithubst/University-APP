@@ -13,16 +13,13 @@ const deleteExam = async (req, res) => {
   await deleteOne(req, res, models.Exam);
 };
 
-
 const createExam = async (req, res) => {
   await createOne(req, res, models.Exam);
 };
 
-
 const updateExam = async (req, res) => {
   await updateOne(req, res, models.Exam);
 };
-
 
 module.exports = {
   createExam,

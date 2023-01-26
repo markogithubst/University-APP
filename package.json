@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
+    "lint": "eslint ./",
     "migration": "npx sequelize-cli db:migrate",
     "undo:all:migration": "npx sequelize-cli db:migrate:undo:all",
     "undo:one:migration": "npx sequelize-cli db:migrate:undo",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "eslint": "^8.32.0",
+    "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",

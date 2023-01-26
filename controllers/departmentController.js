@@ -1,12 +1,10 @@
 const models = require('../models');
 const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudController');
 
-
 const getAllDepartments = async (req, res) => {
   await getAll(req, res, models.Department);
 };
 
-  
 const getOneDepartment = async (req, res) => {
   await getOne(req, res, models.Department);
 };

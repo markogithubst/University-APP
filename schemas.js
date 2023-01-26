@@ -9,9 +9,9 @@ const idSchema = Joi.object({
 });
 
 const doubleIdSchema = Joi.object({
-    firstId: Joi.number().min(1).required(),
-    secondId: Joi.number().min(1).required()
-  });
+  firstId: Joi.number().min(1).required(),
+  secondId: Joi.number().min(1).required()
+});
 
 module.exports = {
   nameSchema,

@@ -17,7 +17,6 @@ const createMajor = async (req, res) => {
   await createOne(req, res, models.Major);
 };
 
-
 const updateMajor = async (req, res) => {
   await updateOne(req, res, models.Major);
 };

@@ -1,14 +1,14 @@
 const getOne = async (req, res, model) => {
   try {
-    const id  = req.params.id;
-    const data = await model.findOne( {
-      where: { id: id },
-      attributes: { exclude: ['id', 'created_at', 'updated_at'] } 
+    const id = req.params.id;
+    const data = await model.findOne({
+      where: { id },
+      attributes: { exclude: ['id', 'created_at', 'updated_at'] }
     });
     if (!data) {
       return res.status(404).json({ message: 'Item not found' });
     }
-    return res.status(200).json( data );
+    return res.status(200).json(data);
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -17,12 +17,12 @@ const getOne = async (req, res, model) => {
 const getAll = async (req, res, model) => {
   try {
     const data = await model.findAll({
-      attributes: { exclude: ['id', 'created_at', 'updated_at'] } 
+      attributes: { exclude: ['id', 'created_at', 'updated_at'] }
     });
-    if(!data){
+    if (!data) {
       return res.status(404).json({ message: 'There is no data in the database' });
     }
-    return res.status(200).json( data );
+    return res.status(200).json(data);
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -30,12 +30,12 @@ const getAll = async (req, res, model) => {
 
 const deleteOne = async (req, res, model) => {
   try {
-    const id  = req.params.id;
-    const data = await model.destroy({ where: { id: id } });
+    const id = req.params.id;
+    const data = await model.destroy({ where: { id } });
     if (!data) {
       return res.status(404).json({ message: 'Item not found' });
     }
-    return res.status(200).json( { message: 'Item successfully deleted' } );
+    return res.status(200).json({ message: 'Item successfully deleted' });
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -47,7 +47,7 @@ const createOne = async (req, res, model) => {
     if (!data) {
       return res.status(404).json({ message: 'Item not created' });
     }
-    return res.status(200).json( data );
+    return res.status(200).json(data);
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -55,12 +55,12 @@ const createOne = async (req, res, model) => {
 
 const updateOne = async (req, res, model) => {
   try {
-    const id  = req.params.id;
-    const data = await model.update(req.body, { where: { id: id } });
-    if(data[0] === 0) {
+    const id = req.params.id;
+    const data = await model.update(req.body, { where: { id } });
+    if (data[0] === 0) {
       return res.status(404).json({ message: 'Item not updated' });
     }
-    return res.status(200).json( { message: 'Item successfully updated' } );
+    return res.status(200).json({ message: 'Item successfully updated' });
   } catch (error) {
     return res.status(500).json(error.message);
   }
