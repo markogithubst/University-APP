@@ -20,7 +20,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   Result.init({
     student_id: DataTypes.INTEGER,
-    grade: DataTypes.INTEGER,
+    grade: {
+		type: DataTypes.INTEGER,
+		validate: {
+			min: 1,
+			max: 5,
+			isInt: true,
+		}
+	},
     exam_id: DataTypes.INTEGER
   }, {
     sequelize,
