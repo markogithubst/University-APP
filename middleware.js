@@ -1,7 +1,7 @@
-const { nameSchema, id_schema } = require('./schemas');
+const { nameSchema, idSchema , doubleIdSchema } = require('./schemas');
 
-const validate_id = (req, res, next) => {
-  const { error } = id_schema.validate(req.params);
+const validateId = (req, res, next) => {
+  const { error } = idSchema.validate(req.params);
   if (error) {
     return res.status(400).json({ message: error.details[0].message });
   }
@@ -16,7 +16,16 @@ const validateName = (req, res, next) => {
   next();
 };
 
+const validateDoubleId = (req, res, next) => {
+    const { error } = doubleIdSchema.validate(req.params);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+    next();
+  };
+
 module.exports = {
   validateName,
-  validate_id
+  validateId,
+  validateDoubleId
 };
