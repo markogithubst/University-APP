@@ -14,10 +14,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev":"node -r dotenv/config app.js dotenv_config_path=.env.development",
     "start:stage":"node -r dotenv/config app.js dotenv_config_path=.env.stage",
+    "start:production":"node -r dotenv/config app.js dotenv_config_path=.env.production",
     "migrate:dev":"npx sequelize-cli db:migrate --env=development",
+    "migrate:stage":"npx sequelize-cli db:migrate --env=stage",
+    "migrate:production":"npx sequelize-cli db:migrate --env=production",
     "seed:dev":"npx sequelize-cli db:seed:all --env=development",
+    "seed:stage":"npx sequelize-cli db:seed:all --env=stage",
+    "seed:production":"npx sequelize-cli db:seed:all --env=production",
     "undo:migrate:dev:all":"npx sequelize-cli db:migrate:undo:all --env=development",
-    "migrate:stage":"cd ./db && exec sequelize-cli db:migrate --env=stage"
+    "undo:migrate:stage:all":"npx sequelize-cli db:migrate:undo:all --env=stage",
+    "undo:migrate:production:all":"npx sequelize-cli db:migrate:undo:all --env=production"
   },
   "repository": {
     "type": "git",
