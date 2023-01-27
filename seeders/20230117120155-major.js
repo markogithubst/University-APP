@@ -2,6 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
+  // eslint-disable-next-line no-unused-vars
   async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
@@ -14,32 +15,33 @@ module.exports = {
     */
     return await queryInterface.bulkInsert('major', [
       {
-        name: "Electrical Engineering and Information Technology",
+        name: 'Electrical Engineering and Information Technology',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Computing",
+        name: 'Computing',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Mechanical Engineering",
+        name: 'Mechanical Engineering',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Naval Architecture",
+        name: 'Naval Architecture',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Industrial Engineering",
+        name: 'Industrial Engineering',
         created_at: new Date(),
         updated_at: new Date()
-      }], {})
+      }], {});
   },
 
+  // eslint-disable-next-line no-unused-vars
   async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.

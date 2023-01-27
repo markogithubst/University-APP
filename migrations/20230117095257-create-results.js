@@ -1,7 +1,7 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('result', {
       student_id: {
         primaryKey: true,
@@ -28,7 +28,7 @@ module.exports = {
       type: 'foreign key',
       references: {
         table: 'student',
-        field: 'id',
+        field: 'id'
       },
       onDelete: 'cascade',
       onUpdate: 'cascade'
@@ -38,13 +38,13 @@ module.exports = {
       type: 'foreign key',
       references: {
         table: 'exam',
-        field: 'id',
+        field: 'id'
       },
       onDelete: 'cascade',
       onUpdate: 'cascade'
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('result');
   }
 };

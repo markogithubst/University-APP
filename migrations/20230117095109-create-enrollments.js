@@ -1,7 +1,7 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('enrollment', {
       course_id: {
         primaryKey: true,
@@ -25,7 +25,7 @@ module.exports = {
       type: 'foreign key',
       references: {
         table: 'student',
-        field: 'id',
+        field: 'id'
       },
       onDelete: 'cascade',
       onUpdate: 'cascade'
@@ -35,13 +35,14 @@ module.exports = {
       type: 'foreign key',
       references: {
         table: 'course',
-        field: 'id',
+        field: 'id'
       },
       onDelete: 'cascade',
       onUpdate: 'cascade'
     });
   },
-  async down(queryInterface, Sequelize) {
+  // eslint-disable-next-line no-unused-vars
+  async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('enrollment');
   }
 };

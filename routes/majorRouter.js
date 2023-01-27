@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const MajorController = require('../controllers/majorController')
+const MajorController = require('../controllers/majorController');
+const { validateName, validateId } = require('../middleware');
 
-
-
-router.get('/:id', MajorController.getOneMajor);
+router.get('/:id', validateId, MajorController.getOneMajor);
 router.get('/', MajorController.getAllMajors);
-router.post('/', MajorController.createMajor);
-router.put('/:id', MajorController.updateMajor);
-router.delete('/:id', MajorController.deleteMajor);
+router.post('/', validateName, MajorController.createMajor);
+router.put('/:id', validateId, validateName, MajorController.updateMajor);
+router.delete('/:id', validateId, MajorController.deleteMajor);
 
 module.exports = router;

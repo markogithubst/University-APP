@@ -2,6 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
+  // eslint-disable-next-line no-unused-vars
   async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
@@ -14,50 +15,51 @@ module.exports = {
     */
     return await queryInterface.bulkInsert('exam', [
       {
-        name: "Physics exam",
+        name: 'Physics exam',
         date_and_time: new Date(),
-        course_id: "1",
+        course_id: '1',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Mathematics exam",
+        name: 'Mathematics exam',
         date_and_time: new Date(),
-        course_id: "2",
+        course_id: '2',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Cryptography exam",
+        name: 'Cryptography exam',
         date_and_time: new Date(),
-        course_id: "6",
+        course_id: '6',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Relational Databases exam",
+        name: 'Relational Databases exam',
         date_and_time: new Date(),
-        course_id: "3",
+        course_id: '3',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Relational Databases another exam",
+        name: 'Relational Databases another exam',
         date_and_time: new Date(),
-        course_id: "3",
+        course_id: '3',
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        name: "Physics another exam",
+        name: 'Physics another exam',
         date_and_time: new Date(),
-        course_id: "1",
+        course_id: '1',
         created_at: new Date(),
         updated_at: new Date()
       }
-     ], {})
+    ], {});
   },
 
+  // eslint-disable-next-line no-unused-vars
   async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
