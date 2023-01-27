@@ -15,6 +15,7 @@ module.exports = {
         unique: true
       },
       credit_hours: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       professor_id: {

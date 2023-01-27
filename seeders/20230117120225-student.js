@@ -15,7 +15,7 @@ module.exports = {
     */
     return await queryInterface.bulkInsert('student', [
       {
-        name: 'John Doe',
+        full_name: 'John Doe',
         email: 'johndoe@fesb.com',
         address: '181 Mercer Street, New York',
         phone_number: '111222',
@@ -24,7 +24,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        name: 'Jane Doe',
+        full_name: 'Jane Doe',
         email: 'janedoe@fesb.com',
         address: '13 Washington Square S, New York',
         phone_number: '111333',
@@ -33,7 +33,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        name: 'Gregory House',
+        full_name: 'Gregory House',
         email: 'gregoryhouse@fesb.com',
         address: '715 Broadway, New York',
         phone_number: '444555',
@@ -42,7 +42,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        name: 'Thomas Shelby',
+        full_name: 'Thomas Shelby',
         email: 'thomasshelby@fesb.com',
         address: '11 Queen St, London',
         phone_number: '222666',
@@ -51,7 +51,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        name: 'Arthur Shelby',
+        full_name: 'Arthur Shelby',
         email: 'arthurshelby@fesb.com',
         address: '9218 Manchester Road, London',
         phone_number: '777888',
@@ -60,7 +60,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        name: 'Polly Shelby',
+        full_name: 'Polly Shelby',
         email: 'pollyshelby@fesb.com',
         address: '366 The Grove, London',
         phone_number: '333555',
