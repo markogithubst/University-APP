@@ -29,10 +29,37 @@ const professorSchema = Joi.object({
   department_id: Joi.number().min(1).required()
 }).options({ abortEarly: false });
 
+const courseSchema = Joi.object({
+  name: Joi.string().min(3).max(50).required(),
+  credit_hours: Joi.number().min(1).max(500).required(),
+  professor_id: Joi.number().min(1).required()
+}).options({ abortEarly: false });
+
+const examSchema = Joi.object({
+  name: Joi.string().min(3).max(50).required(),
+  date_and_time: Joi.string().isoDate().required(),
+  course_id: Joi.number().min(1).required()
+}).options({ abortEarly: false });
+
+const enrollmentSchema = Joi.object({
+  student_id: Joi.number().min(1).required(),
+  course_id: Joi.number().min(1).required()
+}).options({ abortEarly: false });
+
+const resultSchema = Joi.object({
+  student_id: Joi.number().min(1).required(),
+  grade: Joi.number().min(1).max(5).required(),
+  exam_id: Joi.number().min(1).required()
+}).options({ abortEarly: false });
+
 module.exports = {
   nameSchema,
   idSchema,
   doubleIdSchema,
   studentSchema,
-  professorSchema
+  professorSchema,
+  courseSchema,
+  examSchema,
+  enrollmentSchema,
+  resultSchema
 };
