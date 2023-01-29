@@ -5,7 +5,7 @@ const router = require('./routes/index');
 app.use(express.json());
 app.use('/', router);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT);
 
