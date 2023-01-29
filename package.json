@@ -7,7 +7,7 @@
     "dev": "nodemon app.js",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
-    "test": "jest",
+    "test": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config",
     "migrate": "npx sequelize-cli db:migrate",
     "undo:all:migration": "npx sequelize-cli db:migrate:undo:all",
     "undo:one:migration": "npx sequelize-cli db:migrate:undo",
