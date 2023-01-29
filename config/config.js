@@ -10,7 +10,8 @@ module.exports =
     password: process.env.DB_PASSWORD,
     database: process.env.DB_CONNECTION,
     host: process.env.DB_HOST,
-    dialect: 'postgres'
+    dialect: 'postgres',
+    env: process.env.NODE_ENV
   },
   stage: {
     username: process.env.DB_USERNAME,
@@ -20,6 +21,13 @@ module.exports =
     dialect: 'postgres'
   },
   production: {
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_CONNECTION,
+    host: process.env.DB_HOST,
+    dialect: 'postgres'
+  },
+  test: {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_CONNECTION,
