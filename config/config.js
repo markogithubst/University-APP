@@ -1,7 +1,8 @@
-
-const envArg = process.argv.find(x => x.startsWith('dotenv')) || process.argv.find(x => x.startsWith('--env'));
-const env = envArg ? envArg.split('=')[1] : 'development';
-require('dotenv').config({ path: `./.env.${env}` });
+const envArg = process.argv.find(x => x.startsWith('--env'));
+if (envArg) {
+  const env = envArg.split('=')[1];
+  require('dotenv').config({ path: `./.env.${env}` });
+}
 
 module.exports =
 {
@@ -11,7 +12,7 @@ module.exports =
     database: process.env.DB_CONNECTION,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: 5432
+    port: process.env.DB_PORT
   },
   stage: {
     username: process.env.DB_USERNAME,
@@ -19,7 +20,7 @@ module.exports =
     database: process.env.DB_CONNECTION,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: 5432
+    port: process.env.DB_PORT
   },
   production: {
     username: process.env.DB_USERNAME,
@@ -27,7 +28,7 @@ module.exports =
     database: process.env.DB_CONNECTION,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: 5432
+    port: process.env.DB_PORT
   },
   test: {
     username: process.env.DB_USERNAME,
@@ -35,6 +36,6 @@ module.exports =
     database: process.env.DB_CONNECTION,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: 5433
+    port: process.env.DB_PORT
   }
 };

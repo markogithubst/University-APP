@@ -35,7 +35,7 @@ const deleteOne = async (req, res, model) => {
     if (!data) {
       return res.status(404).json({ message: 'Item not found' });
     }
-    return res.status(200).json({ message: 'Item successfully deleted' });
+    return res.status(204).json({ message: 'Item successfully deleted' });
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -47,7 +47,7 @@ const createOne = async (req, res, model) => {
     if (!data) {
       return res.status(404).json({ message: 'Item not created' });
     }
-    return res.status(200).json(data);
+    return res.status(201).json(data);
   } catch (error) {
     return res.status(500).json(error.message);
   }
