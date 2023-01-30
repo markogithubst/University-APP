@@ -6,6 +6,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db
     ports:
       - '5432:5432'
     volumes: 
@@ -16,6 +17,7 @@ services:
     environment:
       - POSTGRES_USER=mvukusic
       - POSTGRES_PASSWORD=mvukusic
+      - POSTGRES_DB=test_db
     ports:
       - '5433:5432'
     volumes: 
