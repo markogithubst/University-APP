@@ -7,9 +7,9 @@
     "dev": "nodemon app.js",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
-    "test": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config",
+    "test": "DOTENV_CONFIG_PATH=.env.test jest --detectOpenHandles --forceExit --setupFiles=dotenv/config",
 
-    "start:dev": "nodemon -r dotenv/config app.js dotenv_config_path=.env.development",
+    "start:dev": "nodemon -r dotenv/config server.js dotenv_config_path=.env.development",
     "migrate:dev": "npx sequelize-cli db:migrate --env=development",
     "seed:dev": "npx sequelize-cli db:seed:all --env=development",
     "undo:migrate:dev:all": "npx sequelize-cli db:migrate:undo:all --env=development",
