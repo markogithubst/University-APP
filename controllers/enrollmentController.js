@@ -53,7 +53,7 @@ const deleteEnrollment = async (req, res) => {
     if (!deleted) {
       return res.status(404).json({ message: 'Enrollment with the inserted StudentId and CourseId not found' });
     }
-    return res.status(200).json({ message: 'Enrollment with the inserted StudentId and CourseId succesfully deleted' });
+    return res.status(204).json({ message: 'Enrollment with the inserted StudentId and CourseId succesfully deleted' });
   } catch (error) {
     return res.status(500).json({ message: 'An error occured while deleting the enrollment: ' + error.message });
   }

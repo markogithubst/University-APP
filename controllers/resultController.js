@@ -44,7 +44,7 @@ const deleteResult = async (req, res) => {
     if (!deleted) {
       return res.status(404).json({ message: 'Result with the inserted StudentId and ExamId not found' });
     }
-    return res.status(200).json({ message: 'Result with the inserted StudentId and ExamId succesfully deleted' });
+    return res.status(204).json({ message: 'Result with the inserted StudentId and ExamId succesfully deleted' });
   } catch (error) {
     return res.status(500).json({ message: 'An error occured while deleting the result: ' + error.message });
   }
