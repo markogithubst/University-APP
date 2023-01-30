@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 const request = require('supertest');
 const app = require('../app');
-const { sequelize } = require('../models/index');
 
 describe('Testing GET department route', () => {
   test('should respond with a 200 status code to GET all departments', async () => {
@@ -17,8 +16,5 @@ describe('Testing GET department route', () => {
     const departmentId = 50;
     const response = await request(app).get(`/departments/${departmentId}`);
     expect(response.statusCode).toBe(404);
-  });
-  afterAll(async () => {
-    await sequelize.close();
   });
 });
