@@ -45,7 +45,7 @@ const createOne = async (req, res, model) => {
   try {
     const data = await model.create(req.body);
     if (!data) {
-      return res.status(404).json({ message: 'Item not created' });
+      return res.status(400).json({ message: 'Item not created' });
     }
     return res.status(201).json(data);
   } catch (error) {
