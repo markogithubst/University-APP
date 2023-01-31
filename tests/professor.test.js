@@ -21,7 +21,7 @@ describe('Testing all PROFESSOR routes', () => {
     });
   });
 
-  describe('Testing PUT PROFESSORS route', () => {
+  describe('Testing POST PROFESSORS route', () => {
     describe.each([
       [{
         full_name: 'test this',
@@ -122,7 +122,7 @@ describe('Testing all PROFESSOR routes', () => {
         department_id: 200
       },
       400]
-    ])('Testing PUT PROFESSOR route', (newProfessor, expectedStatus) => {
+    ])('Testing POST PROFESSOR route', (newProfessor, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
         const response = await request(app).post('/professors')
           .send(newProfessor);

@@ -21,7 +21,7 @@ describe('Testing all STUDENT routes', () => {
     });
   });
 
-  describe('Testing PUT STUDENTS route', () => {
+  describe('Testing POST STUDENTS route', () => {
     describe.each([
       [{
         full_name: 'test this',
@@ -122,7 +122,7 @@ describe('Testing all STUDENT routes', () => {
         major_id: 234
       },
       400]
-    ])('Testing PUT STUDENTS route', (newStudent, expectedStatus) => {
+    ])('Testing POST STUDENTS route', (newStudent, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
         const response = await request(app).post('/students')
           .send(newStudent);
