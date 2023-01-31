@@ -35,9 +35,10 @@ describe('Testing all DEPARTMENT routes', () => {
     describe.each([
       [{ name: 'Test Department' }, 201],
       [{ name: '' }, 400],
+      [{ name: '1' }, 400],
       [{ name: 'a' }, 400],
       [{ name: 'Test Department' }, 500]
-    ])('Testing GET DEPARTMENT route with department id', (departmentName, expectedStatus) => {
+    ])('Testing POST DEPARTMENT route', (departmentName, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
         const response = await request(app).post('/departments')
           .send(departmentName);
@@ -47,22 +48,31 @@ describe('Testing all DEPARTMENT routes', () => {
   });
 
   describe('Testing PUT DEPARTMENT route', () => {
-    test('should respond with a 200 status code to PUT(update) one department', async () => {
-      const departmentId = 2;
-      const updatedDepartment = { name: 'Test Department sdfgds' };
-      const response = await request(app)
-        .put(`/departments/${departmentId}`)
-        .send(updatedDepartment);
-      expect(response.statusCode).toBe(200);
+    describe.each([
+      [1, { name: 'Test Department sdfgds' }, 200],
+      [2, { name: '' }, 400],
+      [0, { name: '1a' }, 400],
+      [0, { name: 'sakdjgfihsdfkbashdbfaklhsdfbklashdbfaklsdfbhksadfbakhsdbfadsfhlbkhalsdbvkahldsvb' }, 400]
+    ])('Testing PUT DEPARTMENT route', (departmentId, updatedDepartment, expectedStatus) => {
+      test(`should respond with a ${expectedStatus} status code`, async () => {
+        const response = await request(app).put(`/departments/${departmentId}`)
+          .send(updatedDepartment);
+        expect(response.statusCode).toBe(expectedStatus);
+      });
     });
   });
 
   describe('Testing DELETE DEPARTMENT route', () => {
-    test('should respond with a 204 status code to DELETE one department', async () => {
-      const departmentId = 2;
-      const response = await request(app)
-        .delete(`/departments/${departmentId}`);
-      expect(response.statusCode).toBe(204);
+    describe.each([
+      [3, 204],
+      [50, 404],
+      [0, 400],
+      ['a', 400]
+    ])('Testing GET DEPARTMENT route with department id', (departmentId, expectedStatus) => {
+      test(`should respond with a ${expectedStatus} status code`, async () => {
+        const response = await request(app).delete(`/departments/${departmentId}`);
+        expect(response.statusCode).toBe(expectedStatus);
+      });
     });
   });
 });
