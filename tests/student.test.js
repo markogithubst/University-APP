@@ -3,6 +3,8 @@
 const request = require('supertest');
 const app = require('../app');
 const { execSync } = require('child_process');
+const testDataPostStudent = require('./hardcodedTestData/testDataPostStudent');
+const testDataPutStudent = require('./hardcodedTestData/testDataPutStudent');
 
 describe('Testing all STUDENT routes', () => {
   beforeAll(() => {
@@ -19,115 +21,66 @@ describe('Testing all STUDENT routes', () => {
     test('should respond with a 200 status code to GET all students', async () => {
       const response = await request(app).get('/students');
       expect(response.statusCode).toBe(200);
+      expect(response.headers['content-type']).toMatch(/json/);
+    });
+    describe.each([
+      [3, 200],
+      [50, 404],
+      [0, 400],
+      ['a', 400]
+    ])('Testing GET STUDENTS route with student id to get one STUDENT', (studentId, expectedStatus) => {
+      test(`should respond with a ${expectedStatus} status code`, async () => {
+        const response = await request(app).get(`/students/${studentId}`);
+        expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
+      });
+    });
+    describe.each([
+      [3, 200],
+      [50, 404],
+      [0, 400],
+      ['a', 400]
+    ])('Testing GET STUDENTS route with student id to get own results', (studentId, expectedStatus) => {
+      test(`should respond with a ${expectedStatus} status code`, async () => {
+        const response = await request(app).get(`/students/own-results/${studentId}`);
+        expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
+      });
     });
   });
 
   describe('Testing POST STUDENTS route', () => {
-    describe.each([
-      [{
-        full_name: 'test this',
-        email: 'testing11@something.com',
-        address: '22112, New York test',
-        phone_number: '14567889',
-        major_id: 2
-      },
-      201],
-      [{
-        email: 'testing11@something.com',
-        address: '22112, New York test',
-        phone_number: '14567889',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        address: '22112, New York test',
-        phone_number: '14567889',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11@something.com',
-        phone_number: '14567889',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11@something.com',
-        address: '22112, New York test',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11@something.com',
-        address: '22112, New York test',
-        phone_number: '14567889'
-      },
-      400],
-      [{
-        full_name: '',
-        email: 'testing11@something.com',
-        address: '22112, New York test',
-        phone_number: '14567889',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: '',
-        address: '22112, New York test',
-        phone_number: '14567889',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11@something.com',
-        address: '',
-        phone_number: '14567889',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11@something.com',
-        address: '22112, New York test',
-        phone_number: '',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11something.com',
-        address: '22112, New York test',
-        phone_number: '',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11something.com',
-        address: '22112, New York test',
-        phone_number: '234',
-        major_id: 2
-      },
-      400],
-      [{
-        full_name: 'test this',
-        email: 'testing11something.com',
-        address: '22112, New York test',
-        phone_number: '234',
-        major_id: 234
-      },
-      400]
-    ])('Testing POST STUDENTS route', (newStudent, expectedStatus) => {
+    describe.each(testDataPostStudent)('Testing POST STUDENTS route', (newStudent, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
         const response = await request(app).post('/students')
           .send(newStudent);
         expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
+      });
+    });
+  });
+
+  describe('Testing PUT STUDENTS route', () => {
+    describe.each(testDataPutStudent)('Testing PUT STUDENTS route', (studentId, updatedStudent, expectedStatus) => {
+      test(`should respond with a ${expectedStatus} status code`, async () => {
+        const response = await request(app).put(`/students/${studentId}`)
+          .send(updatedStudent);
+        expect(response.statusCode).toBe(expectedStatus);
+      });
+    });
+  });
+
+  describe('Testing DELETE STUDENTS route', () => {
+    describe.each([
+      [3, 202],
+      [50, 404],
+      [0, 400],
+      ['a', 400]
+    ])('Testing DELETE studens route with student ID', (studentId, expectedStatus) => {
+      test(`should respond with a ${expectedStatus} status code`, async () => {
+        const response = await request(app).delete(`/students/${studentId}`);
+        expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
       });
     });
   });
