@@ -6,6 +6,7 @@ const { execSync } = require('child_process');
 
 describe('Testing all PROFESSOR routes', () => {
   beforeAll(() => {
+    execSync('npm run undo:migrate:test:all');
     execSync('npm run migrate:test');
     execSync('npm run seed:test');
   });
