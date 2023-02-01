@@ -8,22 +8,18 @@
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
     "test": "DOTENV_CONFIG_PATH=.env.test jest --detectOpenHandles --forceExit --setupFiles=dotenv/config --verbose",
-
     "start:dev": "nodemon -r dotenv/config server.js dotenv_config_path=.env.development",
     "migrate:dev": "npx sequelize-cli db:migrate --env=development",
     "seed:dev": "npx sequelize-cli db:seed:all --env=development",
     "undo:migrate:dev:all": "npx sequelize-cli db:migrate:undo:all --env=development",
-
     "start:stage": "nodemon -r dotenv/config server.js dotenv_config_path=.env.stage",
     "migrate:stage": "npx sequelize-cli db:migrate --env=stage",
     "seed:stage": "npx sequelize-cli db:seed:all --env=stage",
     "undo:migrate:stage:all": "npx sequelize-cli db:migrate:undo:all --env=stage",
-
     "start:production": "nodemon -r dotenv/config server.js dotenv_config_path=.env.production",
     "migrate:production": "npx sequelize-cli db:migrate --env=production",
     "seed:production": "npx sequelize-cli db:seed:all --env=production",
     "undo:migrate:production:all": "npx sequelize-cli db:migrate:undo:all --env=production",
-
     "start:test": "nodemon -r dotenv/config server.js dotenv_config_path=.env.test",
     "migrate:test": "npx sequelize-cli db:migrate --env=test",
     "seed:test": "npx sequelize-cli db:seed:all --env=test",
@@ -56,6 +52,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0",
     "jest": "^29.4.1",
+    "jest-html-reporter": "^3.7.0",
     "jest-html-reporters": "^3.1.1",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.2",
