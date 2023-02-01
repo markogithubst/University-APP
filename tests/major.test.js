@@ -5,6 +5,7 @@ const { execSync } = require('child_process');
 
 describe('Testing all MAJOR routes', () => {
   beforeAll(() => {
+    execSync('npm run undo:migrate:test:all');
     execSync('npm run migrate:test');
     execSync('npm run seed:test');
   });
@@ -17,16 +18,18 @@ describe('Testing all MAJOR routes', () => {
     test('should respond with a 200 status code to GET all majors', async () => {
       const response = await request(app).get('/majors');
       expect(response.statusCode).toBe(200);
+      expect(response.headers['content-type']).toMatch(/json/);
     });
     describe.each([
       [3, 200],
       [50, 404],
       [0, 400],
       ['a', 400]
-    ])('Testing GET MAJOR route with major id', (majorId, expectedStatus) => {
+    ])('Testing GET MAJOR route with major id to get one MAJOR', (majorId, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
         const response = await request(app).get(`/majors/${majorId}`);
         expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
       });
     });
   });
@@ -43,13 +46,14 @@ describe('Testing all MAJOR routes', () => {
         const response = await request(app).post('/majors')
           .send(majorName);
         expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
       });
     });
   });
 
   describe('Testing PUT MAJOR route', () => {
     describe.each([
-      [1, { name: 'Test Major sdfgds' }, 200],
+      [1, { name: 'Test Major sdfgds' }, 201],
       [2, { name: '' }, 400],
       [0, { name: '1a' }, 400],
       [0, { name: 'sakdjgfihsdfkbashdbfaklhsdfbklashdbfaklsdfbhksadfbakhsdbfadsfhlbkhalsdbvkahldsvb' }, 400]
@@ -58,20 +62,22 @@ describe('Testing all MAJOR routes', () => {
         const response = await request(app).put(`/majors/${majorId}`)
           .send(updatedMajor);
         expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
       });
     });
   });
 
   describe('Testing DELETE MAJOR route', () => {
     describe.each([
-      [3, 204],
+      [3, 202],
       [50, 404],
       [0, 400],
       ['a', 400]
-    ])('Testing GET MAJOR route with major id', (majorId, expectedStatus) => {
+    ])('Testing DELETE MAJOR route with major id', (majorId, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
         const response = await request(app).delete(`/majors/${majorId}`);
         expect(response.statusCode).toBe(expectedStatus);
+        expect(response.headers['content-type']).toMatch(/json/);
       });
     });
   });

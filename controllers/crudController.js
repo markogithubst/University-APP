@@ -35,7 +35,7 @@ const deleteOne = async (req, res, model) => {
     if (!data) {
       return res.status(404).json({ message: 'Item not found' });
     }
-    return res.status(204).json({ message: 'Item successfully deleted' });
+    return res.status(202).json({ message: 'Item successfully deleted' });
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -60,7 +60,7 @@ const updateOne = async (req, res, model) => {
     if (data[0] === 0) {
       return res.status(404).json({ message: 'Item not updated' });
     }
-    return res.status(200).json({ message: 'Item successfully updated' });
+    return res.status(201).json({ message: 'Item successfully updated' });
   } catch (error) {
     return res.status(500).json(error.message);
   }

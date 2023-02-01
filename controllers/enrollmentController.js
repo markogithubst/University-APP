@@ -15,6 +15,12 @@ const getEnrollmentsByStudent = async (req, res) => {
     const enrollmentByStudentId = req.params.id;
     const allEnrollmentByStudentId = await models.Enrollment.findAll({
       where: { student_id: enrollmentByStudentId },
+      include: [
+        {
+          model: models.Course,
+          attributes: ['name', 'credit_hours', 'professor_id']
+        }
+      ],
       attributes: {
         exclude: ['id', 'created_at', 'updated_at']
       }
@@ -33,6 +39,12 @@ const getEnrollmentsByCourse = async (req, res) => {
     const enrollmentByCourseId = req.params.id;
     const allEnrollmentByCourseId = await models.Enrollment.findAll({
       where: { course_id: enrollmentByCourseId },
+      include: [
+        {
+          model: models.Student,
+          attributes: ['full_name', 'email', 'address', 'phone_number', 'major_id']
+        }
+      ],
       attributes: {
         exclude: ['id', 'created_at', 'updated_at']
       }
