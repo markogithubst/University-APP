@@ -2,26 +2,32 @@ const models = require('../models');
 const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudController');
 
 const getAllStudents = async (req, res) => {
+  /* #swagger.tags = ['Student'] */
   await getAll(req, res, models.Student);
 };
 
 const getOneStudent = async (req, res) => {
+  /* #swagger.tags = ['Student'] */
   await getOne(req, res, models.Student);
 };
 
 const deleteStudent = async (req, res) => {
+  /* #swagger.tags = ['Student'] */
   await deleteOne(req, res, models.Student);
 };
 
 const createStudent = async (req, res) => {
+  /* #swagger.tags = ['Student'] */
   await createOne(req, res, models.Student);
 };
 
 const updateStudent = async (req, res) => {
+  /* #swagger.tags = ['Student'] */
   await updateOne(req, res, models.Student);
 };
 
 const getOwnResults = async (req, res) => {
+  /* #swagger.tags = ['Student'] */
   try {
     const studentId = req.params.id;
     const studentResultExists = await models.Result.findOne({ where: { student_id: studentId } });
