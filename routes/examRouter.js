@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const ExamController = require('../controllers/examController');
+const examController = require('../controllers/examController');
 const { validateId, validateExam } = require('../middleware');
 
-router.get('/:id', validateId, ExamController.getOneExam);
-router.get('/', ExamController.getAllExams);
-router.post('/', validateExam, ExamController.createExam);
-router.put('/:id', validateId, validateExam, ExamController.updateExam);
-router.delete('/:id', validateId, ExamController.deleteExam);
+router.get('/:id', validateId, examController.getOneExam);
+router.get('/', examController.getAllExams);
+router.post('/', validateExam, examController.createExam);
+router.put('/:id', validateId, validateExam, examController.updateExam);
+router.delete('/:id', validateId, examController.deleteExam);
 
 module.exports = router;

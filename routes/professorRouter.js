@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const ProfessorController = require('../controllers/professorController');
+const professorController = require('../controllers/professorController');
 const { validateId, validateProfessor, validateResult } = require('../middleware');
 
-router.get('/:id', validateId, ProfessorController.getOneProfessor);
-router.get('/', ProfessorController.getAllProfessors);
-router.post('/', validateProfessor, ProfessorController.createProfessor);
-router.put('/:id', validateId, validateProfessor, ProfessorController.updateProfessor);
-router.delete('/:id', validateId, ProfessorController.deleteProfessor);
+router.get('/:id', validateId, professorController.getOneProfessor);
+router.get('/', professorController.getAllProfessors);
+router.post('/', validateProfessor, professorController.createProfessor);
+router.put('/:id', validateId, validateProfessor, professorController.updateProfessor);
+router.delete('/:id', validateId, professorController.deleteProfessor);
 
-router.post('/add-exam-results/:id', validateId, validateResult, ProfessorController.addExamResults);
+router.post('/add-exam-results/:id', validateId, validateResult, professorController.addExamResults);
 
 module.exports = router;

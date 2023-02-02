@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const ResultController = require('../controllers/resultController');
+const resultController = require('../controllers/resultController');
 const { validateId, validateDoubleId, validateResult } = require('../middleware');
 
-router.get('/student/:id', validateId, ResultController.getResultsByStudent);
-router.get('/exam/:id', validateId, ResultController.getResultsByExam);
-router.get('/', ResultController.getAllResults);
-router.post('/', validateResult, ResultController.createResult);
-router.put('/:firstId/:secondId', validateDoubleId, validateResult, ResultController.updateResult);
-router.delete('/:firstId/:secondId', validateDoubleId, ResultController.deleteResult);
+router.get('/student/:id', validateId, resultController.getResultsByStudent);
+router.get('/exam/:id', validateId, resultController.getResultsByExam);
+router.get('/', resultController.getAllResults);
+router.post('/', validateResult, resultController.createResult);
+router.put('/:firstId/:secondId', validateDoubleId, validateResult, resultController.updateResult);
+router.delete('/:firstId/:secondId', validateDoubleId, resultController.deleteResult);
 
 module.exports = router;
