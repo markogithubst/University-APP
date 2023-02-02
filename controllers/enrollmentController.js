@@ -25,12 +25,11 @@ const getEnrollmentsByStudent = async (req, res) => {
         exclude: ['id', 'created_at', 'updated_at']
       }
     });
-    if (!allEnrollmentByStudentId || allEnrollmentByStudentId.length === 0) {
-      return res.status(404).json({ message: 'Enrollment By entered Student Id not found' });
-    }
-    return res.status(200).json(allEnrollmentByStudentId);
+    return (!allEnrollmentByStudentId || allEnrollmentByStudentId.length === 0)
+      ? res.status(404).json({ message: 'Enrollment By entered Student Id not found' })
+      : res.status(200).json(allEnrollmentByStudentId);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json({ error: error.message });
   }
 };
 
@@ -49,12 +48,11 @@ const getEnrollmentsByCourse = async (req, res) => {
         exclude: ['id', 'created_at', 'updated_at']
       }
     });
-    if (!allEnrollmentByCourseId || allEnrollmentByCourseId.length === 0) {
-      return res.status(404).json({ message: 'Enrollment By entered Course Id not found' });
-    }
-    return res.status(200).json(allEnrollmentByCourseId);
+    return !allEnrollmentByCourseId || allEnrollmentByCourseId.length === 0
+      ? res.status(404).json({ message: 'Enrollment By entered Course Id not found' })
+      : res.status(200).json(allEnrollmentByCourseId);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json({ error: error.message });
   }
 };
 
@@ -62,10 +60,9 @@ const deleteEnrollment = async (req, res) => {
   try {
     const { firstId, secondId } = req.params;
     const deleted = await models.Enrollment.destroy({ where: { course_id: firstId, student_id: secondId } });
-    if (!deleted) {
-      return res.status(404).json({ message: 'Enrollment with the inserted StudentId and CourseId not found' });
-    }
-    return res.status(202).json({ message: 'Enrollment with the inserted StudentId and CourseId succesfully deleted' });
+    return !deleted
+      ? res.status(404).json({ message: 'Enrollment with the inserted StudentId and CourseId not found' })
+      : res.status(202).json({ message: 'Enrollment with the inserted StudentId and CourseId succesfully deleted' });
   } catch (error) {
     return res.status(500).json({ message: 'An error occured while deleting the enrollment: ' + error.message });
   }
@@ -75,10 +72,9 @@ const updateEnrollment = async (req, res) => {
   try {
     const { firstId, secondId } = req.params;
     const updated = await models.Enrollment.update(req.body, { where: { student_id: secondId, course_id: firstId } });
-    if (updated[0] === 0) {
-      return res.status(404).json({ message: 'Enrollment not updated' });
-    }
-    return res.status(200).json({ message: 'Enrollment updated successfully' });
+    return updated[0] === 0
+      ? res.status(404).json({ message: 'Enrollment not updated' })
+      : res.status(200).json({ message: 'Enrollment updated successfully' });
   } catch (error) {
     return res.status(500).json({ message: 'An error occured while updating the enrollment: ' + error.message });
   }
