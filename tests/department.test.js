@@ -53,7 +53,7 @@ describe('Testing all DEPARTMENT routes', () => {
 
   describe('Testing PUT DEPARTMENT route', () => {
     describe.each([
-      [1, { name: 'Test Department sdfgds' }, 201],
+      [1, { name: 'Test Department sdfgds' }, 200],
       [2, { name: '' }, 400],
       [0, { name: '1a' }, 400],
       [0, { name: 'sakdjgfihsdfkbashdbfaklhsdfbklashdbfaklsdfbhksadfbakhsdbfadsfhlbkhalsdbvkahldsvb' }, 400]

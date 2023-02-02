@@ -4,7 +4,7 @@ const testDataPutCourse = [
     credit_hours: 50,
     professor_id: 2
   },
-  201],
+  200],
   [2, {
     credit_hours: 50,
     professor_id: 2

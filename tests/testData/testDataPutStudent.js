@@ -1,38 +1,38 @@
-const testDataPutProfessor = [
+const testDataPutStudent = [
   [1, {
     full_name: 'test this',
     email: 'testingtesting@something.com',
     address: '22112, New York test',
     phone_number: '547960',
-    department_id: 2
+    major_id: 2
   },
-  201],
+  200],
   [2, {
     email: 'testing11@something.com',
     address: '22112, New York test',
     phone_number: '14567889',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
     full_name: 'test this',
     address: '22112, New York test',
     phone_number: '14567889',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
     full_name: 'test this',
     email: 'testing11@something.com',
     phone_number: '14567889',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
     full_name: 'test this',
     email: 'testing11@something.com',
     address: '22112, New York test',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
@@ -47,7 +47,7 @@ const testDataPutProfessor = [
     email: 'testing11@something.com',
     address: '22112, New York test',
     phone_number: '14567889',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
@@ -55,7 +55,7 @@ const testDataPutProfessor = [
     email: '',
     address: '22112, New York test',
     phone_number: '14567889',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
@@ -63,7 +63,7 @@ const testDataPutProfessor = [
     email: 'testing11@something.com',
     address: '',
     phone_number: '14567889',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
@@ -71,7 +71,7 @@ const testDataPutProfessor = [
     email: 'testing11@something.com',
     address: '22112, New York test',
     phone_number: '',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
@@ -79,7 +79,7 @@ const testDataPutProfessor = [
     email: 'testing11something.com',
     address: '22112, New York test',
     phone_number: '',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
@@ -87,7 +87,7 @@ const testDataPutProfessor = [
     email: 'testing11something.com',
     address: '22112, New York test',
     phone_number: '234',
-    department_id: 2
+    major_id: 2
   },
   400],
   [2, {
@@ -95,25 +95,25 @@ const testDataPutProfessor = [
     email: 'testing11something.com',
     address: '22112, New York test',
     phone_number: '234',
-    department_id: 200
+    major_id: 200
   },
   400],
-  [234, {
+  [276, {
     full_name: 'test this',
     email: 'testing11something.com',
     address: '22112, New York test',
     phone_number: '234',
-    department_id: 2
+    major_id: 4
   },
   400],
-  ['b', {
+  ['s', {
     full_name: 'test this',
     email: 'testing11something.com',
     address: '22112, New York test',
     phone_number: '234',
-    department_id: 2
+    major_id: 4
   },
   400]
 ];
 
-module.exports = testDataPutProfessor;
+module.exports = testDataPutStudent;

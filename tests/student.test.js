@@ -3,8 +3,8 @@
 const request = require('supertest');
 const app = require('../app');
 const { execSync } = require('child_process');
-const testDataPostStudent = require('./hardcodedTestData/testDataPostStudent');
-const testDataPutStudent = require('./hardcodedTestData/testDataPutStudent');
+const testDataPostStudent = require('./testData/testDataPostStudent');
+const testDataPutStudent = require('./testData/testDataPutStudent');
 
 describe('Testing all STUDENT routes', () => {
   beforeAll(() => {
