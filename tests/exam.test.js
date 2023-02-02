@@ -2,10 +2,10 @@
 const request = require('supertest');
 const app = require('../app');
 const { execSync } = require('child_process');
-const testDataPostCourse = require('./testData/testDataPostCourse');
-const testDataPutCourse = require('./testData/testDataPutCourse');
+const testDataPostExam = require('./testData/testDataPostExam');
+const testDataPutExam = require('./testData/testDataPutExam');
 
-describe('Testing all COURSE routes', () => {
+describe('Testing all EXAM routes', () => {
   beforeAll(() => {
     execSync('npm run undo:migrate:test:all');
     execSync('npm run migrate:test');
@@ -16,56 +16,56 @@ describe('Testing all COURSE routes', () => {
     execSync('npm run undo:migrate:test:all');
   });
 
-  describe('Testing GET COURSES route', () => {
-    test('should respond with a 200 status code to GET all courses', async () => {
-      const response = await request(app).get('/courses');
+  describe('Testing GET EXAM route', () => {
+    test('should respond with a 200 status code to GET all exams', async () => {
+      const response = await request(app).get('/exams');
       expect(response.statusCode).toBe(200);
       expect(response.headers['content-type']).toMatch(/json/);
-    }); // TODO provjerit je li array ili objekt ili...
+    });
     describe.each([
       [3, 200],
       [50, 404],
       [0, 400],
       ['a', 400]
-    ])('Testing GET COURSES route with course id to get one COURSE', (courseId, expectedStatus) => {
+    ])('Testing GET ONE EXAM route with exam id', (examId, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
-        const response = await request(app).get(`/courses/${courseId}`);
+        const response = await request(app).get(`/exams/${examId}`);
         expect(response.statusCode).toBe(expectedStatus);
         expect(response.headers['content-type']).toMatch(/json/);
       });
     });
   });
 
-  describe('Testing POST COURSE route', () => {
-    describe.each(testDataPostCourse)('Testing POST COURSE route', (newCourse, expectedStatus) => {
+  describe('Testing POST EXAM route', () => {
+    describe.each(testDataPostExam)('Testing POST EXAM route', (newExam, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
-        const response = await request(app).post('/courses')
-          .send(newCourse);
+        const response = await request(app).post('/exams')
+          .send(newExam);
         expect(response.statusCode).toBe(expectedStatus);
         expect(response.headers['content-type']).toMatch(/json/);
       });
     });
   });
 
-  describe('Testing PUT COURSE route', () => {
-    describe.each(testDataPutCourse)('Testing PUT COURSE route', (courseId, updatedCourse, expectedStatus) => {
+  describe('Testing PUT EXAM route', () => {
+    describe.each(testDataPutExam)('Testing PUT EXAM route', (examId, updatedExam, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
-        const response = await request(app).put(`/courses/${courseId}`)
-          .send(updatedCourse);
+        const response = await request(app).put(`/exams/${examId}`)
+          .send(updatedExam);
         expect(response.statusCode).toBe(expectedStatus);
       });
     });
   });
 
-  describe('Testing DELETE COURSE route', () => {
+  describe('Testing DELETE EXAM route', () => {
     describe.each([
       [3, 202],
       [50, 404],
       [0, 400],
       ['a', 400]
-    ])('Testing DELETE course route with course ID', (courseId, expectedStatus) => {
+    ])('Testing DELETE ONE exam route', (examId, expectedStatus) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
-        const response = await request(app).delete(`/courses/${courseId}`);
+        const response = await request(app).delete(`/exams/${examId}`);
         expect(response.statusCode).toBe(expectedStatus);
         expect(response.headers['content-type']).toMatch(/json/);
       });

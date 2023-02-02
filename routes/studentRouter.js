@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const StudentController = require('../controllers/studentController');
+const studentController = require('../controllers/studentController');
 const { validateId, validateStudent } = require('../middleware');
 
-router.get('/:id', validateId, StudentController.getOneStudent);
-router.get('/', StudentController.getAllStudents);
-router.post('/', validateStudent, StudentController.createStudent);
-router.put('/:id', validateId, validateStudent, StudentController.updateStudent);
-router.delete('/:id', validateId, StudentController.deleteStudent);
+router.get('/:id', validateId, studentController.getOneStudent);
+router.get('/', studentController.getAllStudents);
+router.post('/', validateStudent, studentController.createStudent);
+router.put('/:id', validateId, validateStudent, studentController.updateStudent);
+router.delete('/:id', validateId, studentController.deleteStudent);
 
-router.get('/own-results/:id', validateId, StudentController.getOwnResults);
+router.get('/own-results/:id', validateId, studentController.getOwnResults);
 
 module.exports = router;

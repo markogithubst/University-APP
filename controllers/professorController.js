@@ -24,10 +24,9 @@ const updateProfessor = async (req, res) => {
 const addExamResults = async (req, res) => {
   const professorId = req.params.id;
   const professorExists = await models.Professor.findOne({ where: { id: professorId } });
-  if (!professorExists) {
-    return res.status(403).json({ message: 'Forbidden, you can not create exam results' });
-  }
-  await createOne(req, res, models.Result);
+  return !professorExists
+    ? res.status(403).json({ message: 'Forbidden, you can not create exam results' })
+    : await createOne(req, res, models.Result);
 };
 
 module.exports = {
