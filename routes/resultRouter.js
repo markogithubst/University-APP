@@ -9,6 +9,6 @@ router.get('/exam/:id', validateId, ResultController.getResultsByExam);
 router.get('/', ResultController.getAllResults);
 router.post('/', validateResult, ResultController.createResult);
 router.put('/:firstId/:secondId', validateDoubleId, validateResult, ResultController.updateResult);
-router.delete('/', ResultController.deleteResult);
+router.delete('/:firstId/:secondId', validateDoubleId, ResultController.deleteResult);
 
 module.exports = router;

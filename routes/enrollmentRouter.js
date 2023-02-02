@@ -9,6 +9,6 @@ router.get('/course/:id', validateId, EnrollmentController.getEnrollmentsByCours
 router.get('/', EnrollmentController.getAllEnrollments);
 router.post('/', validateEnrollment, EnrollmentController.createEnrollment);
 router.put('/:firstId/:secondId', validateDoubleId, validateEnrollment, EnrollmentController.updateEnrollment);
-router.delete('/', EnrollmentController.deleteEnrollment);
+router.delete('/:firstId/:secondId', validateDoubleId, EnrollmentController.deleteEnrollment);
 
 module.exports = router;
