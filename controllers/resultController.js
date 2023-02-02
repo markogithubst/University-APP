@@ -38,13 +38,13 @@ const getResultsByExam = async (req, res) => {
 const deleteResult = async (req, res) => {
   try {
     // eslint-disable-next-line camelcase
-    const { exam_id, student_id } = req.body;
+    const { firstId, secondId } = req.params;
     // eslint-disable-next-line camelcase
-    const deleted = await models.Result.destroy({ where: { student_id, exam_id } });
+    const deleted = await models.Result.destroy({ where: { student_id: firstId, exam_id: secondId } });
     if (!deleted) {
       return res.status(404).json({ message: 'Result with the inserted StudentId and ExamId not found' });
     }
-    return res.status(204).json({ message: 'Result with the inserted StudentId and ExamId succesfully deleted' });
+    return res.status(202).json({ message: 'Result with the inserted StudentId and ExamId succesfully deleted' });
   } catch (error) {
     return res.status(500).json({ message: 'An error occured while deleting the result: ' + error.message });
   }
