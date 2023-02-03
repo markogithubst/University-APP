@@ -6,7 +6,7 @@ const doc = {
     title: 'University Aplication',
     description: 'Simple API overview'
   },
-  host: `localhost:${process.env.DB_PORT}`,
+  host: 'localhost:4000',
   schemes: ['http']
 };
 
