@@ -3,6 +3,18 @@ const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudContr
 
 const getAllProfessors = async (req, res) => {
   /* #swagger.tags = ['Professor'] */
+  /* #swagger.responses[200] = {
+        description: 'Get all Professors from the database',
+        schema: [
+            {
+                "full_name": "Bilbo Baggins",
+                "email": "bilbobaggins@fesb.com",
+                "address": "Abbey Street 121, Dublin",
+                "phone_number": "234567",
+                "department_id": 1
+            }
+          ]
+    } */
   await getAll(req, res, models.Professor, 'Professor');
 };
 

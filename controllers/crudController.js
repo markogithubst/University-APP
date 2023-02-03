@@ -19,7 +19,7 @@ const getAll = async (req, res, model) => {
     const data = await model.findAll({
       attributes: { exclude: ['id', 'created_at', 'updated_at'] }
     });
-    return !data
+    return data.length === 0
       ? res.status(404).json({ message: 'There is no data in the database' })
       : res.status(200).json(data);
   } catch (error) {
@@ -42,9 +42,7 @@ const deleteOne = async (req, res, model) => {
 const createOne = async (req, res, model) => {
   try {
     const data = await model.create(req.body);
-    return !data
-      ? res.status(400).json({ message: 'Item not created' })
-      : res.status(201).json(data);
+    res.status(201).json(data);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

@@ -3,6 +3,16 @@ const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudContr
 
 const getAllExams = async (req, res) => {
   /* #swagger.tags = ['Exam'] */
+  /* #swagger.responses[200] = {
+              description: 'Get all Exams from the database',
+              schema: [
+          {
+              "name": "Physics exam",
+              "date_and_time": "2023-01-30T15:16:06.547Z",
+              "course_id": 1
+          }
+      ]
+    } */
   await getAll(req, res, models.Exam);
 };
 

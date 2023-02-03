@@ -3,6 +3,14 @@ const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudContr
 
 const getAllMajors = async (req, res) => {
   /* #swagger.tags = ['Major'] */
+  /* #swagger.responses[200] = {
+        description: 'Get all Majors from the database',
+        schema: [
+              {
+                  "name": "Electrical Engineering and Information Technology"
+              }
+          ]
+    } */
   await getAll(req, res, models.Major);
 };
 

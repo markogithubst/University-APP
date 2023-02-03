@@ -4,6 +4,15 @@ const { getAll, createOne } = require('./crudController');
 
 const getAllEnrollments = async (req, res) => {
   /* #swagger.tags = ['Enrollment'] */
+  /* #swagger.responses[200] = {
+        description: 'Get all Enrollments from the database',
+        schema: [
+            {
+                "course_id": 1,
+                "student_id": 3
+            }
+        ]
+    } */
   await getAll(req, res, models.Enrollment);
 };
 

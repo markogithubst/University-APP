@@ -3,6 +3,16 @@ const { getAll, createOne } = require('./crudController');
 
 const getAllResults = async (req, res) => {
   /* #swagger.tags = ['Result'] */
+  /* #swagger.responses[200] = {
+        description: 'Get all Results from the database',
+        schema: [
+            {
+                "student_id": 3,
+                "grade": 2,
+                "exam_id": 3
+            }
+          ]
+    } */
   await getAll(req, res, models.Result);
 };
 
