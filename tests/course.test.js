@@ -21,7 +21,8 @@ describe('Testing all COURSE routes', () => {
       const response = await request(app).get('/courses');
       expect(response.statusCode).toBe(200);
       expect(response.headers['content-type']).toMatch(/json/);
-    }); // TODO provjerit je li array ili objekt ili...
+      expect(response.body).toBeInstanceOf(Array);
+    });
     describe.each([
       [3, 200],
       [50, 404],

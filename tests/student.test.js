@@ -22,6 +22,7 @@ describe('Testing all STUDENT routes', () => {
       const response = await request(app).get('/students');
       expect(response.statusCode).toBe(200);
       expect(response.headers['content-type']).toMatch(/json/);
+      expect(response.body).toBeInstanceOf(Array);
     });
     describe.each([
       [3, 200],

@@ -19,6 +19,7 @@ describe('Testing all ENROLLMENT routes', () => {
       const response = await request(app).get('/enrollments');
       expect(response.statusCode).toBe(200);
       expect(response.headers['content-type']).toMatch(/json/);
+      expect(response.body).toBeInstanceOf(Array);
     });
     describe.each([
       [3, 200],
