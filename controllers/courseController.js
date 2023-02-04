@@ -4,6 +4,7 @@ const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudContr
 const getAllCourses = async (req, res) => {
   // #region swagger doc
   /* #swagger.tags = ['Course'] */
+  /* #swagger.summary = "Retrieve information about all courses." */
   /* #swagger.responses[200] = {
         description: "Get an array of ALL Courses from the database",
         schema: [
@@ -33,8 +34,21 @@ const getAllCourses = async (req, res) => {
 const getOneCourse = async (req, res) => {
   // #region swagger doc
   /* #swagger.tags = ['Course'] */
+  /* #swagger.summary = "Retrieve information about one course." */
+  /* #swagger.parameters = [
+                            {
+                              "name": "id",
+                              "in": "path",
+                              description: "ID of the course to retrieve",
+                              "required": true,
+                              "schema": {
+                                "type": "integer"
+                              }
+                            }
+                          ]
+  */
   /* #swagger.responses[200] = {
-        description: "Get ONE Course from the database",
+        description: "Get sucessfully ONE Course from the database",
         schema: [
         {
             "name": "Methods and algorithms of machine learning",
@@ -54,7 +68,17 @@ const getOneCourse = async (req, res) => {
         schema: {
                     "error": "connect ECONNREFUSED localhost:DB_PORT"
                 }
-    } */
+    }
+    #swagger.responses[400] = {
+        description: "There is an error in the input data, ID must be an integer larger than 0.",
+        schema: {
+            "message": [
+                "\"id\" must be greater than or equal to 1",
+                "\"id\" must be a number"
+              ]
+          }
+      }
+     */
   // #endregion swagger doc
   await getOne(req, res, models.Course);
 };
@@ -62,6 +86,7 @@ const getOneCourse = async (req, res) => {
 const createCourse = async (req, res) => {
   // #region swagger doc
   /* #swagger.tags = ['Course'] */
+  /* #swagger.summary = "Create one course in the database." */
   /* #swagger.responses[201] = {
         description: "Course created sucessfully",
         schema: [
@@ -121,6 +146,19 @@ const createCourse = async (req, res) => {
 const deleteCourse = async (req, res) => {
   // #region swagger doc
   /* #swagger.tags = ['Course'] */
+  /* #swagger.summary = "Delete one course in the database." */
+  /* #swagger.parameters = [
+                            {
+                              "name": "id",
+                              "in": "path",
+                              description: "ID of the course to delete",
+                              "required": true,
+                              "schema": {
+                                "type": "integer"
+                              }
+                            }
+                          ]
+  */
   /* #swagger.responses[202] = {
         description: "Course successfully deleted from the database",
         schema: {
@@ -138,7 +176,16 @@ const deleteCourse = async (req, res) => {
         schema: {
                     "error": "connect ECONNREFUSED localhost:DB_PORT"
                 }
-    } */
+    }
+    #swagger.responses[400] = {
+        description: "There is an error in the input data, ID must be an integer larger than 0.",
+        schema: {
+            "message": [
+                "\"id\" must be greater than or equal to 1",
+                "\"id\" must be a number"
+              ]
+          }
+      } */
   // #endregion swagger doc
   await deleteOne(req, res, models.Course);
 };
@@ -146,6 +193,19 @@ const deleteCourse = async (req, res) => {
 const updateCourse = async (req, res) => {
   // #region swagger doc
   /* #swagger.tags = ['Course'] */
+  /* #swagger.summary = "Update one course in the database." */
+  /* #swagger.parameters = [
+                            {
+                              "name": "id",
+                              "in": "path",
+                              description: "ID of the course to delete",
+                              "required": true,
+                              "schema": {
+                                "type": "integer"
+                              }
+                            }
+                          ]
+  */
   /* #swagger.responses[200] = {
         description: "Course updated sucessfully",
         schema: {

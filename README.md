@@ -55,7 +55,22 @@ Once you have set up the databases, you need to run the following two scripts to
     
 
 ## Generating Swagger Output
-To generate the Swagger output, run the following command:
+OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. An OpenAPI file allows you to describe your entire API, including:
+ - Available endpoints (/users) and operations on each endpoint (GET /users, POST /users)
+ - Operation parameters Input and output for each operation
+ - Authentication methods
+ - Contact information, license, terms of use and other information.
+
+In this app, swagger file (API description of the REST API) is generated in JSON. 
+To generate the Swagger output run the following command:
+
+    npm run generate-swagger
+    
+    
+    
+## Running the Swagger UI
+In the Swagger UI you will see endpoints of the app, methods that can be used and examples of responses. You can also use different HTTP methods to get response from API and from the database.
+When the server is started (using for example development environment 'npm run start:dev'), you can see Swagger UI by opening the next address in web-browser:
     http://localhost:4000/api-docs/
 
 ## Running the tests
