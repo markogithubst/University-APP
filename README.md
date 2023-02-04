@@ -1,9 +1,11 @@
 # University App
 
-This is a university application created using: 
+This is a university application created using:
+
     NodeJS (open-source, cross-platform JavaScript runtime environment and library for running web applications outside the client's browser)
     Express (middleware web framework)
     Sequelize (Node.js-based Object Relational Mapper that makes it easy to work with MySQL, MariaDB, SQLite, PostgreSQL databases, and more.)
+    
 Postgres database to manage the data 
 
 The application has 7 different databases (student, course, department, enrollment, exam, major, professor, and result) that are used to store all the relevant information.
