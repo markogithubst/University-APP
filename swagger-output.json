@@ -30,20 +30,22 @@
         "tags": [
           "Course"
         ],
+        "summary": "Retrieve information about one course.",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the course to retrieve",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Get ONE Course from the database",
+            "description": "Get sucessfully ONE Course from the database",
             "content": {
               "application/json": {
                 "schema": {
@@ -98,7 +100,49 @@
             }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "There is an error in the input data, ID must be an integer larger than 0.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "There is no Course with the selected ID",
@@ -172,14 +216,16 @@
         "tags": [
           "Course"
         ],
+        "summary": "Update one course in the database.",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the course to delete",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -357,14 +403,16 @@
         "tags": [
           "Course"
         ],
+        "summary": "Delete one course in the database.",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the course to delete",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -403,7 +451,49 @@
             }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "There is an error in the input data, ID must be an integer larger than 0.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "There is no Course with the selected ID",
@@ -479,6 +569,7 @@
         "tags": [
           "Course"
         ],
+        "summary": "Retrieve information about all courses.",
         "description": "",
         "parameters": [],
         "responses": {
@@ -609,6 +700,7 @@
         "tags": [
           "Course"
         ],
+        "summary": "Create one course in the database.",
         "description": "",
         "parameters": [],
         "responses": {
