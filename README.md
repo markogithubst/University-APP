@@ -1,9 +1,9 @@
 # University App
 
 This is a university application created using: 
-NodeJS
+NodeJS (open-source, cross-platform JavaScript runtime environment and library for running web applications outside the client's browser)
 Express (middleware web framework)
-Sequelize (NodeJS ORM)
+Sequelize (Node.js-based Object Relational Mapper that makes it easy to work with MySQL, MariaDB, SQLite, PostgreSQL databases, and more.)
 Postgres database to manage the data 
 
 The application has 7 different databases (student, course, department, enrollment, exam, major, professor, and result) that are used to store all the relevant information.
@@ -25,10 +25,26 @@ Once you have cloned the repository, navigate to the project directory and run t
 
     npm install
 
+## Creating ENV files
+Once you have cloned the repository and install the dependencies. You will need to create env files so you can start the APP in different environments.
+As you can see in the package.json file, you already have different scripts set up for different environments.
+Example for development environment file, you need to create .env.development file in the root folder of the app. 
+The file will contain env variables later used by the scripts
+
+    DB_USERNAME=username_set_in_the_docker_compose_file 
+    DB_PASSWORD=password_set_in_the_docker_compose_file 
+    DB_HOST=127.0.0.1 or localhost
+    DB_CONNECTION=postgres
+    PORT=listening_web_server_port
+    NODE_ENV=development
+    DB_PORT=db_port_set_in_the_docker_compose_file
+
 ## Setting up the Databases
 To set up the databases, you need to run the following command to generate a Postgres image:
 
     docker-compose up
+This is just an example of setting up databases with Postgres using my docker-compose.yml file. 
+It is easy to set up different database images in Docker (reference link to docker documentation: https://docs.docker.com/reference/) 
 
 ## Running the Migrations and Seeds
 Once you have set up the databases, you need to run the following two scripts to create the tables and seed the data:
@@ -40,6 +56,12 @@ Once you have set up the databases, you need to run the following two scripts to
 ## Generating Swagger Output
 To generate the Swagger output, run the following command:
     http://localhost:4000/api-docs/
+
+## Running the tests
+For unit tests this app is using Jest (JavaScript testing framework), Supertest (NodeJS library) and Child process (module that enables us to access Operating System functionalities by running any system command inside a child process).
+In the scripts of package.json file 'test' command is already set up to start Jest for .env.test environment. 
+
+To run the tests already set up in the 'tests/' folder, you will need to create .env.test file in the root folder of the app. It will need to have all the variables previously mentioned in the 'Creating ENV files' section.
 
 ## Conclusion
 This is a basic setup guide for getting the university app up and running on your local machine. If you encounter any issues, feel free to reach out for assistance.
