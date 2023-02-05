@@ -56,7 +56,7 @@ Once you have set up the databases, you need to run the following two scripts to
 
 ## Generating Swagger Output
 OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. An OpenAPI file allows you to describe your entire API, including:
- - Available endpoints (/users) and operations on each endpoint (GET /users, POST /users)
+ - Available endpoints (/students) and operations on each endpoint (GET /students, POST /students)
  - Operation parameters Input and output for each operation
  - Authentication methods
  - Contact information, license, terms of use and other information.

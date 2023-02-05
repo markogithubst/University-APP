@@ -49,13 +49,11 @@ const getOneCourse = async (req, res) => {
   */
   /* #swagger.responses[200] = {
         description: "Get sucessfully ONE Course from the database",
-        schema: [
-        {
-            "name": "Methods and algorithms of machine learning",
-            "credit_hours": 80,
-            "professor_id": 1
-        }
-      ]
+        schema: {
+                    "name": "Methods and algorithms of machine learning",
+                    "credit_hours": 80,
+                    "professor_id": 1
+                }
     }
     #swagger.responses[404] = {
         description: "There is no Course with the selected ID",
@@ -198,7 +196,7 @@ const updateCourse = async (req, res) => {
                             {
                               "name": "id",
                               "in": "path",
-                              description: "ID of the course to delete",
+                              description: "ID of the course to update",
                               "required": true,
                               "schema": {
                                 "type": "integer"
