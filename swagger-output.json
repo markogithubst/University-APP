@@ -16,11 +16,12 @@
         "tags": [
           "App default"
         ],
+        "summary": "Default route of the app.",
         "description": "",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Default response for this route"
           }
         }
       }
