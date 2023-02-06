@@ -23,28 +23,25 @@ router.get('/:id',
   /* #swagger.responses[200] = {
         description: "Get sucessfully ONE Department from the database",
         schema: {
-                    "name": "Department of Mathematics and Physics"
+                    $ref: '#/components/schemas/DepartmentResponseSuccessful'
                 }
     }
     #swagger.responses[404] = {
         description: "There is no Department with the selected ID",
         schema: {
-                    "message": "Item not found"
+                    $ref: '#/components/schemas/NoDepartmentError'
                 }
     }
     #swagger.responses[500] = {
         description: "There is no connection to the database",
         schema: {
-                    "error": "connect ECONNREFUSED localhost:DB_PORT"
+                    $ref: '#/components/schemas/NoConnectionDbError'
                 }
     }
     #swagger.responses[400] = {
         description: "There is an error in the input data, ID must be an integer larger than 0.",
         schema: {
-            "message": [
-                "\"id\" must be greater than or equal to 1",
-                "\"id\" must be a number"
-              ]
+            $ref: '#/components/schemas/ValidationJoiError'
           }
       }
      */
