@@ -3,26 +3,14 @@ const models = require('../models');
 const { getAll, createOne } = require('./crudController');
 
 const getAllEnrollments = async (req, res) => {
-  /* #swagger.tags = ['Enrollment'] */
-  /* #swagger.responses[200] = {
-        description: 'Get all Enrollments from the database',
-        schema: [
-            {
-                "course_id": 1,
-                "student_id": 3
-            }
-        ]
-    } */
   await getAll(req, res, models.Enrollment);
 };
 
 const createEnrollment = async (req, res) => {
-  /* #swagger.tags = ['Enrollment'] */
   await createOne(req, res, models.Enrollment);
 };
 
 const getEnrollmentsByStudent = async (req, res) => {
-  /* #swagger.tags = ['Enrollment'] */
   try {
     const enrollmentByStudentId = req.params.id;
     const allEnrollmentByStudentId = await models.Enrollment.findAll({
@@ -46,7 +34,6 @@ const getEnrollmentsByStudent = async (req, res) => {
 };
 
 const getEnrollmentsByCourse = async (req, res) => {
-  /* #swagger.tags = ['Enrollment'] */
   try {
     const enrollmentByCourseId = req.params.id;
     const allEnrollmentByCourseId = await models.Enrollment.findAll({
@@ -70,7 +57,6 @@ const getEnrollmentsByCourse = async (req, res) => {
 };
 
 const deleteEnrollment = async (req, res) => {
-  /* #swagger.tags = ['Enrollment'] */
   try {
     const { firstId, secondId } = req.params;
     const deleted = await models.Enrollment.destroy({ where: { course_id: firstId, student_id: secondId } });
@@ -83,7 +69,6 @@ const deleteEnrollment = async (req, res) => {
 };
 
 const updateEnrollment = async (req, res) => {
-  /* #swagger.tags = ['Enrollment'] */
   try {
     const { firstId, secondId } = req.params;
     const updated = await models.Enrollment.update(req.body, { where: { student_id: secondId, course_id: firstId } });

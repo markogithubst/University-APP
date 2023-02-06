@@ -2,27 +2,14 @@ const models = require('../models');
 const { getAll, createOne } = require('./crudController');
 
 const getAllResults = async (req, res) => {
-  /* #swagger.tags = ['Result'] */
-  /* #swagger.responses[200] = {
-        description: 'Get all Results from the database',
-        schema: [
-            {
-                "student_id": 3,
-                "grade": 2,
-                "exam_id": 3
-            }
-          ]
-    } */
   await getAll(req, res, models.Result);
 };
 
 const createResult = async (req, res) => {
-  /* #swagger.tags = ['Result'] */
   await createOne(req, res, models.Result);
 };
 
 const getResultsByStudent = async (req, res) => {
-  /* #swagger.tags = ['Result'] */
   try {
     const resultsByStudentId = req.params.id;
     const allResultsByStudentId = await models.Result.findAll({ where: { student_id: resultsByStudentId } });
@@ -35,7 +22,6 @@ const getResultsByStudent = async (req, res) => {
 };
 
 const getResultsByExam = async (req, res) => {
-  /* #swagger.tags = ['Result'] */
   try {
     const resultsByExamId = req.params.id;
     const allResultsByExamId = await models.Result.findAll({ where: { exam_id: resultsByExamId } });
@@ -48,7 +34,6 @@ const getResultsByExam = async (req, res) => {
 };
 
 const deleteResult = async (req, res) => {
-  /* #swagger.tags = ['Result'] */
   try {
     // eslint-disable-next-line camelcase
     const { firstId, secondId } = req.params;
@@ -63,7 +48,6 @@ const deleteResult = async (req, res) => {
 };
 
 const updateResult = async (req, res) => {
-  /* #swagger.tags = ['Result'] */
   try {
     const { firstId, secondId } = req.params;
     const resultUpdated = await models.Result.update(req.body, { where: { student_id: firstId, exam_id: secondId } });
