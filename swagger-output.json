@@ -16,11 +16,12 @@
         "tags": [
           "App default"
         ],
+        "summary": "Default route of the app.",
         "description": "",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Default response for this route"
           }
         }
       }
@@ -49,22 +50,19 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "example": "Methods and algorithms of machine learning"
-                      },
-                      "credit_hours": {
-                        "type": "number",
-                        "example": 80
-                      },
-                      "professor_id": {
-                        "type": "number",
-                        "example": 1
-                      }
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Methods and algorithms of machine learning"
+                    },
+                    "credit_hours": {
+                      "type": "number",
+                      "example": 80
+                    },
+                    "professor_id": {
+                      "type": "number",
+                      "example": 1
                     }
                   },
                   "xml": {
@@ -74,22 +72,19 @@
               },
               "application/xml": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "example": "Methods and algorithms of machine learning"
-                      },
-                      "credit_hours": {
-                        "type": "number",
-                        "example": 80
-                      },
-                      "professor_id": {
-                        "type": "number",
-                        "example": 1
-                      }
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Methods and algorithms of machine learning"
+                    },
+                    "credit_hours": {
+                      "type": "number",
+                      "example": 80
+                    },
+                    "professor_id": {
+                      "type": "number",
+                      "example": 1
                     }
                   },
                   "xml": {
@@ -222,7 +217,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID of the course to delete",
+            "description": "ID of the course to update",
             "required": true,
             "schema": {
               "type": "integer"
@@ -1734,20 +1729,163 @@
         "tags": [
           "Department"
         ],
+        "summary": "Retrieve information about one Department.",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the Department to retrieve",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
         "responses": {
+          "200": {
+            "description": "Get sucessfully ONE Department from the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Department of Mathematics and Physics"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Department of Mathematics and Physics"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
           "400": {
-            "description": "Bad Request"
+            "description": "There is an error in the input data, ID must be an integer larger than 0.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "There is no Department with the selected ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item not found"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item not found"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is no connection to the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "connect ECONNREFUSED localhost:DB_PORT"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "connect ECONNREFUSED localhost:DB_PORT"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1755,20 +1893,167 @@
         "tags": [
           "Department"
         ],
+        "summary": "Update one Department in the database.",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the Department to update",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
         "responses": {
+          "200": {
+            "description": "Department updated sucessfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item successfully updated"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item successfully updated"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
           "400": {
-            "description": "Bad Request"
+            "description": "There is an error in the input data, middleware returns an error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "\"name\" is required"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "\"name\" is required"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "There is an error in the input data, Department ID to update not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item not updated"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item not updated"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is no connection to the database or validation error(name must be unique)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "content of the error message"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "content of the error message"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1776,20 +2061,163 @@
         "tags": [
           "Department"
         ],
+        "summary": "Delete one Department in the database.",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "ID of the Department to delete",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
         "responses": {
+          "202": {
+            "description": "Department successfully deleted from the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item successfully deleted"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item successfully deleted"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
           "400": {
-            "description": "Bad Request"
+            "description": "There is an error in the input data, ID must be an integer larger than 0.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"id\" must be greater than or equal to 1",
+                        "\"id\" must be a number"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "There is no Department with the selected ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item not found"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Item not found"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is no connection to the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "connect ECONNREFUSED localhost:DB_PORT"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "connect ECONNREFUSED localhost:DB_PORT"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1799,11 +2227,12 @@
         "tags": [
           "Department"
         ],
+        "summary": "Retrieve information about all departments.",
         "description": "",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Get all Departments from the database",
+            "description": "Get an array of ALL Departments from the database",
             "content": {
               "application/json": {
                 "schema": {
@@ -1840,6 +2269,72 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "There is no data in the Department database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "There is no data in the database"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "There is no data in the database"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is no connection to the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "connect ECONNREFUSED localhost:DB_PORT"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "connect ECONNREFUSED localhost:DB_PORT"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1847,11 +2342,166 @@
         "tags": [
           "Department"
         ],
+        "summary": "Create one Department in the database.",
         "description": "",
         "parameters": [],
         "responses": {
+          "201": {
+            "description": "Department created sucessfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 7
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Test test test"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "example": "2023-02-03T09:27:26.689Z"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "example": "2023-02-03T09:27:26.689Z"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 7
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Test test test"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "example": "2023-02-03T09:27:26.689Z"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "example": "2023-02-03T09:27:26.689Z"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
           "400": {
-            "description": "Bad Request"
+            "description": "There is an error in the input data, middleware returns an array of error messages.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"credit_hours\" is required",
+                        "\"professor_id\" is required"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "array",
+                      "example": [
+                        "\"credit_hours\" is required",
+                        "\"professor_id\" is required"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "There is no connection to the database or validation error(name must be unique)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "content of the error message"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "content of the error message"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         }
       }

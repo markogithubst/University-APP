@@ -11,6 +11,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => {
   /* #swagger.tags = ['App default'] */
+  /* #swagger.summary = "Default route of the app." */
+  /* #swagger.responses[200] = {
+        description: "Default response for this route"
+    }
+  */
   res.status(200).send('<h1>Connection test</h1>');
 });
 
