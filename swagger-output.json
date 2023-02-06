@@ -1748,30 +1748,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Department of Mathematics and Physics"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/DepartmentResponseSuccessful"
                 }
               },
               "application/xml": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Department of Mathematics and Physics"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/DepartmentResponseSuccessful"
                 }
               }
             }
@@ -1781,42 +1763,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "array",
-                      "example": [
-                        "\"id\" must be greater than or equal to 1",
-                        "\"id\" must be a number"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/ValidationJoiError"
                 }
               },
               "application/xml": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "array",
-                      "example": [
-                        "\"id\" must be greater than or equal to 1",
-                        "\"id\" must be a number"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/ValidationJoiError"
                 }
               }
             }
@@ -1826,30 +1778,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Item not found"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/NoDepartmentError"
                 }
               },
               "application/xml": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Item not found"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/NoDepartmentError"
                 }
               }
             }
@@ -1859,30 +1793,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "connect ECONNREFUSED localhost:DB_PORT"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/NoConnectionDbError"
                 }
               },
               "application/xml": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "example": "connect ECONNREFUSED localhost:DB_PORT"
-                    }
-                  },
-                  "xml": {
-                    "name": "main"
-                  }
+                  "$ref": "#/components/schemas/NoConnectionDbError"
                 }
               }
             }
@@ -2719,6 +2635,136 @@
           "500": {
             "description": "Internal Server Error"
           }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DepartmentResponseSuccessful": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "example": {
+                    "type": "string",
+                    "example": "Department of Mathematics and Physics"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "xml": {
+          "name": "DepartmentResponseSuccessful"
+        }
+      },
+      "NoDepartmentError": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "example": {
+                    "type": "string",
+                    "example": "Item not found"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "xml": {
+          "name": "NoDepartmentError"
+        }
+      },
+      "NoConnectionDbError": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "example": {
+                    "type": "string",
+                    "example": "connect ECONNREFUSED localhost:DB_PORT"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "xml": {
+          "name": "NoConnectionDbError"
+        }
+      },
+      "ValidationJoiError": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "example": "array"
+                  },
+                  "example": {
+                    "type": "array",
+                    "example": [
+                      "\"id\" must be greater than or equal to 1",
+                      "\"id\" must be a number"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "xml": {
+          "name": "ValidationJoiError"
         }
       }
     }
