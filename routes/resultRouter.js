@@ -3,10 +3,11 @@ const router = express.Router();
 
 const resultController = require('../controllers/resultController');
 const { validateId, validateDoubleId, validateResult } = require('../middleware');
+const loginController = require('../controllers/loginController');
 
 router.get('/student/:id',
 /* #swagger.tags = ['Result'] */
-  validateId, resultController.getResultsByStudent);
+  validateId, loginController.authenticateToken, resultController.getResultsByStudent);
 
 router.get('/exam/:id',
 /* #swagger.tags = ['Result'] */
