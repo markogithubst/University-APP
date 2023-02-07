@@ -8,6 +8,7 @@ const studentRouter = require('./studentRouter');
 const majorRouter = require('./majorRouter');
 const departmentRouter = require('./departmentRouter');
 const resultRouter = require('./resultRouter');
+const loginRouter = require('./loginRouter');
 
 router.use('/courses', courseRouter);
 router.use('/enrollments', enrollmentRouter);
@@ -17,5 +18,6 @@ router.use('/students', studentRouter);
 router.use('/majors', majorRouter);
 router.use('/departments', departmentRouter);
 router.use('/results', resultRouter);
+router.use('/login', loginRouter);
 
 module.exports = router;
