@@ -17,7 +17,7 @@ const getResultsByStudent = async (req, res) => {
       ? res.status(404).json({ message: 'Results By entered Student Id not found' })
       : res.status(200).json(allResultsByStudentId);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json({ error: error.message });
   }
 };
 
@@ -29,7 +29,7 @@ const getResultsByExam = async (req, res) => {
       ? res.status(404).json({ message: 'Results By entered Exam Id not found' })
       : res.status(200).json(allResultsByExamId);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json({ error: error.message });
   }
 };
 

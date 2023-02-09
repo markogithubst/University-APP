@@ -173,7 +173,7 @@
             }
           },
           "500": {
-            "description": "There is no connection to the database",
+            "description": "Oops something went wrong",
             "content": {
               "application/json": {
                 "schema": {
@@ -337,7 +337,7 @@
             }
           },
           "500": {
-            "description": "There is no connection to the database or validation error(name must be unique)",
+            "description": "Oops something went wrong",
             "content": {
               "application/json": {
                 "schema": {
@@ -524,7 +524,7 @@
             }
           },
           "500": {
-            "description": "There is no connection to the database",
+            "description": "Oops something went wrong",
             "content": {
               "application/json": {
                 "schema": {
@@ -824,7 +824,7 @@
             }
           },
           "500": {
-            "description": "There is no connection to the database or validation error(name must be unique)",
+            "description": "Oops something went wrong",
             "content": {
               "application/json": {
                 "schema": {
@@ -2436,6 +2436,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2444,6 +2451,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -2634,6 +2644,43 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/login/": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "any"
+                  },
+                  "password": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
           }
         }
       }

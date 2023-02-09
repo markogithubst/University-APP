@@ -35,7 +35,7 @@ router.get('/:id',
                 }
     }
     #swagger.responses[500] = {
-        description: "There is no connection to the database",
+        description: "Oops something went wrong",
         schema: {
                     "error": "connect ECONNREFUSED localhost:DB_PORT"
                 }
@@ -107,7 +107,7 @@ router.post('/',
           }
       }
     #swagger.responses[500] = {
-        description: "There is no connection to the database or validation error(name must be unique)",
+        description: "Oops something went wrong",
         schema: {
                     "error": "content of the error message"
                 }
@@ -176,7 +176,7 @@ router.put('/:id',
           }
       }
     #swagger.responses[500] = {
-        description: "There is no connection to the database or validation error(name must be unique)",
+        description: "Oops something went wrong",
         schema: {
                     "error": "content of the error message"
                 }
@@ -236,7 +236,7 @@ router.delete('/:id',
                 }
     }
     #swagger.responses[500] = {
-        description: "There is no connection to the database",
+        description: "Oops something went wrong",
         schema: {
                     "error": "connect ECONNREFUSED localhost:DB_PORT"
                 }

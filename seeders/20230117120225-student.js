@@ -17,6 +17,7 @@ module.exports = {
       {
         full_name: 'John Doe',
         email: 'johndoe@fesb.com',
+        password: 'studentpassword',
         address: '181 Mercer Street, New York',
         phone_number: '111222',
         major_id: 1,
@@ -26,6 +27,7 @@ module.exports = {
       {
         full_name: 'Jane Doe',
         email: 'janedoe@fesb.com',
+        password: 'studentpassword1',
         address: '13 Washington Square S, New York',
         phone_number: '111333',
         major_id: 2,
@@ -35,6 +37,7 @@ module.exports = {
       {
         full_name: 'Gregory House',
         email: 'gregoryhouse@fesb.com',
+        password: 'studentpassword2',
         address: '715 Broadway, New York',
         phone_number: '444555',
         major_id: 3,
@@ -44,6 +47,7 @@ module.exports = {
       {
         full_name: 'Thomas Shelby',
         email: 'thomasshelby@fesb.com',
+        password: 'studentpassword3',
         address: '11 Queen St, London',
         phone_number: '222666',
         major_id: 4,
@@ -53,6 +57,7 @@ module.exports = {
       {
         full_name: 'Arthur Shelby',
         email: 'arthurshelby@fesb.com',
+        password: 'studentpassword4',
         address: '9218 Manchester Road, London',
         phone_number: '777888',
         major_id: 5,
@@ -62,6 +67,7 @@ module.exports = {
       {
         full_name: 'Polly Shelby',
         email: 'pollyshelby@fesb.com',
+        password: 'studentpassword5',
         address: '366 The Grove, London',
         phone_number: '333555',
         major_id: 2,
