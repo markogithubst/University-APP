@@ -24,15 +24,31 @@ describe('Testing all COURSE routes', () => {
       expect(response.body).toBeInstanceOf(Array);
     });
     describe.each([
-      [3, 200],
-      [50, 404],
-      [0, 400],
-      ['a', 400]
-    ])('Testing GET COURSES route with course id to get one COURSE', (courseId, expectedStatus) => {
+      [3, 200,
+        {
+          name: 'Relational Databases',
+          credit_hours: 70,
+          professor_id: 2
+        }],
+      [50, 404,
+        {
+          message: 'Item not found'
+        }],
+      [0, 400,
+        {
+          message: '"id" must be greater than or equal to 1'
+        }],
+      ['a', 400,
+        {
+          message: '"id" must be a number'
+        }]
+    ])('Testing GET COURSES route with course id to get one COURSE', (courseId, expectedStatus, responseBody) => {
       test(`should respond with a ${expectedStatus} status code`, async () => {
         const response = await request(app).get(`/courses/${courseId}`);
         expect(response.statusCode).toBe(expectedStatus);
         expect(response.headers['content-type']).toMatch(/json/);
+        expect(response.body).toStrictEqual(responseBody);
+        expect(response.body).toBeInstanceOf(Object);
       });
     });
   });
