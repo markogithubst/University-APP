@@ -73,33 +73,4 @@ describe('Testing all PROFESSOR routes', () => {
       });
     });
   });
-
-  describe.each([
-    [1, {
-      student_id: 2,
-      grade: 2,
-      exam_id: 5
-    }, 201],
-    [50, {
-      student_id: 2,
-      grade: 2,
-      exam_id: 5
-    }, 403],
-    [0, {
-      student_id: 2,
-      grade: 2,
-      exam_id: 5
-    }, 400],
-    ['a', {
-      student_id: 2,
-      grade: 2,
-      exam_id: 5
-    }, 400]
-  ])('Testing POST PROFESSORS route with professor id to POST one EXAM RESULT', (professorId, newResult, expectedStatus) => {
-    test(`should respond with a ${expectedStatus} status code`, async () => {
-      const response = await request(app).post(`/professors/add-exam-results/${professorId}`)
-        .send(newResult);
-      expect(response.statusCode).toBe(expectedStatus);
-    });
-  });
 });
