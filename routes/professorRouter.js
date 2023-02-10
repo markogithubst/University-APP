@@ -3,6 +3,7 @@ const router = express.Router();
 
 const professorController = require('../controllers/professorController');
 const { validateId, validateProfessor, validateResult } = require('../middleware');
+const loginController = require('../controllers/loginController');
 
 router.get('/:id',
 /* #swagger.tags = ['Professor'] */
@@ -38,6 +39,6 @@ router.delete('/:id',
 
 router.post('/add-exam-results/:id',
 /* #swagger.tags = ['Professor'] */
-  validateId, validateResult, professorController.addExamResults);
+  validateId, validateResult, loginController.authenticateToken, professorController.addExamResults);
 
 module.exports = router;
