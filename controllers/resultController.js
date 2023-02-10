@@ -12,6 +12,10 @@ const createResult = async (req, res) => {
 const getResultsByStudent = async (req, res) => {
   try {
     const resultsByStudentId = req.params.id;
+    const userIdFromToken = String(req.user.id);
+    if (userIdFromToken !== resultsByStudentId) {
+      return res.status(403).json({ message: 'Unauthorized access to other student\'s results' });
+    }
     const allResultsByStudentId = await models.Result.findAll({ where: { student_id: resultsByStudentId } });
     return !allResultsByStudentId || allResultsByStudentId.length === 0
       ? res.status(404).json({ message: 'Results By entered Student Id not found' })
