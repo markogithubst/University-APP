@@ -39,6 +39,7 @@ The file will contain env variables later used by the scripts
     PORT=listening_web_server_port
     NODE_ENV=development
     DB_PORT=db_port_set_in_the_docker_compose_file
+    SECRET_KEY=yoursecretkey
 
 ## Setting up the Databases
 To set up the databases, you need to run the following command to generate a Postgres image:
