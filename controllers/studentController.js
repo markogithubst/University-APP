@@ -1,5 +1,6 @@
 const models = require('../models');
 const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudController');
+const { statusMessages } = require('../utils/statusMessages');
 
 const getAllStudents = async (req, res) => {
   await getAll(req, res, models.Student);
@@ -26,7 +27,7 @@ const getOwnResults = async (req, res) => {
     const studentId = req.params.id;
     const studentResultExists = await models.Result.findOne({ where: { student_id: studentId } });
     if (!studentResultExists) {
-      return res.status(404).json({ message: 'Results By entered Student Id not found' });
+      return res.status(404).json({ message: statusMessages.itemNotFound });
     }
     const allResultsByStudentId = await models.Result.findAll({ where: { student_id: studentId } });
     return res.status(200).json(allResultsByStudentId);
