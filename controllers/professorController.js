@@ -1,5 +1,6 @@
 const models = require('../models');
 const { getOne, getAll, deleteOne, createOne, updateOne } = require('./crudController');
+const { statusMessages } = require('../utils/statusMessages');
 
 const getAllProfessors = async (req, res) => {
   await getAll(req, res, models.Professor, 'Professor');
@@ -25,11 +26,11 @@ const addExamResults = async (req, res) => {
   const professorId = req.params.id;
   const userIdFromToken = String(req.user.id);
   if (userIdFromToken !== professorId) {
-    return res.status(403).json({ message: 'Unauthorized access to create result' });
+    return res.status(403).json({ message: statusMessages.addResultUnauthorized });
   }
   const professorExists = await models.Professor.findOne({ where: { id: professorId } });
   return !professorExists
-    ? res.status(403).json({ message: 'Forbidden, you can not create exam results' })
+    ? res.status(403).json({ message: statusMessages.addResultNotProfessor })
     : await createOne(req, res, models.Result);
 };
 
