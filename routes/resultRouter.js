@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 const resultController = require('../controllers/resultController');
-const { validateId, validateDoubleId, validateResult } = require('../middleware');
-const loginController = require('../controllers/loginController');
+const { validateId, validateDoubleId, validateResult } = require('../middleware/joiMiddleware');
+const { isLoggedIn } = require('../middleware/isLoggedIn');
 
 router.get('/student/:id',
 /* #swagger.tags = ['Result'] */
-  validateId, loginController.authenticateToken, resultController.getResultsByStudent);
+  validateId, isLoggedIn, resultController.getResultsByStudent);
 
 router.get('/exam/:id',
 /* #swagger.tags = ['Result'] */
