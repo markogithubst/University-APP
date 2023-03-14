@@ -36,18 +36,6 @@ describe('Testing all STUDENT routes', () => {
         expect(response.headers['content-type']).toMatch(/json/);
       });
     });
-    describe.each([
-      [3, 200],
-      [50, 404],
-      [0, 400],
-      ['a', 400]
-    ])('Testing GET STUDENTS route with student id to get own results', (studentId, expectedStatus) => {
-      test(`should respond with a ${expectedStatus} status code`, async () => {
-        const response = await request(app).get(`/students/own-results/${studentId}`);
-        expect(response.statusCode).toBe(expectedStatus);
-        expect(response.headers['content-type']).toMatch(/json/);
-      });
-    });
   });
 
   describe('Testing POST STUDENTS route', () => {

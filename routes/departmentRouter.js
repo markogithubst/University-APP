@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const departmentController = require('../controllers/departmentController');
-const { validateName, validateId } = require('../middleware');
+const { validateName, validateId } = require('../middleware/joiMiddleware');
 
 router.get('/:id',
 // #region swagger doc

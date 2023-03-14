@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const majorController = require('../controllers/majorController');
-const { validateName, validateId } = require('../middleware');
+const { validateName, validateId } = require('../middleware/joiMiddleware');
 
 router.get('/:id',
 /* #swagger.tags = ['Major'] */

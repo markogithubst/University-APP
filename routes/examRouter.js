@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const examController = require('../controllers/examController');
-const { validateId, validateExam } = require('../middleware');
+const { validateId, validateExam } = require('../middleware/joiMiddleware');
 
 router.get('/:id',
 /* #swagger.tags = ['Exam'] */

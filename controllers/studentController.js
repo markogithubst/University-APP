@@ -25,11 +25,14 @@ const updateStudent = async (req, res) => {
 const getOwnResults = async (req, res) => {
   try {
     const studentId = req.params.id;
-    const studentResultExists = await models.Result.findOne({ where: { student_id: studentId } });
-    if (!studentResultExists) {
-      return res.status(404).json({ message: statusMessages.itemNotFound });
+    const userIdFromToken = String(req.user.id);
+    if (userIdFromToken !== studentId) {
+      return res.status(403).json({ message: statusMessages.viewResultUnauthorized });
     }
     const allResultsByStudentId = await models.Result.findAll({ where: { student_id: studentId } });
+    if (allResultsByStudentId.length === 0) {
+      return res.status(404).json({ message: statusMessages.itemNotFound });
+    }
     return res.status(200).json(allResultsByStudentId);
   } catch (error) {
     return res.status(500).json({ message: 'An error occured while getting the results: ' + error.message });

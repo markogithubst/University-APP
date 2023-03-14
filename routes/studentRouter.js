@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const studentController = require('../controllers/studentController');
-const { validateId, validateStudent } = require('../middleware');
+const { validateId, validateStudent } = require('../middleware/joiMiddleware');
+const { isLoggedIn } = require('../middleware/isLoggedIn');
 
 router.get('/:id',
 /* #swagger.tags = ['Student'] */
@@ -38,6 +39,6 @@ router.delete('/:id',
 
 router.get('/own-results/:id',
 /* #swagger.tags = ['Student'] */
-  validateId, studentController.getOwnResults);
+  isLoggedIn, studentController.getOwnResults);
 
 module.exports = router;

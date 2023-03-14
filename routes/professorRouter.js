@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const professorController = require('../controllers/professorController');
-const { validateId, validateProfessor, validateResult } = require('../middleware');
-const loginController = require('../controllers/loginController');
+const { validateId, validateProfessor, validateResult } = require('../middleware/joiMiddleware');
+const { isLoggedIn } = require('../middleware/isLoggedIn');
 
 router.get('/:id',
 /* #swagger.tags = ['Professor'] */
@@ -39,6 +39,6 @@ router.delete('/:id',
 
 router.post('/add-exam-results/:id',
 /* #swagger.tags = ['Professor'] */
-  validateId, validateResult, loginController.authenticateToken, professorController.addExamResults);
+  validateId, validateResult, isLoggedIn, professorController.addExamResults);
 
 module.exports = router;
