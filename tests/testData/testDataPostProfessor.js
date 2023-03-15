@@ -4,6 +4,7 @@ const testDataPostProfessor = [
     email: 'testing11@something.com',
     address: '22112, New York test',
     phone_number: '14567889',
+    password: 'testpassword33',
     department_id: 2
   },
   201],

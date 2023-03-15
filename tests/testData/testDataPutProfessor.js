@@ -3,6 +3,7 @@ const testDataPutProfessor = [
     full_name: 'test this',
     email: 'testingtesting@something.com',
     address: '22112, New York test',
+    password: 'fdkbvsdkjhfbsdjh',
     phone_number: '547960',
     department_id: 2
   },

@@ -3,6 +3,7 @@ const testDataPostStudent = [
     full_name: 'test this',
     email: 'testing11@something.com',
     address: '22112, New York test',
+    password: 'testpassword34',
     phone_number: '14567889',
     major_id: 2
   },
