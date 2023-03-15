@@ -2,6 +2,7 @@ const models = require('../models');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const { statusMessages } = require('../utils/statusMessages');
+const bcrypt = require('bcrypt');
 
 const login = async (req, res) => {
   try {
@@ -14,7 +15,8 @@ const login = async (req, res) => {
       attributes: { exclude: ['created_at', 'updated_at'] }
     });
     let accessUserToken;
-    if (existingUser && existingUser.password === password) {
+    const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
+    if (existingUser && isPasswordCorrect) {
       try {
         // Creating jwt token
         accessUserToken = jwt.sign(
