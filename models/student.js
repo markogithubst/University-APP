@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcrypt');
 const {
   Model
 } = require('sequelize');
@@ -23,6 +24,16 @@ module.exports = (sequelize, DataTypes) => {
     major_id: DataTypes.INTEGER,
     password: DataTypes.STRING
   }, {
+    hooks: {
+      beforeCreate: async (student, options) => {
+        const hashPassword = async (password) => {
+          const salt = await bcrypt.genSalt();
+          return bcrypt.hash(password, salt);
+        };
+        const hashedPassword = await hashPassword(student.password);
+        student.password = hashedPassword;
+      }
+    },
     sequelize,
     modelName: 'Student',
     tableName: 'student',
