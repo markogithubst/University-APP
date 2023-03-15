@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-len
-const { nameSchema, idSchema, doubleIdSchema, studentSchema, professorSchema, courseSchema, examSchema, enrollmentSchema, resultSchema } = require('../schemas/schemas');
+const { nameSchema, idSchema, doubleIdSchema, studentSchema, professorSchema, courseSchema, examSchema, enrollmentSchema, resultSchema, logInSchema } = require('../schemas/schemas');
 const { validateSchema } = require('../schemas/validateSchema');
 
 const validateId = (req, res, next) => {
@@ -26,6 +26,8 @@ const validateDoubleId = (req, res, next) => {
   next();
 };
 
+const validateLogIn = validateSchema(logInSchema);
+
 const validateStudent = validateSchema(studentSchema);
 
 const validateProfessor = validateSchema(professorSchema);
@@ -42,6 +44,7 @@ module.exports = {
   validateName,
   validateId,
   validateDoubleId,
+  validateLogIn,
   validateStudent,
   validateProfessor,
   validateCourse,
