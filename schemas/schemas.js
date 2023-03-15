@@ -17,6 +17,7 @@ const studentSchema = Joi.object({
   full_name: Joi.string().min(3).max(50).required(),
   email: Joi.string().min(3).max(50).email({ minDomainSegments: 2 }).required(),
   address: Joi.string().min(3).max(50).required(),
+  password: Joi.string().min(3).max(50).required(),
   phone_number: Joi.string().min(3).max(25).required(),
   major_id: Joi.number().min(1).required()
 }).options({ abortEarly: false });
@@ -25,6 +26,7 @@ const professorSchema = Joi.object({
   full_name: Joi.string().min(3).max(50).required(),
   email: Joi.string().min(3).max(50).email({ minDomainSegments: 2 }).required(),
   address: Joi.string().min(3).max(50).required(),
+  password: Joi.string().min(3).max(50).required(),
   phone_number: Joi.string().min(3).max(25).required(),
   department_id: Joi.number().min(1).required()
 }).options({ abortEarly: false });
