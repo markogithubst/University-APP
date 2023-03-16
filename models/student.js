@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Student.belongsTo(models.Major, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'major_id' });
       models.Major.hasMany(Student, { foreignKey: 'major_id' });
+
+      Student.belongsTo(models.Role, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'role_id' });
+      models.Role.hasMany(Student, { foreignKey: 'role_id' });
     }
   }
   Student.init({
@@ -22,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     phone_number: DataTypes.STRING,
     major_id: DataTypes.INTEGER,
+    role_id: DataTypes.INTEGER,
     password: DataTypes.STRING
   }, {
     hooks: {
