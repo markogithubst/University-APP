@@ -1,8 +1,7 @@
 const statusMessages = {
   successfulLogIn: 'Successfully logged in',
   wrongEmailOrPass: 'Wrong email or password, please check and try again',
-  noToken: 'Token is required for authentication',
-  invalidToken: 'Token is invalid',
+  notLoggedIn: 'You must be logged in to view this page!',
   itemNotFound: 'Item not found',
   emptyDatabase: 'There is no data in the database',
   itemDeleted: 'Item successfully deleted',
