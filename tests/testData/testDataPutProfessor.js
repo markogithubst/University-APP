@@ -5,7 +5,8 @@ const testDataPutProfessor = [
     address: '22112, New York test',
     password: 'fdkbvsdkjhfbsdjh',
     phone_number: '547960',
-    department_id: 2
+    department_id: 2,
+    role_id: 1
   },
   200],
   [2, {

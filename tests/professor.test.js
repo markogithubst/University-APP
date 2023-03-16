@@ -19,7 +19,9 @@ describe('Testing all PROFESSOR routes', () => {
 
   describe('Testing GET PROFESSORS route', () => {
     test('should respond with a 200 status code to GET all professors', async () => {
-      const response = await request(app).get('/professors');
+      const login = await request(app).post('/login').send({ email: 'johndoe@fesb.com', password: 'studentpassword' });
+      const token = login.headers.authorization;
+      const response = await request(app).get('/professors').set('Authorization', `${token}`);
       expect(response.statusCode).toBe(200);
       expect(response.headers['content-type']).toMatch(/json/);
       expect(response.body).toBeInstanceOf(Array);

@@ -18,7 +18,9 @@ describe('Testing all EXAM routes', () => {
 
   describe('Testing GET EXAM route', () => {
     test('should respond with a 200 status code to GET all exams', async () => {
-      const response = await request(app).get('/exams');
+      const login = await request(app).post('/login').send({ email: 'johndoe@fesb.com', password: 'studentpassword' });
+      const token = login.headers.authorization;
+      const response = await request(app).get('/exams').set('Authorization', `${token}`);
       expect(response.statusCode).toBe(200);
       expect(response.headers['content-type']).toMatch(/json/);
       expect(response.body).toBeInstanceOf(Array);

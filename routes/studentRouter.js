@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const studentController = require('../controllers/studentController');
 const { validateId, validateStudent } = require('../middleware/joiMiddleware');
 const { isLoggedIn } = require('../middleware/isLoggedIn');
@@ -23,7 +22,7 @@ router.get('/',
             }
           ]
     } */
-  studentController.getAllStudents);
+  isLoggedIn, studentController.getAllStudents);
 
 router.post('/',
 /* #swagger.tags = ['Student'] */

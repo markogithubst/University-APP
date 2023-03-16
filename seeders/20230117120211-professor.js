@@ -30,6 +30,7 @@ module.exports = {
         address: 'Abbey Street 121, Dublin',
         phone_number: '234567',
         department_id: 1,
+        role_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -40,6 +41,7 @@ module.exports = {
         address: 'Capel Street 45, Dublin',
         phone_number: '765987',
         department_id: 1,
+        role_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -50,6 +52,7 @@ module.exports = {
         address: 'Clyde Road 3, Dublin',
         phone_number: '666111',
         department_id: 3,
+        role_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -60,6 +63,7 @@ module.exports = {
         address: 'East Wall Road 34, Dublin',
         phone_number: '644222332',
         department_id: 3,
+        role_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -70,6 +74,7 @@ module.exports = {
         address: 'East Wall Road 56, Dublin',
         phone_number: '644332',
         department_id: 2,
+        role_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -80,6 +85,7 @@ module.exports = {
         address: 'Gardiner Street 5, Dublin',
         phone_number: '758888',
         department_id: 5,
+        role_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       }

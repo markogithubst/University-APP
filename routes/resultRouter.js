@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const resultController = require('../controllers/resultController');
 const { validateId, validateDoubleId, validateResult } = require('../middleware/joiMiddleware');
 const { isLoggedIn } = require('../middleware/isLoggedIn');

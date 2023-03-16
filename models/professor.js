@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Professor.belongsTo(models.Department, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'department_id' });
       models.Department.hasMany(Professor, { foreignKey: 'department_id' });
+
+      Professor.belongsTo(models.Role, { onDelete: 'cascade', onUpdate: 'cascade', foreignKey: 'role_id' });
+      models.Role.hasMany(Professor, { foreignKey: 'role_id' });
     }
   }
   Professor.init({
@@ -22,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     phone_number: DataTypes.STRING,
     department_id: DataTypes.INTEGER,
+    role_id: DataTypes.INTEGER,
     password: DataTypes.STRING
   }, {
     hooks: {

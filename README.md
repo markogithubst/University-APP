@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 # University App
 
 This is a university application created using:
@@ -8,6 +10,9 @@ This is a university application created using:
 - [PostgreSQL](https://www.postgresql.org/docs/) database to manage the data 
 
 The application has 7 different databases (student, course, department, enrollment, exam, major, professor, and result) that are used to store all the relevant information.
+
+## Database diagram
+![Database diagram](database-diagram.png)
 
 ## Prerequisites
 
@@ -41,6 +46,8 @@ The file will contain env variables later used by the scripts
     DB_PORT=db_port_set_in_the_docker_compose_file
     SECRET_KEY=yoursecretkey
     JWT_EXPIRATION='24h'
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Setting up the Databases
 To set up the databases, you need to run the following command to generate a Postgres image:
@@ -86,3 +93,5 @@ To run the tests already set up in the 'tests/' folder, you will need to create 
 
 ## Conclusion
 This is a basic setup guide for getting the university app up and running on your local machine. If you encounter any issues, feel free to reach out for assistance.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
