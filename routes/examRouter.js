@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
 const examController = require('../controllers/examController');
 const { validateId, validateExam } = require('../middleware/joiMiddleware');
+const { isLoggedIn } = require('../middleware/isLoggedIn');
 
 router.get('/:id',
 /* #swagger.tags = ['Exam'] */
@@ -20,7 +20,7 @@ router.get('/',
           }
       ]
     } */
-  examController.getAllExams);
+  isLoggedIn, examController.getAllExams);
 
 router.post('/',
 /* #swagger.tags = ['Exam'] */
