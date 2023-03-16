@@ -1,11 +1,12 @@
 const { statusMessages } = require('../utils/statusMessages');
-/* eslint-disable max-len */
+const attributesToExclude = ['id', 'created_at', 'updated_at'];
+
 const getOne = async (req, res, model) => {
   try {
     const id = req.params.id;
     const data = await model.findOne({
       where: { id },
-      attributes: { exclude: ['id', 'created_at', 'updated_at'] }
+      attributes: { exclude: attributesToExclude }
     });
     return !data
       ? res.status(404).json({ message: statusMessages.itemNotFound })
@@ -18,7 +19,7 @@ const getOne = async (req, res, model) => {
 const getAll = async (req, res, model) => {
   try {
     const data = await model.findAll({
-      attributes: { exclude: ['id', 'created_at', 'updated_at'] }
+      attributes: { exclude: attributesToExclude }
     });
     return data.length === 0
       ? res.status(404).json({ message: statusMessages.emptyDatabase })

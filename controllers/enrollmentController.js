@@ -2,6 +2,7 @@
 const models = require('../models');
 const { getAll, createOne } = require('./crudController');
 const { statusMessages } = require('../utils/statusMessages');
+const attributesToExclude = ['id', 'created_at', 'updated_at'];
 
 const getAllEnrollments = async (req, res) => {
   await getAll(req, res, models.Enrollment);
@@ -14,16 +15,18 @@ const createEnrollment = async (req, res) => {
 const getEnrollmentsByStudent = async (req, res) => {
   try {
     const enrollmentByStudentId = req.params.id;
+    const includeCourseAttributes = ['name', 'credit_hours', 'professor_id'];
+
     const allEnrollmentByStudentId = await models.Enrollment.findAll({
       where: { student_id: enrollmentByStudentId },
       include: [
         {
           model: models.Course,
-          attributes: ['name', 'credit_hours', 'professor_id']
+          attributes: includeCourseAttributes
         }
       ],
       attributes: {
-        exclude: ['id', 'created_at', 'updated_at']
+        exclude: attributesToExclude
       }
     });
     return (!allEnrollmentByStudentId || allEnrollmentByStudentId.length === 0)
@@ -37,16 +40,18 @@ const getEnrollmentsByStudent = async (req, res) => {
 const getEnrollmentsByCourse = async (req, res) => {
   try {
     const enrollmentByCourseId = req.params.id;
+    const includeStudentAttributes = ['full_name', 'email', 'address', 'phone_number', 'major_id'];
+
     const allEnrollmentByCourseId = await models.Enrollment.findAll({
       where: { course_id: enrollmentByCourseId },
       include: [
         {
           model: models.Student,
-          attributes: ['full_name', 'email', 'address', 'phone_number', 'major_id']
+          attributes: includeStudentAttributes
         }
       ],
       attributes: {
-        exclude: ['id', 'created_at', 'updated_at']
+        exclude: attributesToExclude
       }
     });
     return !allEnrollmentByCourseId || allEnrollmentByCourseId.length === 0
