@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const majorController = require('../controllers/majorController');
 const { validateName, validateId } = require('../middleware/joiMiddleware');
 
