@@ -5,7 +5,8 @@ const testDataPostStudent = [
     address: '22112, New York test',
     password: 'testpassword34',
     phone_number: '14567889',
-    major_id: 2
+    major_id: 2,
+    role_id: 2
   },
   201],
   [{
