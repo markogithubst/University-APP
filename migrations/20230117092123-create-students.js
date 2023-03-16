@@ -32,6 +32,10 @@ module.exports = {
       major_id: {
         type: Sequelize.INTEGER
       },
+      role_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -46,6 +50,16 @@ module.exports = {
       type: 'foreign key',
       references: {
         table: 'major',
+        field: 'id'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    });
+    await queryInterface.addConstraint('student', {
+      fields: ['role_id'],
+      type: 'foreign key',
+      references: {
+        table: 'role',
         field: 'id'
       },
       onDelete: 'cascade',
